@@ -18,7 +18,9 @@ in {
       userEmail = "orkhan.tahirov@gmail.com";
       userName = "happyori";
       extraConfig = {
-        init.defaultBranch = "main";
+        init = {
+          defaultBranch = "main";
+        };
       };
     };
   };

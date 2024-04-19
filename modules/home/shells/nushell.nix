@@ -15,7 +15,7 @@ in {
       configFile.source = ./nushell/config.nu;
       shellAliases = {
         nr = "nux rebuild";
-        l = "la";
+        l = "la -s";
         ll = "la -l";
       };
       environmentVariables = {
