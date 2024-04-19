@@ -8,6 +8,7 @@
   nuxFile = ./nushell/nux.nu;
   inherit (lib) mkIf;
   sourceCompletion = package: "source ${config.xdg.cacheHome}/nushell/nu_scripts/custom-completions/${package}/${package}-completions.nu";
+  inc_plugin = pkgs.callPackage ../../../extras/packages/nushell/plugins/inc.nix {};
 in {
   config = mkIf cfg.enable {
     programs.nushell = {
@@ -40,8 +41,9 @@ in {
       enableNushellIntegration = true;
     };
 
-    home.packages = with pkgs; [
-      nu_scripts
+    home.packages = [
+      pkgs.nu_scripts
+      inc_plugin
     ];
     home.file."${config.xdg.cacheHome}/nushell/nu_scripts".source = "${pkgs.nu_scripts}/share/nu_scripts";
   };
