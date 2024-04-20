@@ -32,10 +32,35 @@ def "nux clean" [
 }
 
 def "nux edit" [] {
+  let ask = {|msg| kitten ask -t yesno -n "nixrebuild" -m $'Commit: ($msg)\nContinue with the build?' -d n }
+  print 'Starting nix editing'
+  cd ~/.config/nixos/
+  neovide --no-fork ~/.config/nixos/configuration.nix | complete
+  print 'Editing finished'
   let commitmsg = nixos-rebuild list-generations --json
     | from json
     | reject specialisations configurationRevision
     | where current
     | update generation {|g| $g.generation + 1 }
     | format pattern 'NixOS generation -[{generation}]- {date}'
+    | first
+  print $'Generated commit msg -> ($commitmsg)'
+  let response = do $ask $commitmsg | from json | get response
+
+  if $response != "y" {
+    print "Aborting..."
+    return
+  }
+
+  print 'Proceeding'
+  git commit -am $commitmsg
+  print 'Attempting to rebuild'
+  try { nux rebuild } catch { 
+    print 'Failed to run rebuild'
+    print 'Resetting git'
+    git reset HEAD~
+    print 'Git reset. exiting'
+    return
+  }
+  print 'Successfully finished rebuilding'
 }
