@@ -178,6 +178,9 @@
 
   programs.npm.enable = true;
 
+  programs.nix-index.enableZshIntegration = false;
+  programs.nix-index.enableBashIntegration = false;
+  programs.nix-index.enableFishIntegration = false;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
