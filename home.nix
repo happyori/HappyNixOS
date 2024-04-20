@@ -57,6 +57,7 @@
     sqlite
     bat
     nixd
+    btop
   ];
 
   dconf = {
