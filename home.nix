@@ -13,7 +13,13 @@
 
   terms.kitty.enable = true;
   shells.nushell.enable = true;
-  git.with_lazygit = true;
+  git = {
+    with_lazygit = true;
+    delta = {
+      enable = true;
+      with-diff-so-fancy = true;
+    };
+  };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
