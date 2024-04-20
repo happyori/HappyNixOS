@@ -5,5 +5,6 @@
     ./hyprland.nix
     ./terminals.nix
     ./discord.nix
+    ./desktop-theming.nix
   ];
 }

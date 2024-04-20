@@ -46,6 +46,8 @@
 
   security.polkit.enable = true;
 
+  environment.pathsToLink = ["/share/icons"];
+
   services.xserver.desktopManager.gnome.enable = true;
   environment.gnome.excludePackages =
     [
