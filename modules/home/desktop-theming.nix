@@ -3,7 +3,6 @@
 in {
   home.packages = [
     pkgs.inter
-    icons
   ];
   gtk.theme.package = pkgs.orchis-theme.override {
     border-radius = 8;
