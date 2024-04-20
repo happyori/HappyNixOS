@@ -36,7 +36,8 @@ def "nux edit" [] {
   print 'Starting nix editing'
   cd ~/.config/nixos/
   neovide --no-fork ~/.config/nixos/configuration.nix | complete
-  print 'Editing finished'
+  print 'Editing finished, starting the diff'
+  git diff main HEAD~
   let commitmsg = nixos-rebuild list-generations --json
     | from json
     | reject specialisations configurationRevision
