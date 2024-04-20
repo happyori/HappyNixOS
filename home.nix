@@ -5,10 +5,7 @@
   home.homeDirectory = "/home/happy";
 
   imports = [
-    ./modules/home/hyprland.nix
-    ./modules/home/terminals.nix
-    ./modules/home/shells.nix
-    ./modules/home/git.nix
+    ./modules/home/default.nix
   ];
 
   terms.kitty.enable = true;
@@ -19,6 +16,9 @@
       enable = true;
       with-diff-so-fancy = true;
     };
+  };
+  discord = {
+    enable = true;
   };
 
   # This value determines the Home Manager release that your configuration is
@@ -46,8 +46,6 @@
     neovide
     gh
     nodejs
-    vesktop
-    vencord
     go
     rustc
     cargo

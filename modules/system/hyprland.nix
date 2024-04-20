@@ -30,6 +30,7 @@ in {
       pyprland
       gnome.nautilus
       rofi-wayland
+      libdbusmenu-gtk3
     ];
   };
 }

@@ -37,7 +37,7 @@ def "nux edit" [] {
   cd ~/.config/nixos/
   neovide --no-fork ~/.config/nixos/configuration.nix | complete
   print 'Editing finished, starting the diff'
-  git diff main HEAD~
+  git -p diff
   let commitmsg = nixos-rebuild list-generations --json
     | from json
     | reject specialisations configurationRevision
@@ -54,7 +54,8 @@ def "nux edit" [] {
   }
 
   print 'Proceeding'
-  git commit -am $commitmsg
+  git add .;
+  git commit -m $commitmsg
   print 'Attempting to rebuild'
   try { nux rebuild } catch { 
     print 'Failed to run rebuild'
