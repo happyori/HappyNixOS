@@ -42,10 +42,32 @@
     wayland.enable = true;
   };
   sessions.hyprland.enable = true;
-  services.xserver.desktopManager.deepin.enable = true;
   programs.dconf.enable = true;
 
   security.polkit.enable = true;
+
+  services.xserver.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages =
+    [
+      pkgs.gnome-photos
+      pkgs.gnome-tour
+      pkgs.gedit
+    ]
+    ++ (with pkgs.gnome; [
+      cheese
+      gnome-music
+      gnome-terminal
+      epiphany
+      geary
+      evince
+      gnome-characters
+      totem
+      tali
+      iagno
+      hitori
+      atomix
+    ]);
+  services.udev.packages = [pkgs.gnome.gnome-settings-daemon];
 
   programs._1password.enable = true;
   programs._1password-gui = {
@@ -140,6 +162,7 @@
     fswatch
     fd
     fzf
+    gnomeExtensions.appindicator
     cachix
     ripgrep
   ];

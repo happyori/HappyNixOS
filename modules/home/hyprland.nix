@@ -10,6 +10,11 @@ in {
     source = "${cursorTheme}";
   };
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-hyprland
+  ];
+
   gtk.cursorTheme.name = "Bibata-Modern-Ice";
   gtk.cursorTheme.size = 24;
 }

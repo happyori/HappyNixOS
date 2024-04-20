@@ -55,6 +55,10 @@
     nixd
   ];
 
+  dconf = {
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
+
   services.blueman-applet.enable = true;
 
   programs.ssh = {
