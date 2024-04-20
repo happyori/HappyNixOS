@@ -41,6 +41,7 @@
     gh
     nodejs
     vesktop
+    vencord
     go
     rustc
     cargo

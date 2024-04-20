@@ -30,3 +30,12 @@ def "nux clean" [
     nh clean all -k $keep -K $since -a
   }
 }
+
+def "nux edit" [] {
+  let commitmsg = nixos-rebuild list-generations --json
+    | from json
+    | reject specialisations configurationRevision
+    | where current
+    | update generation {|g| $g.generation + 1 }
+    | format pattern 'NixOS generation -[{generation}]- {date}'
+}
