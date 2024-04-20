@@ -15,6 +15,10 @@ in {
     pkgs.xdg-desktop-portal-hyprland
   ];
 
+  home.packages = [
+    pkgs.nwg-look
+  ];
+
   gtk.cursorTheme.name = "Bibata-Modern-Ice";
   gtk.cursorTheme.size = 24;
 }
