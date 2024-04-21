@@ -15,18 +15,19 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = let
-      package = if cfg.withVesktop then
-      pkgs.vesktop.override {
-        withSystemVencord = cfg.withVencord;
-      }
-    else if cfg.withVencord then
-      pkgs.discord.override {
-        withVencord = true;
-      }
-    else
-      pkgs.discord;
-    in [
-      package
-    ];
+      package =
+        if cfg.withVesktop
+        then
+          pkgs.vesktop.override {
+            withSystemVencord = cfg.withVencord;
+          }
+        else if cfg.withVencord
+        then
+          pkgs.discord.override {
+            withVencord = true;
+          }
+        else pkgs.discord;
+    in
+      lib.optional cfg.withVencord pkgs.vencord ++ [package];
   };
 }
