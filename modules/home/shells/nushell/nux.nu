@@ -1,11 +1,26 @@
+let _amend_if_needed = {
+  print "Checking if additional amends needed"
+  let changes = git status --porcelain | lines | length
+  if $changes == 0 {
+    print "No changes skipping amending"
+    return
+  }
+
+  print "Changes found amending the commit"
+  git add .;
+  git commit --amend
+}
+
 # Nix switch using flakes
 def "nux rebuild" [] {
+  do $_amend_if_needed
   print "Rebuilding system with flake\n"
   nh os switch
 }
 
 # Nix switch using flakes with updating configuration
 def "nux update" [] {
+  do $_amend_if_needed
   print "Updating system\n"
   nh os switch -u
 }
@@ -40,7 +55,6 @@ def "nux edit" [] {
   git -p diff
   let commitmsg = nixos-rebuild list-generations --json
     | from json
-    | reject specialisations configurationRevision
     | where current
     | update generation {|g| $g.generation + 1 }
     | format pattern 'NixOS generation -[{generation}]- {date}'
