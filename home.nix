@@ -23,6 +23,8 @@
   };
   discord = {
     enable = true;
+    withVencord = true;
+    withVesktop = true;
   };
 
   # This value determines the Home Manager release that your configuration is
