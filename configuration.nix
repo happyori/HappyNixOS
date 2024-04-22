@@ -150,6 +150,7 @@
     git
     elegant-sddm
     gcc
+    killall
     polkit_gnome
     gtk3
     gtk4
