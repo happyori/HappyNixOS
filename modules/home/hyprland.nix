@@ -1,8 +1,14 @@
 {pkgs, ...}: let
   cursorTheme = import ../../extras/packages/hyprcursor/bibata.nix {inherit pkgs;};
+  cursor_size = 24;
+  cursor_name = "material-light-cursors";
 in {
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    XCURSOR_THEME = cursor_name;
+    XCURSOR_SIZE = builtins.toString cursor_size;
+    HYPRCURSOR_THEME = cursor_name;
+    HYPRCURSOR_SIZE = builtins.toString cursor_size;
   };
 
   home.file.".local/share/icons/Bibata-Modern-Ice" = {
@@ -26,6 +32,6 @@ in {
     pkgs.slurp
   ];
 
-  gtk.cursorTheme.name = "material-light-cursors";
-  gtk.cursorTheme.size = 24;
+  gtk.cursorTheme.name = cursor_name;
+  gtk.cursorTheme.size = cursor_size;
 }
