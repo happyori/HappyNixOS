@@ -20,6 +20,7 @@ in {
         if cfg.withVesktop
         then
           pkgs.vesktop.override {
+            vencord = unstable-pkgs.vencord;
             withSystemVencord = cfg.withVencord;
           }
         else if cfg.withVencord

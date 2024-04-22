@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  # custom_options,
+  custom-options,
   ...
 }: let
   cfg = config.shells.nushell;
@@ -15,24 +15,28 @@ in {
     programs.nushell = {
       enable = true;
       configFile.source = ./nushell/config.nu;
-      shellAliases = {
-        nr = "nux rebuild";
-        l = "la -s";
-        ll = "la -l";
-      };
-      # // lib.optionalAttrs custom_options._1password.enable (
-      #   let
-      #     inherit (lib) map getExeName listToAttrs;
-      #     plugins = custom_options._1password.plugins;
-      #     pkg-exe-names = map getExeName plugins;
-      #     aliases = listToAttrs (map (package: {
-      #         name = package;
-      #         value = "op plugin run -- ${package}";
-      #       })
-      #       pkg-exe-names);
-      #   in
-      #     aliases
-      # );
+      shellAliases =
+        {
+          nr = "nux rebuild";
+          l = "la -s";
+          ll = "la -l";
+        }
+        // lib.optionalAttrs custom-options._1password.enable (
+          let
+            inherit (lib) listToAttrs strings getExe;
+            inherit (builtins) map;
+            plugins = custom-options._1password.plugins;
+            pkg-exe-names = map (package: strings.unsafeDiscardStringContext (baseNameOf (getExe package))) plugins;
+            aliases = listToAttrs (map (
+                package: {
+                  name = package;
+                  value = "op plugin run -- ${package}";
+                }
+              )
+              pkg-exe-names);
+          in
+            aliases
+        );
       environmentVariables = {
         EDITOR = "nvim";
         SSH_AUTH_SOCK = "($env.HOME | path join '1password' 'agent.sock')";
