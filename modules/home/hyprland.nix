@@ -26,6 +26,6 @@ in {
     pkgs.slurp
   ];
 
-  gtk.cursorTheme.name = "material-dark-cursor";
+  gtk.cursorTheme.name = "material-light-cursors";
   gtk.cursorTheme.size = 24;
 }
