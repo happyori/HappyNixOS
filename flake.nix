@@ -15,7 +15,6 @@
     };
     nixd = {
       url = "github:nix-community/nixd";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
