@@ -26,6 +26,6 @@ in {
     pkgs.slurp
   ];
 
-  gtk.cursorTheme.name = "Bibata-Modern-Ice";
+  gtk.cursorTheme.name = "material-dark-cursor";
   gtk.cursorTheme.size = 24;
 }
