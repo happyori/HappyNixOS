@@ -16,6 +16,7 @@ def "nux rebuild" [] {
   do $_amend_if_needed
   print "Rebuilding system with flake\n"
   nh os switch
+  do $_amend_if_needed
 }
 
 # Nix switch using flakes with updating configuration
@@ -23,6 +24,7 @@ def "nux update" [] {
   do $_amend_if_needed
   print "Updating system\n"
   nh os switch -u
+  do $_amend_if_needed
 }
 
 # Search nix packages

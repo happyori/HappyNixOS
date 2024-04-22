@@ -6,6 +6,7 @@
   lib,
   pkgs,
   inputs,
+  unstable-pkgs,
   ...
 }: {
   imports = [
@@ -126,7 +127,10 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.happy = import ./home.nix;
-  home-manager.extraSpecialArgs = {inherit inputs;};
+  home-manager.extraSpecialArgs = {
+    inherit inputs;
+    inherit unstable-pkgs;
+  };
 
   hardware.opengl = {
     enable = true;

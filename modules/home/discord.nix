@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  unstable-pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -28,6 +29,6 @@ in {
           }
         else pkgs.discord;
     in
-      lib.optional cfg.withVencord pkgs.vencord ++ [package];
+      lib.optional cfg.withVencord unstable-pkgs.vencord ++ [package];
   };
 }
