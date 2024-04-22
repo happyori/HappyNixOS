@@ -28,6 +28,6 @@ in {
     iconTheme.name = "Blue-Accent-Icons";
   };
 
-  home.file.".local/share/icons/Blue-Accent-Icons".source = config.lib.file.mkOutOfStoreSymlink icons;
+  home.file.".local/share/icons/Blue-Accent-Icons".source = config.lib.file.mkOutOfStoreSymlink "${icons}/Blue-Accent-Icons";
   home.file.".local/share/themes/Orchis-Purple-Dark".source = config.lib.file.mkOutOfStoreSymlink "${theme}/share/themes/Orchis-Purple-Dark";
 }
