@@ -44,7 +44,6 @@ in {
       extraConfig = ''
         alias la = ls -a
         source ${nuxFile}
-        ${sourceCompletion "gh"}
         ${sourceCompletion "nix"}
         ${sourceCompletion "rg"}
         ${sourceCompletion "cargo"}
