@@ -4,11 +4,11 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption;
-  cfg = config.git;
+  cfg = config.custom.git;
 in {
-  options = {
-    git.with_lazygit = mkEnableOption "Adds lazy git configurations";
-    git.delta = {
+  options.custom.git = {
+    with_lazygit = mkEnableOption "Adds lazy git configurations";
+    delta = {
       enable = mkEnableOption "Adds delta git config";
       with-diff-so-fancy = mkOption {
         type = lib.types.bool;
@@ -16,6 +16,9 @@ in {
         example = true;
         description = "Enables diff so fancy configuration";
       };
+    };
+    kitty-diff = {
+      enable = mkEnableOption "Use kitten diff from kitty";
     };
   };
 
@@ -26,11 +29,28 @@ in {
       ignores = ["*.root" "*.swap"];
       userEmail = "orkhan.tahirov@gmail.com";
       userName = "happyori";
-      extraConfig = {
-        init = {
-          defaultBranch = "main";
+      extraConfig =
+        {
+          init = {
+            defaultBranch = "main";
+          };
+        }
+        // lib.optionalAttrs cfg.kitty-diff.enable {
+          diff = {
+            tool = "kitty";
+            guitool = "kitty.gui";
+          };
+          difftool = {
+            prompt = false;
+            trustExitCode = true;
+          };
+          "difftool \"kitty\"" = {
+            cmd = "kitten diff $LOCAL $REMOTE";
+          };
+          "difftool \"kitty.gui\"" = {
+            cmd = "kitten diff $LOCAL $REMOTE";
+          };
         };
-      };
       delta = {
         enable = cfg.delta.enable;
         options = {

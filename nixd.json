@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nix-community/nixd/main/nixd/docs/nixd-schema.json",
+  "nixpkgs": {
+    "expr": "import <nixpkgs> {}"
+  },
+  "options": {
+    "enable": true,
+    "nixos": {
+      "expr": "(builtins.getFlake \"/home/happy/.config/nixos\").nixosConfigurations.happypc.options"
+    }
+  }
+}

@@ -1,15 +1,19 @@
-{ lib, config, pkgs, ... }:
 {
-  options = {
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  options.custom = {
     terms = {
       kitty.enable = lib.mkEnableOption "enables kitty as main terminal";
     };
   };
 
   config = {
-    programs.kitty = lib.mkIf config.terms.kitty.enable {
+    programs.kitty = lib.mkIf config.custom.terms.kitty.enable {
       enable = true;
-      font.package = (pkgs.nerdfonts.override { fonts = [ "CascadiaCode" ]; });
+      font.package = pkgs.nerdfonts.override {fonts = ["CascadiaCode"];};
       font.name = "CaskaydiaCove Nerd Font";
       font.size = 14;
       keybindings = {

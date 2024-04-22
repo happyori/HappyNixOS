@@ -12,9 +12,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./modules/system/greet.nix
-    ./modules/system/hyprland.nix
-    ./modules/system/one-pass.nix
+    ../../modules/system/default.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -26,6 +24,7 @@
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    experimental-features = ["nix-command" "flakes"];
   };
 
   networking.hostName = "happypc"; # Define your hostname.
@@ -34,7 +33,6 @@
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
   hardware.bluetooth.enable = true;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.xserver.enable = true;

@@ -5,7 +5,7 @@
   custom-options,
   ...
 }: let
-  cfg = config.shells.nushell;
+  cfg = config.custom.shells.nushell;
   nuxFile = ./nushell/nux.nu;
   inherit (lib) mkIf;
   sourceCompletion = package: "source ${config.xdg.cacheHome}/nushell/nu_scripts/custom-completions/${package}/${package}-completions.nu";

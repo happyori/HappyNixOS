@@ -37,9 +37,10 @@
       specialArgs = {
         inherit inputs;
         inherit unstable-pkgs;
+        inherit system;
       };
       modules = [
-        ./configuration.nix
+        ./hosts/happypc/configuration.nix
         inputs.home-manager.nixosModules.default
         inputs.nix-index-database.nixosModules.nix-index
       ];

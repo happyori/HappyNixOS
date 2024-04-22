@@ -6,9 +6,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.discord;
+  cfg = config.custom.discord;
 in {
-  options.discord = {
+  options.custom.discord = {
     enable = mkEnableOption "Enable discord all together";
     withVencord = mkEnableOption "Enable discord + vencord configuration";
     withVesktop = mkEnableOption "Use vesktop client instead of normal discord client";

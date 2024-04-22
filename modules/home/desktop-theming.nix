@@ -8,7 +8,7 @@
   };
 in {
   home.packages = [
-    pkgs.inter
+    (pkgs.nerdfonts.override {fonts = ["FantasqueSansMono" "CascadiaCode" "JetBrainsMono"];})
   ];
 
   gtk = {
@@ -22,10 +22,18 @@ in {
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
+    font = {
+      package = pkgs.inter;
+      size = 12;
+      name = "Inter";
+    };
 
     iconTheme.package = pkgs.beauty-line-icon-theme;
     iconTheme.name = "BeautyLine";
   };
 
+  dconf = {
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
   home.file.".local/share/themes/Orchis-Purple-Dark".source = config.lib.file.mkOutOfStoreSymlink "${theme}/share/themes/Orchis-Purple-Dark";
 }

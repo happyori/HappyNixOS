@@ -6,5 +6,6 @@
     ./terminals.nix
     ./discord.nix
     ./desktop-theming.nix
+    ./utils.nix
   ];
 }

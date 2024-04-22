@@ -12,10 +12,16 @@ let _amend_if_needed = {
 }
 
 # Nix switch using flakes
-def "nux rebuild" [] {
+def "nux rebuild" [
+  --trace (-t) # Adds --show-trace to the build
+] {
   do $_amend_if_needed
   print "Rebuilding system with flake\n"
-  nh os switch
+  if $trace {
+    nh os switch -- --show-trace
+  } else {
+    nh os switch
+  }
   do $_amend_if_needed
 }
 
@@ -48,12 +54,16 @@ def "nux clean" [
   }
 }
 
-def "nux edit" [--fast (-f) = false] {
+# Edit my nix config from anywhere with multiple extra feautres
+def "nux edit" [
+  --fast (-f), # Allows to skip editing
+  --trace (-t), # Adds --show-trace to the end build in case of errors
+] {
   let ask = {|msg| kitten ask -t yesno -n "nixrebuild" -m $'Commit: ($msg)\nContinue with the build?' -d n }
   if not $fast {
     print 'Starting nix editing'
     cd ~/.config/nixos/
-    neovide --no-fork ~/.config/nixos/configuration.nix | complete
+    neovide --no-fork ~/.config/nixos/flake.nix | complete
     print 'Editing finished, starting the diff'
   }
   git -p diff
@@ -75,7 +85,9 @@ def "nux edit" [--fast (-f) = false] {
   git add .;
   git commit -m $commitmsg
   print 'Attempting to rebuild'
-  try { nux rebuild } catch { 
+  try {
+    if $trace { nux rebuild -t } else { nux rebuild }
+  } catch {
     print 'Failed to run rebuild'
     print 'Resetting git'
     git reset HEAD~
