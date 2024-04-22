@@ -5,7 +5,8 @@
   inputs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf types mkOption;
+  plugins = config.custom._1password.plugins;
 in {
   imports = [
     inputs._1password-shell-plugins.nixosModules.default
@@ -13,6 +14,10 @@ in {
 
   options = {
     custom._1password.enable = mkEnableOption "Enable one password setup";
+    custom._1password.plugins = mkOption {
+      type = types.listOf types.package;
+      default = [pkgs.gh];
+    };
   };
 
   config = mkIf config.custom._1password.enable {
@@ -32,7 +37,7 @@ in {
 
     programs._1password-shell-plugins = {
       enable = true;
-      plugins = [pkgs.gh];
+      inherit plugins;
     };
   };
 }

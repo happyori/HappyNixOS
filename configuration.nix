@@ -118,6 +118,7 @@
   home-manager.extraSpecialArgs = {
     inherit inputs;
     inherit unstable-pkgs;
+    custom-options = config.custom;
   };
 
   hardware.opengl = {
