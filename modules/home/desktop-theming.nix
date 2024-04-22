@@ -3,7 +3,6 @@
   config,
   ...
 }: let
-  icons = pkgs.callPackage ../../extras/packages/blue-accent-icons.nix {};
   theme = pkgs.orchis-theme.override {
     border-radius = 8;
   };
@@ -24,10 +23,9 @@ in {
       gtk-application-prefer-dark-theme = true;
     };
 
-    iconTheme.package = icons;
-    iconTheme.name = "Blue-Accent";
+    iconTheme.package = pkgs.beauty-line-icon-theme;
+    iconTheme.name = "BeautyLineSimple";
   };
 
-  home.file.".local/share/icons/Blue-Accent-Icons".source = config.lib.file.mkOutOfStoreSymlink "${icons}/Blue-Accent-Icons";
   home.file.".local/share/themes/Orchis-Purple-Dark".source = config.lib.file.mkOutOfStoreSymlink "${theme}/share/themes/Orchis-Purple-Dark";
 }
