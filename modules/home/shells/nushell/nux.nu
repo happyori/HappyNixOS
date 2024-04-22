@@ -48,12 +48,14 @@ def "nux clean" [
   }
 }
 
-def "nux edit" [] {
+def "nux edit" [--fast (-f) = false] {
   let ask = {|msg| kitten ask -t yesno -n "nixrebuild" -m $'Commit: ($msg)\nContinue with the build?' -d n }
-  print 'Starting nix editing'
-  cd ~/.config/nixos/
-  neovide --no-fork ~/.config/nixos/configuration.nix | complete
-  print 'Editing finished, starting the diff'
+  if not $fast {
+    print 'Starting nix editing'
+    cd ~/.config/nixos/
+    neovide --no-fork ~/.config/nixos/configuration.nix | complete
+    print 'Editing finished, starting the diff'
+  }
   git -p diff
   let commitmsg = nixos-rebuild list-generations --json
     | from json
