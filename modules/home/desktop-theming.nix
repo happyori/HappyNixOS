@@ -4,25 +4,24 @@
   ...
 }: let
   icons = pkgs.callPackage ../../extras/packages/blue-accent-icons.nix {};
+  theme = pkgs.orchis-theme.override {
+    border-radius = 8;
+  };
 in {
   home.packages = [
     pkgs.inter
-    pkgs.sassc
   ];
 
   gtk = {
     enable = true;
-    theme.package = pkgs.orchis-theme.override {
-      sassc = pkgs.sassc;
-      border-radius = 8;
-    };
-    theme.name = "Orchis-theme";
+    theme.package = theme;
+    theme.name = "Orchis-Purple-Dark";
 
     gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+      gtk-application-prefer-dark-theme = true;
     };
     gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+      gtk-application-prefer-dark-theme = true;
     };
 
     iconTheme.package = icons;
@@ -30,4 +29,5 @@ in {
   };
 
   home.file.".local/share/icons/Blue-Accent-Icons".source = config.lib.file.mkOutOfStoreSymlink icons;
+  home.file.".local/share/themes/Orchis-Purple-Dark".source = config.lib.file.mkOutOfStoreSymlink "${theme}/share/themes/Orchis-Purple-Dark";
 }
