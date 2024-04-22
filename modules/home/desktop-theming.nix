@@ -25,7 +25,7 @@ in {
     };
 
     iconTheme.package = icons;
-    iconTheme.name = "Blue-Accent-Icons";
+    iconTheme.name = "Blue-Accent";
   };
 
   home.file.".local/share/icons/Blue-Accent-Icons".source = config.lib.file.mkOutOfStoreSymlink "${icons}/Blue-Accent-Icons";
