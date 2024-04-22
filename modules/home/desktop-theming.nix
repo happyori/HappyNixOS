@@ -3,19 +3,24 @@
 in {
   home.packages = [
     pkgs.inter
+    pkgs.sassc
   ];
-  gtk.theme.package = pkgs.orchis-theme.override {
-    border-radius = 8;
-    tweaks = ["dracula"];
-  };
-  gtk.theme.name = "Orchis-theme";
-  gtk.gtk4.extraConfig = {
-    gtk-application-prefer-dark-theme = 1;
-  };
-  gtk.gtk3.extraConfig = {
-    gtk-application-prefer-dark-theme = 1;
-  };
 
-  gtk.iconTheme.package = icons;
-  gtk.iconTheme.name = "Blue-Accent-Icons";
+  gtk = {
+    enable = true;
+    # theme.package = pkgs.orchis-theme.override {
+    #   border-radius = 8;
+    # };
+    # theme.name = "Orchis-theme";
+
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+
+    iconTheme.package = icons;
+    iconTheme.name = "Blue-Accent-Icons";
+  };
 }
