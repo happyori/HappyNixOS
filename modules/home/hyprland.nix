@@ -5,7 +5,7 @@
 in {
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    XCURSOR_THEME = cursor_name;
+    XCURSOR_THEME = cursor_name + "-x";
     XCURSOR_SIZE = builtins.toString cursor_size;
     HYPRCURSOR_THEME = cursor_name;
     HYPRCURSOR_SIZE = builtins.toString cursor_size;
@@ -32,6 +32,6 @@ in {
     pkgs.slurp
   ];
 
-  gtk.cursorTheme.name = cursor_name;
+  gtk.cursorTheme.name = cursor_name + "-x";
   gtk.cursorTheme.size = cursor_size;
 }
