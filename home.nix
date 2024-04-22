@@ -50,7 +50,6 @@
     neovim-nightly
     vivaldi
     neovide
-    gh
     nodejs
     go
     rustc

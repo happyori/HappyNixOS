@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ./modules/system/greet.nix
     ./modules/system/hyprland.nix
+    ./modules/system/one-pass.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -71,20 +72,7 @@
       atomix
     ]);
   services.udev.packages = [pkgs.gnome.gnome-settings-daemon];
-
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = ["happy"];
-  };
-  environment.etc = {
-    "1password/custom_allowed_browsers" = {
-      text = ''
-        vivaldi-bin
-      '';
-      mode = "0755";
-    };
-  };
+  custom._1password.enable = true;
 
   services.printing.enable = true;
 
