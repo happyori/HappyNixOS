@@ -37,10 +37,12 @@ in {
           in
             aliases
         );
-      environmentVariables = {
-        EDITOR = "nvim";
-        SSH_AUTH_SOCK = "($env.HOME | path join '1password' 'agent.sock')";
-      };
+      environmentVariables =
+        {
+          EDITOR = "nvim";
+          SSH_AUTH_SOCK = "($env.HOME | path join '1password' 'agent.sock')";
+        }
+        // config.home.sessionVariables;
       extraConfig = ''
         alias la = ls -a
         source ${nuxFile}

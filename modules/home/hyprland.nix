@@ -14,9 +14,16 @@ in {
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-hyprland
   ];
+  xdg.portal.config = {
+    hyprland = {
+      default = "hyprland;gtk";
+      "org.freedesktop.impl.portal.FileChooser" = "gnome";
+    };
+  };
 
   home.packages = [
-    pkgs.nwg-look
+    pkgs.grim
+    pkgs.slurp
   ];
 
   gtk.cursorTheme.name = "Bibata-Modern-Ice";

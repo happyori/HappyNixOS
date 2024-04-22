@@ -13,6 +13,7 @@ in {
   gtk = {
     enable = true;
     theme.package = pkgs.orchis-theme.override {
+      sassc = pkgs.sassc;
       border-radius = 8;
     };
     theme.name = "Orchis-theme";

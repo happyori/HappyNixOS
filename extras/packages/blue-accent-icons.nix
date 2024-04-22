@@ -9,7 +9,7 @@ pkgs.stdenv.mkDerivation {
   };
 
   installPhase = ''
-    mkdir -p $out/share/icons/Blue-Accent-Icons
-    cp -r ./* $out/share/icons/Blue-Accent-Icons
+    mkdir -p $out/Blue-Accent-Icons
+    cp -r ./* $out/Blue-Accent-Icons
   '';
 }
