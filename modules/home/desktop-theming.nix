@@ -24,7 +24,7 @@ in {
     };
 
     iconTheme.package = pkgs.beauty-line-icon-theme;
-    iconTheme.name = "BeautyLineSimple";
+    iconTheme.name = "BeautyLine";
   };
 
   home.file.".local/share/themes/Orchis-Purple-Dark".source = config.lib.file.mkOutOfStoreSymlink "${theme}/share/themes/Orchis-Purple-Dark";
