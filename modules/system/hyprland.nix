@@ -19,7 +19,7 @@ in {
       libva
       swaynotificationcenter
       qt6ct
-      hyprshade
+      (hyprshade.override {hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;})
       hyprpicker
       hyprcursor
       swww

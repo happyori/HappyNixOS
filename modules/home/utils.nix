@@ -31,6 +31,7 @@ in {
       pkgs.btop
       pkgs.bat
       pkgs.vivaldi
+      pkgs.nix-tree
     ];
   };
 }
