@@ -18,6 +18,9 @@
       font.size = 14;
       keybindings = {
         "ctrl+c" = "copy_or_interrupt";
+        "ctrl+v" = "paste_from_clipboard";
+        "ctrl+u" = "scroll_page_up";
+        "ctrl+d" = "scroll_page_down";
       };
       settings = {
         scrollback_lines = 10000;
@@ -26,7 +29,7 @@
         cursor_shape = "beam";
         shell = "${pkgs.nushell}/bin/nu";
         editor = "${pkgs.neovide}/bin/neovide";
-        background_opacity = "0.5";
+        background_opacity = "0.75";
         shell_integration = "enabled";
       };
       theme = "Sakura Night";
