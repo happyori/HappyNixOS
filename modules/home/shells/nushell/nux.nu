@@ -66,7 +66,7 @@ def "nux edit" [
     neovide --no-fork ~/.config/nixos/flake.nix | complete
     print 'Editing finished, starting the diff'
   }
-  git -p diff
+  git -p difftool
   let commitmsg = nixos-rebuild list-generations --json
     | from json
     | where current

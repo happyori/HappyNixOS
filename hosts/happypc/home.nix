@@ -26,19 +26,20 @@
       withVencord = true;
       withVesktop = true;
     };
+    dev = {
+      neovide.enable = true;
+      nvim = {
+        enable = true;
+        with-lazy-vim = true;
+        package = pkgs.neovim-nightly;
+      };
+      lang = {
+        add-rust = true;
+        add-nix = true;
+        add-go = true;
+      };
+    };
   };
-
-  home.packages = with pkgs; [
-    neovim-nightly
-    neovide
-    nodejs
-    go
-    rustc
-    cargo
-    alejandra
-    sqlite
-    nixd
-  ];
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
   # Let Home Manager install and manage itself.

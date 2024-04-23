@@ -7,5 +7,6 @@
     ./discord.nix
     ./desktop-theming.nix
     ./utils.nix
+    ./dev.nix
   ];
 }
