@@ -12,6 +12,9 @@ in {
     sessions.hyprland.enable = mkEnableOption "Enables hyprland options";
   };
   config = mkIf cfg.enable {
+    nixpkgs.overlays = [
+      inputs.hyprland.overlays.default
+    ];
     programs.hyprland.enable = true;
     programs.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     environment.systemPackages = with pkgs; [
@@ -19,7 +22,7 @@ in {
       libva
       swaynotificationcenter
       qt6ct
-      (hyprshade.override {hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;})
+      hyprshade
       hyprpicker
       hyprcursor
       swww

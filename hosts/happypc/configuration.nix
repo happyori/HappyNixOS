@@ -109,6 +109,7 @@
   nixpkgs.overlays = [
     inputs.neovim-nightly-overlay.overlay
     inputs.nixd.overlays.default
+    inputs.hyprland.overlays.default
   ];
 
   home-manager.useGlobalPkgs = true;
