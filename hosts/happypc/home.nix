@@ -1,11 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  paths,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "happy";
   home.homeDirectory = "/home/happy";
 
   imports = [
-    ../../modules/home/default.nix
+    (paths.home_modules + /default.nix)
   ];
 
   custom = {

@@ -2,11 +2,12 @@
   lib,
   config,
   pkgs,
+  paths,
   ...
 }: let
   cfg = config.greeter;
   inherit (lib) mkIf mkEnableOption;
-  theme = import ../../../extras/packages/sddm-astronaut-theme.nix {
+  theme = import (paths.custom_pkgs + /sddm-astronaut-theme.nix) {
     inherit pkgs;
   };
 in {

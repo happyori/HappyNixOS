@@ -15,6 +15,7 @@ let _amend_if_needed = {
 def "nux rebuild" [
   --trace (-t) # Adds --show-trace to the build
 ] {
+  cd ~/.config/nixos/
   do $_amend_if_needed
   print "Rebuilding system with flake\n"
   if $trace {
@@ -27,6 +28,7 @@ def "nux rebuild" [
 
 # Nix switch using flakes with updating configuration
 def "nux update" [] {
+  cd ~/.config/nixos/
   do $_amend_if_needed
   print "Updating system\n"
   nh os switch -u
@@ -60,9 +62,9 @@ def "nux edit" [
   --trace (-t), # Adds --show-trace to the end build in case of errors
 ] {
   let ask = {|msg| kitten ask -t yesno -n "nixrebuild" -m $'Commit: ($msg)\nContinue with the build?' -d n }
+  cd ~/.config/nixos/
   if not $fast {
     print 'Starting nix editing'
-    cd ~/.config/nixos/
     neovide --no-fork ~/.config/nixos/flake.nix | complete
     print 'Editing finished, starting the diff'
   }

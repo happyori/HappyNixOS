@@ -30,6 +30,12 @@
   } @ inputs: let
     system = "x86_64-linux";
     unstable-pkgs = nixpkgs-unstable.legacyPackages.${system};
+    paths = {
+      home_modules = ./modules/home;
+      sys_modules = ./modules/system;
+      custom_pkgs = ./extras/packages;
+      app_configs = ./extras/configs;
+    };
   in {
     nixosConfigurations.happypc = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -37,6 +43,7 @@
         inherit inputs;
         inherit unstable-pkgs;
         inherit system;
+        inherit paths;
       };
       modules = [
         ./hosts/happypc/configuration.nix

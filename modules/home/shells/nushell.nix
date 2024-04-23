@@ -3,18 +3,19 @@
   lib,
   pkgs,
   custom-options,
+  paths,
   ...
 }: let
   cfg = config.custom.shells.nushell;
-  nuxFile = ./nushell/nux.nu;
+  nuxFile = paths.app_configs + /nushell/nux.nu;
   inherit (lib) mkIf;
   sourceCompletion = package: "source ${config.xdg.cacheHome}/nushell/nu_scripts/custom-completions/${package}/${package}-completions.nu";
-  inc_plugin = pkgs.callPackage ../../../extras/packages/nushell/plugins/inc.nix {};
+  inc_plugin = pkgs.callPackage (paths.custom_pkgs + /nushell/plugins/inc.nix) {};
 in {
   config = mkIf cfg.enable {
     programs.nushell = {
       enable = true;
-      configFile.source = ./nushell/config.nu;
+      configFile.source = paths.app_configs + /nushell/config.nu;
       shellAliases =
         {
           nr = "nux rebuild";

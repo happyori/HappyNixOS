@@ -7,12 +7,13 @@
   pkgs,
   inputs,
   unstable-pkgs,
+  paths,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/system/default.nix
+    (paths.sys_modules + /default.nix)
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -117,6 +118,7 @@
     inherit inputs;
     inherit unstable-pkgs;
     custom-options = config.custom;
+    inherit paths;
   };
 
   hardware.opengl = {
