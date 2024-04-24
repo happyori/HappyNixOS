@@ -70,9 +70,9 @@ in {
         format = lib.concatStrings [
           "[╭⤳](purple) $directory ≀ $hostname⋮ $username ≀ $nix_shell"
           "$fill"
-          "$localip ≀ $time $all" # Right side of the prompt
+          "$localip ≀ $time" # Right side of the prompt
           "$line_break"
-          "[├](purple) $cmd_duration ≀ $package"
+          "[├](purple) $cmd_duration ≀ $all"
           "$line_break"
           "[╰╴](purple)$sudo $character "
         ];
