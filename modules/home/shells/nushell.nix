@@ -97,9 +97,9 @@ in {
           truncation_symbol = "⋯ /";
           read_only = "";
           substitutions = {
-            ".config" = " config";
             ".config/nixos" = " nixos";
             ".config/hypr" = " hyprland";
+            ".config" = " config";
           };
         };
         character = {
