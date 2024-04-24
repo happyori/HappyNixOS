@@ -42,8 +42,8 @@ in {
         {
           EDITOR = "nvim";
           SSH_AUTH_SOCK = "($env.HOME | path join '1password' 'agent.sock')";
-          PROMPT_INDICATOR_VI_INSERT = "";
-          PROMPT_INDICATOR_VI_NORMAL = "";
+          PROMPT_INDICATOR_VI_INSERT = " ";
+          PROMPT_INDICATOR_VI_NORMAL = " ";
         }
         // config.home.sessionVariables;
       extraConfig = ''
@@ -74,7 +74,7 @@ in {
           "$line_break"
           "[├](purple) $cmd_duration ≀ $all"
           "$line_break"
-          "[╰╴](purple)$sudo $character "
+          "[╰╴](purple)$sudo $character"
         ];
         time = {
           disabled = false;
@@ -94,11 +94,12 @@ in {
         };
         directory = {
           home_symbol = "󰟒";
+          truncation_length = 5;
           truncation_symbol = "⋯ /";
           read_only = "";
           substitutions = {
-            ".config/nixos" = " nixos";
-            ".config/hypr" = " hyprland";
+            "nixos" = " nixos";
+            "hypr" = " hyprland";
             ".config" = " config";
           };
         };
@@ -109,6 +110,7 @@ in {
         hostname = {
           ssh_symbol = "󰣀";
           ssh_only = false;
+          format = "[$ssh_symbol$hostname]($style)";
         };
         nix_shell = {
           symbol = "󰼪";
@@ -129,6 +131,7 @@ in {
         username = {
           format = "[$user]($style)";
           show_always = true;
+          style = "bold bright-purple";
         };
       };
       enableNushellIntegration = true;
