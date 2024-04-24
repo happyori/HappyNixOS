@@ -33,6 +33,7 @@ in {
       pkgs.vivaldi
       pkgs.nix-tree
       pkgs.cura
+      pkgs.freecad
     ];
   };
 }
