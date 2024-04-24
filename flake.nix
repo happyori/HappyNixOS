@@ -35,6 +35,7 @@
       sys_modules = ./modules/system;
       custom_pkgs = ./extras/packages;
       app_configs = ./extras/configs;
+      wallpapers = ./extras/wallpapers;
     };
   in {
     nixosConfigurations.happypc = nixpkgs.lib.nixosSystem {
