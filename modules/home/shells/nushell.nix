@@ -72,7 +72,7 @@ in {
           "$fill"
           "$localip ≀ $time $all" # Right side of the prompt
           "$line_break"
-          "[├](purple) $duration ≀ $package"
+          "[├](purple) $cmd_duration ≀ $package"
           "$line_break"
           "[╰╴](purple)$sudo $character "
         ];
@@ -85,7 +85,7 @@ in {
         fill = {
           symbol = " ";
         };
-        duration = {
+        cmd_duration = {
           format = "[$duration]($style)";
           style = "italic purple";
           show_notifications = true;
