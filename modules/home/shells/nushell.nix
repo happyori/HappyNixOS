@@ -42,6 +42,8 @@ in {
         {
           EDITOR = "nvim";
           SSH_AUTH_SOCK = "($env.HOME | path join '1password' 'agent.sock')";
+          PROMPT_INDICATOR_VI_INSERT = "";
+          PROMPT_INDICATOR_VI_NORMAL = "";
         }
         // config.home.sessionVariables;
       extraConfig = ''
@@ -64,22 +66,49 @@ in {
     programs.starship = {
       enable = true;
       settings = {
-        add_newline = true;
+        add_newline = false;
         format = lib.concatStrings [
-          "╭⤳ $directory ≀ $hostname⋮ $username ≀ $nix_shell"
+          "[╭⤳](purple) $directory ≀ $hostname⋮ $username ≀ $nix_shell"
           "$fill"
-          "$local_ip ≀ $all ≀" # Right side of the prompt
+          "$localip ≀ $time $all" # Right side of the prompt
           "$line_break"
-          "├ $package"
+          "[├](purple) $duration ≀ $package"
           "$line_break"
-          "╰╴$sudo $character "
+          "[╰╴](purple)$sudo $character "
         ];
+        time = {
+          disabled = false;
+          format = "[$time]($style)";
+          use_12hr = true;
+          style = "italic bright-purple";
+        };
+        fill = {
+          symbol = " ";
+        };
+        duration = {
+          format = "[$duration]($style)";
+          style = "italic purple";
+          show_notifications = true;
+          min_time_to_notify = 45000;
+          min_time = 500;
+        };
+        directory = {
+          home_symbol = "󰟒";
+          truncation_symbol = "⋯ /";
+          read_only = "";
+        };
+        "directory.substitutions" = {
+          ".config" = " config";
+          ".config/nixos" = " nixos";
+          ".config/hypr" = " hyprland";
+        };
         character = {
           success_symbol = "[⊚](bold italic bright-green)";
           error_symbol = "[󰨐](bold italic bright-red)";
         };
         hostname = {
           ssh_symbol = "󰣀";
+          ssh_only = false;
         };
         nix_shell = {
           symbol = "󰼪";
@@ -87,7 +116,7 @@ in {
           pure_msg = "󱩰 ";
           format = "$symbol shell [$state\[$name\]]($style)";
         };
-        local_ip = {
+        localip = {
           disabled = false;
           ssh_only = false;
         };

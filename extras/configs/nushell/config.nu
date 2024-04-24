@@ -180,7 +180,7 @@ let light_theme = {
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
-    show_banner: true # true or false to enable or disable the welcome banner at startup
+    show_banner: false # true or false to enable or disable the welcome banner at startup
 
     ls: {
         use_ls_colors: true # use the LS_COLORS environment variable to colorize output
@@ -270,7 +270,7 @@ $env.config = {
     buffer_editor: "" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
     use_ansi_coloring: true
     bracketed_paste: true # enable bracketed paste, currently useless on windows
-    edit_mode: vi # emacs, vi
+    edit_mode: emacs # emacs, vi
     shell_integration: true # enables terminal shell integration. Off by default, as some terminals have issues with this.
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
     use_kitty_protocol: true # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
