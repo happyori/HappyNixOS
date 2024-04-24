@@ -61,6 +61,50 @@ in {
       enableNushellIntegration = true;
     };
 
+    programs.starship = {
+      enable = true;
+      settings = {
+        add_newline = true;
+        format = lib.concatStrings [
+          "╭⤳ $directory ≀ $hostname⋮ $username ≀ $nix_shell"
+          "$fill"
+          "$local_ip ≀ $all ≀" # Right side of the prompt
+          "$line_break"
+          "├ $package"
+          "$line_break"
+          "╰╴$sudo $character "
+        ];
+        character = {
+          success_symbol = "[⊚](bold italic bright-green)";
+          error_symbol = "[󰨐](bold italic bright-red)";
+        };
+        hostname = {
+          ssh_symbol = "󰣀";
+        };
+        nix_shell = {
+          symbol = "󰼪";
+          impure_msg = "󰼩 ";
+          pure_msg = "󱩰 ";
+          format = "$symbol shell [$state\[$name\]]($style)";
+        };
+        local_ip = {
+          disabled = false;
+          ssh_only = false;
+        };
+        sudo = {
+          disabled = false;
+          symbol = "⬢";
+          style = "bold green";
+          format = "[$symbol]($style)";
+        };
+        username = {
+          format = "[$user]($style)";
+          show_always = true;
+        };
+      };
+      enableNushellIntegration = true;
+    };
+
     home.packages = [
       pkgs.nu_scripts
       inc_plugin
