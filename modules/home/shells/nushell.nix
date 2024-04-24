@@ -42,8 +42,8 @@ in {
         {
           EDITOR = "nvim";
           SSH_AUTH_SOCK = "($env.HOME | path join '1password' 'agent.sock')";
-          PROMPT_INDICATOR_VI_INSERT = " ";
-          PROMPT_INDICATOR_VI_NORMAL = " ";
+          PROMPT_INDICATOR_VI_INSERT = "$env.PROMPT_INDICATOR";
+          PROMPT_INDICATOR_VI_NORMAL = "$env.PROMPT_INDICATOR";
         }
         // config.home.sessionVariables;
       extraConfig = ''
