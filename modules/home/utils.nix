@@ -3,10 +3,12 @@
   config,
   pkgs,
   custom-options,
+  paths,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.custom.utils;
+  lychee = pkgs.callPackage (paths.custom_pkgs + /lychee.nix) {};
 in {
   options.custom.utils = {
     zoxide.enable = mkEnableOption "Enable zoxide integration";
@@ -34,6 +36,7 @@ in {
       pkgs.nix-tree
       pkgs.cura
       pkgs.freecad
+      lychee
     ];
   };
 }
