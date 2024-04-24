@@ -90,17 +90,17 @@ in {
           style = "italic purple";
           show_notifications = true;
           min_time_to_notify = 45000;
-          min_time = 500;
+          min_time = 0;
         };
         directory = {
           home_symbol = "󰟒";
           truncation_symbol = "⋯ /";
           read_only = "";
-        };
-        "directory.substitutions" = {
-          ".config" = " config";
-          ".config/nixos" = " nixos";
-          ".config/hypr" = " hyprland";
+          substitutions = {
+            ".config" = " config";
+            ".config/nixos" = " nixos";
+            ".config/hypr" = " hyprland";
+          };
         };
         character = {
           success_symbol = "[⊚](bold italic bright-green)";
