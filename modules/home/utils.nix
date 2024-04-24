@@ -32,6 +32,7 @@ in {
       pkgs.bat
       pkgs.vivaldi
       pkgs.nix-tree
+      pkgs.cura
     ];
   };
 }
