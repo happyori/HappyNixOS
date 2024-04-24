@@ -131,7 +131,7 @@ in {
         username = {
           format = "[$user]($style)";
           show_always = true;
-          style = "bold bright-purple";
+          style_user = "bold bright-purple";
         };
       };
       enableNushellIntegration = true;
