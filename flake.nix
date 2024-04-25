@@ -22,35 +22,37 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    unstable-pkgs = nixpkgs-unstable.legacyPackages.${system};
-    paths = {
-      home_modules = ./modules/home;
-      sys_modules = ./modules/system;
-      custom_pkgs = ./extras/packages;
-      app_configs = ./extras/configs;
-      wallpapers = ./extras/wallpapers;
-    };
-  in {
-    nixosConfigurations.happypc = nixpkgs.lib.nixosSystem {
-      inherit system;
-      specialArgs = {
-        inherit inputs;
-        inherit unstable-pkgs;
-        inherit system;
-        inherit paths;
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-unstable
+    , ...
+    } @ inputs:
+    let
+      system = "x86_64-linux";
+      unstable-pkgs = nixpkgs-unstable.legacyPackages.${system};
+      paths = {
+        home_modules = ./modules/home;
+        sys_modules = ./modules/system;
+        custom_pkgs = ./extras/packages;
+        app_configs = ./extras/configs;
+        wallpapers = ./extras/wallpapers;
       };
-      modules = [
-        ./hosts/happypc/configuration.nix
-        inputs.home-manager.nixosModules.default
-        inputs.nix-index-database.nixosModules.nix-index
-      ];
+    in
+    {
+      nixosConfigurations.happypc = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit unstable-pkgs;
+          inherit system;
+          inherit paths;
+        };
+        modules = [
+          ./hosts/happypc/configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.nix-index-database.nixosModules.nix-index
+        ];
+      };
     };
-  };
 }

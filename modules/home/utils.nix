@@ -1,13 +1,14 @@
-{
-  lib,
-  config,
-  pkgs,
-  custom-options,
-  ...
-}: let
+{ lib
+, config
+, pkgs
+, custom-options
+, ...
+}:
+let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.custom.utils;
-in {
+in
+{
   options.custom.utils = {
     zoxide.enable = mkEnableOption "Enable zoxide integration";
     ssh.enable = mkEnableOption "Enable ssh integration";

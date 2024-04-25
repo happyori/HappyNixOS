@@ -1,10 +1,11 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{ lib
+, config
+, ...
+}:
+let
   inherit (lib) mkEnableOption;
-in {
+in
+{
   options.custom = {
     shells.nushell.enable = mkEnableOption "Use nushell config";
   };

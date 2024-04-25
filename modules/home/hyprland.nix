@@ -1,12 +1,13 @@
-{
-  pkgs,
-  paths,
-  ...
-}: let
-  cursorTheme = import (paths.custom_pkgs + /hyprcursor/bibata.nix) {inherit pkgs;};
+{ pkgs
+, paths
+, ...
+}:
+let
+  cursorTheme = import (paths.custom_pkgs + /hyprcursor/bibata.nix) { inherit pkgs; };
   cursor_size = 24;
   cursor_name = "material-light-cursors";
-in {
+in
+{
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XCURSOR_THEME = cursor_name + "-x";

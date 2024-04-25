@@ -1,8 +1,7 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
+{ lib
+, config
+, pkgs
+, ...
 }: {
   options.custom = {
     terms = {
@@ -13,7 +12,7 @@
   config = {
     programs.kitty = lib.mkIf config.custom.terms.kitty.enable {
       enable = true;
-      font.package = pkgs.nerdfonts.override {fonts = ["CascadiaCode"];};
+      font.package = pkgs.nerdfonts.override { fonts = [ "CascadiaCode" ]; };
       font.name = "CaskaydiaCove Nerd Font";
       font.size = 14;
       keybindings = {

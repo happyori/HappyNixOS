@@ -1,14 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  unstable-pkgs,
-  paths,
-  ...
+{ config
+, lib
+, pkgs
+, inputs
+, unstable-pkgs
+, paths
+, ...
 }: {
   imports = [
     # Include the results of the hardware scan.
@@ -23,9 +22,9 @@
   boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
 
   nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-    experimental-features = ["nix-command" "flakes"];
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    experimental-features = [ "nix-command" "flakes" ];
   };
 
   networking.hostName = "happypc"; # Define your hostname.
@@ -47,7 +46,7 @@
 
   security.polkit.enable = true;
 
-  environment.pathsToLink = ["/share/icons"];
+  environment.pathsToLink = [ "/share/icons" ];
 
   services.xserver.desktopManager.gnome.enable = true;
   environment.gnome.excludePackages =
@@ -70,7 +69,7 @@
       hitori
       atomix
     ]);
-  services.udev.packages = [pkgs.gnome.gnome-settings-daemon];
+  services.udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
   custom._1password.enable = true;
 
   services.printing.enable = true;
@@ -78,7 +77,7 @@
   services.btrfs.autoScrub = {
     enable = true;
     interval = "weekly";
-    fileSystems = ["/home"];
+    fileSystems = [ "/home" ];
   };
 
   # Enable sound.
@@ -98,7 +97,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.happy = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager"]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       kate
@@ -128,7 +127,7 @@
     driSupport32Bit = true;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     modesetting.enable = true;

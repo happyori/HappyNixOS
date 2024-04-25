@@ -1,13 +1,14 @@
-{
-  lib,
-  config,
-  pkgs,
-  inputs,
-  ...
-}: let
+{ lib
+, config
+, pkgs
+, inputs
+, ...
+}:
+let
   cfg = config.sessions.hyprland;
   inherit (lib) mkIf mkEnableOption;
-in {
+in
+{
   options = {
     sessions.hyprland.enable = mkEnableOption "Enables hyprland options";
   };

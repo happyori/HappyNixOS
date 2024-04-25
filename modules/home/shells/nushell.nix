@@ -1,17 +1,18 @@
-{
-  config,
-  lib,
-  pkgs,
-  custom-options,
-  paths,
-  ...
-}: let
+{ config
+, lib
+, pkgs
+, custom-options
+, paths
+, ...
+}:
+let
   cfg = config.custom.shells.nushell;
   nuxFile = paths.app_configs + /nushell/nux.nu;
   inherit (lib) mkIf;
   sourceCompletion = package: "source ${config.xdg.cacheHome}/nushell/nu_scripts/custom-completions/${package}/${package}-completions.nu";
-  inc_plugin = pkgs.callPackage (paths.custom_pkgs + /nushell/plugins/inc.nix) {};
-in {
+  inc_plugin = pkgs.callPackage (paths.custom_pkgs + /nushell/plugins/inc.nix) { };
+in
+{
   config = mkIf cfg.enable {
     programs.nushell = {
       enable = true;
@@ -28,7 +29,8 @@ in {
             inherit (builtins) map;
             plugins = custom-options._1password.plugins;
             pkg-exe-names = map (package: strings.unsafeDiscardStringContext (baseNameOf (getExe package))) plugins;
-            aliases = listToAttrs (map (
+            aliases = listToAttrs (map
+              (
                 package: {
                   name = package;
                   value = "op plugin run -- ${package}";
@@ -36,7 +38,7 @@ in {
               )
               pkg-exe-names);
           in
-            aliases
+          aliases
         );
       environmentVariables =
         {

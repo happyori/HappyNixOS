@@ -1,14 +1,15 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{ pkgs
+, config
+, ...
+}:
+let
   theme = pkgs.orchis-theme.override {
     border-radius = 8;
   };
-in {
+in
+{
   home.packages = [
-    (pkgs.nerdfonts.override {fonts = ["FantasqueSansMono" "CascadiaCode" "JetBrainsMono"];})
+    (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "CascadiaCode" "JetBrainsMono" ]; })
   ];
 
   gtk = {

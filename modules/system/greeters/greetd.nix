@@ -1,11 +1,12 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{ lib
+, config
+, ...
+}:
+let
   cfg = config.greeter;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.greeter = {
     greetd.enable = mkEnableOption "Enable greetd option, disables other modules";
   };

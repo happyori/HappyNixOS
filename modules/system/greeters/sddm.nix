@@ -1,16 +1,17 @@
-{
-  lib,
-  config,
-  pkgs,
-  paths,
-  ...
-}: let
+{ lib
+, config
+, pkgs
+, paths
+, ...
+}:
+let
   cfg = config.greeter;
   inherit (lib) mkIf mkEnableOption;
   theme = import (paths.custom_pkgs + /sddm-astronaut-theme.nix) {
     inherit pkgs;
   };
-in {
+in
+{
   options.greeter.sddm = {
     enable = mkEnableOption "Enable sddm greeter";
     wayland.enable = mkEnableOption "Enable wayland sddm";

@@ -1,11 +1,12 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{ lib
+, config
+, ...
+}:
+let
   inherit (lib) mkEnableOption mkOption;
   cfg = config.custom.git;
-in {
+in
+{
   options.custom.git = {
     with_lazygit = mkEnableOption "Adds lazy git configurations";
     delta = {
@@ -26,7 +27,7 @@ in {
     programs.lazygit.enable = cfg.with_lazygit;
     programs.git = {
       enable = true;
-      ignores = ["*.root" "*.swap"];
+      ignores = [ "*.root" "*.swap" ];
       userEmail = "orkhan.tahirov@gmail.com";
       userName = "happyori";
       extraConfig =

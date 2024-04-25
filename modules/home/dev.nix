@@ -1,13 +1,14 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: let
+{ pkgs
+, lib
+, config
+, ...
+}:
+let
   inherit (lib) mkEnableOption mkDefault mkOption types optional optionals;
   optionalPackage = opt: optional (opt != null && opt.enable && opt.package != null) opt.package;
   cfg = config.custom.dev;
-in {
+in
+{
   options.custom.dev = {
     neovide.enable = mkEnableOption "Enable neovide settings";
     neovide.package = mkOption {
@@ -38,9 +39,9 @@ in {
         cfg.nvim
         cfg.neovide
       ])
-      ++ optionals cfg.lang.add-rust [pkgs.rustc pkgs.cargo]
-      ++ optionals cfg.lang.add-go [pkgs.go]
-      ++ optionals cfg.lang.add-nix [pkgs.nixd pkgs.alejandra]
-      ++ optionals cfg.nvim.enable [pkgs.nodejs pkgs.sqlite];
+      ++ optionals cfg.lang.add-rust [ pkgs.rustc pkgs.cargo ]
+      ++ optionals cfg.lang.add-go [ pkgs.go ]
+      ++ optionals cfg.lang.add-nix [ pkgs.nixd pkgs.nixpkgs-fmt pkgs.statix ]
+      ++ optionals cfg.nvim.enable [ pkgs.nodejs pkgs.sqlite ];
   };
 }
