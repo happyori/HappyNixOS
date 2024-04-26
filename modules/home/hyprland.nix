@@ -7,7 +7,7 @@
 }:
 let
   cursor-size = 24;
-  cursor-name = "material-light-cursors";
+  cursor-name = "material_light_cursors";
 in
 {
   imports = [
