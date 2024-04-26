@@ -104,7 +104,10 @@
       kate
       tree
     ];
+    shell = pkgs.fish;
   };
+  programs.fish.enable = true;
+  programs.fish.useBabelfish = true;
 
   nixpkgs.overlays = [
     inputs.neovim-nightly-overlay.overlay
