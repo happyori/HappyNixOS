@@ -14,14 +14,15 @@ let _amend_if_needed = {
 # Nix switch using flakes
 def "nux rebuild" [
   --trace (-t) # Adds --show-trace to the build
+  ...args
 ] {
   cd ~/.config/nixos/
   do $_amend_if_needed
   print "Rebuilding system with flake\n"
   if $trace {
-    nh os switch -- --show-trace
+    nh os ...args -- --show-trace
   } else {
-    nh os switch
+    nh os ...args
   }
   do $_amend_if_needed
 }
@@ -60,15 +61,25 @@ def "nux clean" [
 def "nux edit" [
   --fast (-f), # Allows to skip editing
   --trace (-t), # Adds --show-trace to the end build in case of errors
+  --skip (-s), # Skips validations with gittool
 ] {
-  let ask = {|msg| kitten ask -t yesno -n "nixrebuild" -m $'Commit: ($msg)\nContinue with the build?' -d n }
+  let ask = {|msg|
+    let line_count = 0
+    # kitten ask -t yesno -n "nixrebuild" -m $'Commit: ($msg)\nContinue with the build?' -d n 
+    (kitten ask -t line
+      -p `⮞ `
+      -m $"Commit: ($msg)\nPlease enter how to proceed [btsC]\n• b -> Rebuild and switch on Boot\n• t -> Rebuild with test \(non-permanent rebuild)\n• s -> Rebuild and switch now\n• c -> [Default] Cancel")
+    | tee { print }
+  }
   cd ~/.config/nixos/
   if not $fast {
     print 'Starting nix editing'
     neovide --no-fork ~/.config/nixos/flake.nix | complete
     print 'Editing finished, starting the diff'
   }
-  git -p difftool
+  if not $skip {
+    git -p difftool
+  }
   let commitmsg = nixos-rebuild list-generations --json
     | from json
     | where current
@@ -76,19 +87,33 @@ def "nux edit" [
     | format pattern 'NixOS generation -[{generation}]- {date}'
     | first
   print $'Generated commit msg -> ($commitmsg)'
-  let response = do $ask $commitmsg | from json | get response
+  let response = do $ask $commitmsg | complete | get stdout | lines | last 4 | str join | from json | get response | str downcase
+  let valid_responses = [ b t s ]
 
-  if $response != "y" {
+  if $response not-in $valid_responses {
     print "Aborting..."
     return
   }
 
+  mut rebuild_command = "nux rebuild"
+
   print 'Proceeding'
   git add .;
   git commit -m $commitmsg
+
+  if { $response == b } {
+    rebuild_command | append "boot" | str join " "
+  } else if { $response == t } {
+    rebuild_command | append "test" | str join " "
+  } else {
+    rebuild_command | append "switch" | str join " "
+  }
+
+  if $trace { rebuild_command | append "-t" | str join " " }
+
   print 'Attempting to rebuild'
   try {
-    if $trace { nux rebuild -t } else { nux rebuild }
+    nu -c $rebuild_command
   } catch {
     print 'Failed to run rebuild'
     print 'Resetting git'

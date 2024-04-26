@@ -1,43 +1,196 @@
-{ pkgs
-, paths
+{ system
+, inputs
+, config
+, lib
 , ...
 }:
 let
-  cursorTheme = import (paths.custom_pkgs + /hyprcursor/bibata.nix) { inherit pkgs; };
-  cursor_size = 24;
-  cursor_name = "material-light-cursors";
+  cursor-size = 24;
+  cursor-name = "material-light-cursors";
 in
 {
+  imports = [
+    ./hypr/monitors.nix
+    ./hypr/execs.nix
+    ./hypr/rules.nix
+    ./hypr/keybinds.nix
+    ./hypr/environment.nix
+    ./hypr/extras.nix
+    ./hypr/general.nix
+  ];
+
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    XCURSOR_THEME = cursor_name + "-x";
-    XCURSOR_SIZE = builtins.toString cursor_size;
-    # Hyprland loads cursors before home manager sets these env vars; Until hyprland config is not moved to home manager these in the essense do nothing;
-    HYPRCURSOR_THEME = cursor_name;
-    HYPRCURSOR_SIZE = builtins.toString cursor_size;
   };
 
-  home.file.".local/share/icons/Bibata-Modern-Ice" = {
-    enable = true;
-    source = "${cursorTheme}";
-  };
-
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-hyprland
-  ];
-  xdg.portal.config = {
-    hyprland = {
-      default = "hyprland;gtk";
-      "org.freedesktop.impl.portal.FileChooser" = "gnome";
+  custom.hyprland = {
+    inherit cursor-size cursor-name;
+    monitors = [
+      {
+        name = "HDMI-A-1";
+        width = 2560;
+        height = 1440;
+        refresh = 143.97;
+        x = 0;
+        y = 0;
+        scale = "auto";
+      }
+      {
+        name = "DP-1";
+        width = 2560;
+        height = 1440;
+        refresh = 169.83;
+        x = -2560;
+        y = 0;
+        scale = "auto";
+      }
+    ];
+    rules = {
+      workspaces = [
+        {
+          workspace = "name:web";
+          rules = [ "gapsin:4" "gapsout:4" "monitor:DP-1" "default:true" "borderside:1" "shadow:false" ];
+        }
+        {
+          workspace = "name:discord";
+          rules = [ "gapsin:2" "gapsout:2" "shadow:false" "borderside:1" ];
+        }
+      ];
+      windows = [
+        {
+          matches = [ "class:.*" ];
+          rules = [ "suppressevent maximize" ];
+        }
+        {
+          matches = [ "class:IconLibrary$" ];
+          rules = [ "float" "size 650 600" ];
+        }
+        {
+          matches = [ "class:vesktop$" ];
+          rules = [ "workspace name:discord silent" ];
+        }
+      ];
+      layers = [
+        {
+          match = "happy_bar_*";
+          rules = [ "blur" "ignorezero" ];
+        }
+      ];
     };
+    keybinds =
+      let
+        mainMod = "ALT";
+        # TODO: Make these variables an option of pkgs to set (use lib.getExe)
+        terminal = "kitty";
+        fileManager = "nautilus";
+        menu = "rofi --show drun";
+
+        defaultKeybindMod = key: { dispatcher ? "exec", args ? null }: {
+          mods = [ mainMod ];
+          inherit key dispatcher args;
+        };
+        defaultMotions = dispatcher: mods:
+          let
+            hjkl = [ "H" "J" "K" "L" ];
+            motions = [ "l" "d" "u" "r" ];
+            zipped = lib.zipLists hjkl motions;
+          in
+          map
+            (s: {
+              inherit mods dispatcher;
+              key = s.fst;
+              args = [ s.snd ];
+            })
+            zipped;
+        defaultWorkspaceKeybinds = range:
+          map (i: { mods = [ mainMod ]; key = toString i; args = [ (toString i) ]; dispatcher = "workspace"; }) range
+          ++ map (i: { mods = [ mainMod "SHIFT" ]; key = toString i; args = [ (toString i) ]; dispatcher = "movetoworkspace"; }) range;
+        defaultResizingBinds = mods:
+          let
+            motions = [ "left" "right" "up" "down" ];
+            args = [ [ (-10) 0 ] [ 10 0 ] [ 0 (-10) ] [ 0 10 ] ];
+            zipped = lib.zipLists motions args;
+          in
+          map (s: { inherit mods; key = s.fst; args = s.snd; dispatcher = "resizeactive"; }) zipped;
+      in
+      lib.flatten [
+        (defaultKeybindMod "Q" { args = [ terminal ]; })
+        (defaultKeybindMod "C" { dispatcher = "killactive"; })
+        (defaultKeybindMod "M" { dispatcher = "exit"; })
+        (defaultKeybindMod "E" { args = [ fileManager ]; })
+        (defaultKeybindMod "V" { dispatcher = "togglefloating"; })
+        (defaultKeybindMod "R" { args = [ menu ]; })
+        (defaultKeybindMod "P" { dispatcher = "pseudo"; })
+        (defaultKeybindMod "U" { dispatcher = "togglesplit"; })
+        (defaultKeybindMod "F" { dispatcher = "fullscreen"; args = [ 1 ]; })
+        {
+          mods = [ mainMod "CTRL" ];
+          key = "W";
+          dispatcher = "exec";
+          args = [ "ags -q;" "mkdir -p /tmp/ags/;" "ags &> /tmp/ags/log" ];
+        }
+        {
+          mods = [ mainMod "CTRL" ];
+          key = "C";
+          dispatcher = "exec";
+          args = [ "hyprpicker" "-a" "-f" "hex" ];
+        }
+        # Workspace keybinds
+
+        (defaultResizingBinds [ mainMod "CTRL" ])
+
+        (defaultMotions "movefocus" [ mainMod ])
+        (defaultMotions "swapwindow" [ mainMod "SHIFT" ])
+        (defaultWorkspaceKeybinds (lib.range 1 5))
+
+        (defaultKeybindMod "B" { dispatcher = "workspace"; args = [ "name:web" ]; })
+        (defaultKeybindMod "S" { dispatcher = "workspace"; args = [ "name:music" ]; })
+        (defaultKeybindMod "D" { dispatcher = "workspace"; args = [ "name:discord" ]; })
+
+        (defaultKeybindMod "grave" { args = [ "pypr" "toggle" "term" ]; })
+        (defaultKeybindMod "mouse_down" { dispatcher = "workspace"; args = [ "e+1" ]; })
+        (defaultKeybindMod "mouse_up" { dispatcher = "workspace"; args = [ "e-1" ]; })
+        (defaultKeybindMod "mouse:272" { dispatcher = "movewindow"; })
+        (defaultKeybindMod "mouse:273" { dispatcher = "resizewindow"; })
+      ];
+    execs = [
+      "mkdir -p /tmp/ags; mkdir -p /tmp/happy"
+      "swaync"
+      "1password --silent"
+      "blueman-applet"
+      "swww-daemon"
+      "pypr"
+      "ags &>> /tmp/ags/log"
+      "qpwgraph -max &>> /tmp/happy/qpwgraph.log"
+      { rule = "workspace name:web silent"; cmd = "vivaldi"; }
+      { rule = "workspace name:music silent"; cmd = "spotify"; }
+      { rule = "workspace name:discord silent"; cmd = "vesktop"; }
+      # TODO: Make this script managed and replace this with a pkg
+      "nu ~/Scripts/hypr/launch_gnome_polkit.nu"
+      # "~/Scripts/hypr/auto-connect.fish"
+      "wl-paste --type text --watch cliphist store"
+      "wl-paste --type image --watch cliphist store"
+      # TODO: actully symlink the wallpaper
+      "swww img ${config.xdg.configHome}/swww/wallpaper"
+      "dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE"
+      { once = false; cmd = "hyprshade auto"; }
+    ];
   };
 
-  home.packages = [
-    pkgs.grim
-    pkgs.slurp
-  ];
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${system}.hyprland;
+    systemd.enable = true;
+    xwayland.enable = true;
+  };
 
-  gtk.cursorTheme.name = cursor_name + "-x";
-  gtk.cursorTheme.size = cursor_size;
+  home.pointerCursor =
+    {
+      gtk.enable = true;
+      name = cursor-name + "-x";
+      size = cursor-size;
+    };
+
+  gtk.cursorTheme.name = cursor-name + "-x";
+  gtk.cursorTheme.size = cursor-size;
 }

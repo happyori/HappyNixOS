@@ -45,7 +45,6 @@
         specialArgs = {
           inherit inputs;
           inherit unstable-pkgs;
-          inherit system;
           inherit paths;
         };
         modules = [
