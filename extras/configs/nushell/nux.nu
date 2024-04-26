@@ -101,9 +101,9 @@ def "nux edit" [
   git add .;
   git commit -m $commitmsg
 
-  if { $response == b } {
+  if ( $response == b ) {
     rebuild_command | append "boot" | str join " "
-  } else if { $response == t } {
+  } else if ( $response == t ) {
     rebuild_command | append "test" | str join " "
   } else {
     rebuild_command | append "switch" | str join " "
