@@ -154,8 +154,8 @@ in
         (defaultKeybindMod "grave" { args = [ "pypr" "toggle" "term" ]; })
         (defaultKeybindMod "mouse_down" { dispatcher = "workspace"; args = [ "e+1" ]; })
         (defaultKeybindMod "mouse_up" { dispatcher = "workspace"; args = [ "e-1" ]; })
-        (defaultKeybindMod "mouse:272" { dispatcher = "movewindow"; flags = [ "m" ]; })
-        (defaultKeybindMod "mouse:273" { dispatcher = "resizewindow"; flags = [ "m" ]; })
+        (defaultKeybindMod "mouse:272" { dispatcher = "movewindow"; flags = [ "m" ]; args = [ ]; })
+        (defaultKeybindMod "mouse:273" { dispatcher = "resizewindow"; flags = [ "m" ]; args = [ ]; })
       ];
     execs = [
       "mkdir -p /tmp/ags; mkdir -p /tmp/happy"
