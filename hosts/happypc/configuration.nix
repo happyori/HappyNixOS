@@ -43,6 +43,7 @@
     wayland.enable = true;
   };
   programs.dconf.enable = true;
+  programs.hyprland.enable = true;
 
   security.polkit.enable = true;
 
