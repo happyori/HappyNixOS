@@ -102,11 +102,11 @@ def "nux edit" [
   git commit -m $commitmsg
 
   if ( $response == b ) {
-    rebuild_command | append "boot" | str join " "
+    $rebuild_command = $rebuild_command | append "boot" | str join " "
   } else if ( $response == t ) {
-    rebuild_command | append "test" | str join " "
+    $rebuild_command = $rebuild_command | append "test" | str join " "
   } else {
-    rebuild_command | append "switch" | str join " "
+    $rebuild_command = $rebuild_command | append "switch" | str join " "
   }
 
   if $trace { rebuild_command | append "-t" | str join " " }
