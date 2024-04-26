@@ -89,9 +89,9 @@ in
         fileManager = "nautilus";
         menu = "rofi --show drun";
 
-        defaultKeybindMod = key: { dispatcher ? "exec", args ? null }: {
+        defaultKeybindMod = key: { dispatcher ? "exec", args ? null, flags ? null }: {
           mods = [ mainMod ];
-          inherit key dispatcher args;
+          inherit key dispatcher args flags;
         };
         defaultMotions = dispatcher: mods:
           let
@@ -115,7 +115,7 @@ in
             args = [ [ (-10) 0 ] [ 10 0 ] [ 0 (-10) ] [ 0 10 ] ];
             zipped = lib.zipLists motions args;
           in
-          map (s: { inherit mods; key = s.fst; args = s.snd; dispatcher = "resizeactive"; }) zipped;
+          map (s: { inherit mods; flags = [ "e" ]; key = s.fst; args = s.snd; dispatcher = "resizeactive"; }) zipped;
       in
       lib.flatten [
         (defaultKeybindMod "Q" { args = [ terminal ]; })
@@ -154,8 +154,8 @@ in
         (defaultKeybindMod "grave" { args = [ "pypr" "toggle" "term" ]; })
         (defaultKeybindMod "mouse_down" { dispatcher = "workspace"; args = [ "e+1" ]; })
         (defaultKeybindMod "mouse_up" { dispatcher = "workspace"; args = [ "e-1" ]; })
-        (defaultKeybindMod "mouse:272" { dispatcher = "movewindow"; })
-        (defaultKeybindMod "mouse:273" { dispatcher = "resizewindow"; })
+        (defaultKeybindMod "mouse:272" { dispatcher = "movewindow"; flags = [ "m" ]; })
+        (defaultKeybindMod "mouse:273" { dispatcher = "resizewindow"; flags = [ "m" ]; })
       ];
     execs = [
       "mkdir -p /tmp/ags; mkdir -p /tmp/happy"
