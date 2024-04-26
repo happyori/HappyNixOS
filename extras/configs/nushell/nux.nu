@@ -102,17 +102,18 @@ def "nux edit" [
   git commit -m $commitmsg
 
   if ( $response == b ) {
-    $rebuild_command = $rebuild_command | append "boot" | str join " "
+    $rebuild_command = ( $rebuild_command | append "boot" | str join " " )
   } else if ( $response == t ) {
-    $rebuild_command = $rebuild_command | append "test" | str join " "
+    $rebuild_command = ( $rebuild_command | append "test" | str join " " )
   } else {
-    $rebuild_command = $rebuild_command | append "switch" | str join " "
+    $rebuild_command = ( $rebuild_command | append "switch" | str join " " )
   }
 
-  if $trace { $rebuild_command = $rebuild_command | append "-t" | str join " " }
+  if $trace { $rebuild_command = ( $rebuild_command | append "-t" | str join " " ) }
 
   print 'Attempting to rebuild'
   try {
+    print $'Rebuilding with: ($rebuild_command)'
     nu -c $'source ~/.config/nixos/extras/configs/nushell/nux.nu; ($rebuild_command)'
   } catch {
     print 'Failed to run rebuild'

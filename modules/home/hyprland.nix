@@ -2,6 +2,7 @@
 , inputs
 , config
 , lib
+, pkgs
 , ...
 }:
 let
@@ -21,10 +22,13 @@ in
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    XCURSOR_THEME = cursor-name;
+    XCURSOR_SIZE = (toString cursor-size);
+    HYPRCURSOR_THEME = cursor-name + "-hypr";
+    HYPRCURSOR_SIZE = (toString cursor-size);
   };
 
   custom.hyprland = {
-    inherit cursor-size cursor-name;
     monitors = [
       {
         name = "HDMI-A-1";
@@ -187,10 +191,12 @@ in
   home.pointerCursor =
     {
       gtk.enable = true;
-      name = cursor-name + "-x";
+      name = cursor-name;
       size = cursor-size;
+      package = pkgs.material-cursors;
     };
 
-  gtk.cursorTheme.name = cursor-name + "-x";
+  gtk.cursorTheme.name = cursor-name;
   gtk.cursorTheme.size = cursor-size;
+  gtk.cursorTheme.package = pkgs.material-cursors;
 }

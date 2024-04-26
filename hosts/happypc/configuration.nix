@@ -4,6 +4,7 @@
 { config
 , lib
 , pkgs
+, system
 , inputs
 , unstable-pkgs
 , paths
@@ -114,10 +115,8 @@
   home-manager.useUserPackages = true;
   home-manager.users.happy = import ./home.nix;
   home-manager.extraSpecialArgs = {
-    inherit inputs;
-    inherit unstable-pkgs;
+    inherit inputs unstable-pkgs paths system;
     custom-options = config.custom;
-    inherit paths;
   };
 
   hardware.opengl = {

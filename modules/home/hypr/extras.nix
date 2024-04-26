@@ -1,6 +1,6 @@
 { pkgs, paths, ... }:
 let
-  hypr-config = p: paths.app_config + "/hyprland" + p;
+  hypr-config = p: paths.app_configs + "/hyprland" + p;
 in
 {
   home.packages = builtins.attrValues {

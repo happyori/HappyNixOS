@@ -43,9 +43,7 @@
       nixosConfigurations.happypc = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit inputs;
-          inherit unstable-pkgs;
-          inherit paths;
+          inherit inputs system unstable-pkgs paths;
         };
         modules = [
           ./hosts/happypc/configuration.nix

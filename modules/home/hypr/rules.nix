@@ -61,7 +61,7 @@ in
       generateWindowRulesV1 = window: flatten (
         map (rule: map (match: "${rule},${match}") window.matches) window.rules
       );
-      generateWindowRulesV2 = window: map (rule: "${rule},${lib.concatStringsSep "," window.matches}");
+      generateWindowRulesV2 = window: map (rule: "${rule},${lib.concatStringsSep "," window.matches}") window.rules;
       generateWorkspaceRules = ws: "${ws.workspace},${lib.concatStringsSep "," ws.rules}";
       generateLayerRules = l: map (rule: "${rule}, ${l.match}") l.rules;
 
