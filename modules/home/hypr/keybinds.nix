@@ -41,11 +41,12 @@ in
   config =
     let
       generateFlags = flags: if flags != null then lib.concatStringsSep "" flags else "";
+      generateArgs = args: if args == [ ] then "" else ", ${toString args}";
       generateBindings = keybind:
         if keybind.unbind then {
           unbind = "${toString keybind.mods}, ${keybind.key}";
         } else {
-          "bind${generateFlags keybind.flags}" = "${toString keybind.mods}, ${keybind.key}, ${keybind.dispatcher}, ${toString keybind.args}";
+          "bind${generateFlags keybind.flags}" = "${toString keybind.mods}, ${keybind.key}, ${keybind.dispatcher}${generateArgs keybind.args}";
         };
       generateSettings = sets: lib.foldAttrs (n: a: [ n ] ++ a) [ ] sets;
     in
