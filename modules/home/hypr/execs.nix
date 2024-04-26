@@ -29,7 +29,8 @@ in
 
   config =
     let
-      mapped = map (v: if builtins.isString v then { cmd = v; } else v) execs;
+      construct = cmd: { inherit cmd; once = true; rule = null; };
+      mapped = map (v: if builtins.isString v then construct v else v) execs;
       key = exec: if exec.once then "exec-once" else "exec";
       rule = exec: if exec.rule == null then "" else "[${exec.rule}] ";
       execGenerator = exec: {

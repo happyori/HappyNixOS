@@ -20,9 +20,9 @@ def "nux rebuild" [
   do $_amend_if_needed
   print "Rebuilding system with flake\n"
   if $trace {
-    nh os ...args -- --show-trace
+    nh os ...$args -- --show-trace
   } else {
-    nh os ...args
+    nh os ...$args
   }
   do $_amend_if_needed
 }
@@ -109,11 +109,11 @@ def "nux edit" [
     $rebuild_command = $rebuild_command | append "switch" | str join " "
   }
 
-  if $trace { rebuild_command | append "-t" | str join " " }
+  if $trace { $rebuild_command = $rebuild_command | append "-t" | str join " " }
 
   print 'Attempting to rebuild'
   try {
-    nu -c $rebuild_command
+    nu -c $'source ~/.config/nixos/extras/configs/nushell/nux.nu; ($rebuild_command)'
   } catch {
     print 'Failed to run rebuild'
     print 'Resetting git'
