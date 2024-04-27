@@ -21,6 +21,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/efi";
   boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
+  boot.zfs.enabled = true;
+  boot.zfs.allowHibernation = true;
+  boot.supportedFilesystems = [ "zfs" ];
 
   nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
@@ -191,13 +194,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-label/NixRoot";
-    fsType = "ext4";
-    neededForBoot = true;
-    options = [ "noatime" ];
-  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
