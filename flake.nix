@@ -37,6 +37,7 @@
         custom_pkgs = ./extras/packages;
         app_configs = ./extras/configs;
         wallpapers = ./extras/wallpapers;
+	scripts = ./extras/scripts;
       };
     in
     {

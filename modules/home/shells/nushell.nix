@@ -140,5 +140,6 @@ in
       inc_plugin
     ];
     home.file."${config.xdg.cacheHome}/nushell/nu_scripts".source = "${pkgs.nu_scripts}/share/nu_scripts";
+    home.file."Scripts/launch_gnome_polkit.nu".source = "${paths.scripts}/launch_gnome_polkit.nu";
   };
 }
