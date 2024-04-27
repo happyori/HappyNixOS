@@ -1,6 +1,7 @@
-{ pkgs, paths, ... }:
+{ pkgs, system, paths, inputs, ... }:
 let
   hypr-config = p: paths.app_configs + "/hyprland" + p;
+  pyprland = inputs.pyprland.packages.${system}.default;
 in
 {
   home.packages = builtins.attrValues {
@@ -16,14 +17,15 @@ in
       hyprcursor
       swww
       ags
+      # TODO: move spotify stuff out of here
       spotify
       spicetify-cli
       qpwgraph
-      pyprland
       rofi-wayland
       grim
       slurp
       libdbusmenu-gtk3;
+    inherit pyprland;
     nautilus = pkgs.gnome.nautilus;
   };
 

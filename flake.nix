@@ -13,13 +13,12 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixd = {
-      url = "github:nix-community/nixd";
-    };
+    nixd.url = "github:nix-community/nixd";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
     hyprland.url = "github:hyprwm/Hyprland";
+    pyprland.url = "github:hyprland-community/pyprland";
   };
 
   outputs =
@@ -37,7 +36,7 @@
         custom_pkgs = ./extras/packages;
         app_configs = ./extras/configs;
         wallpapers = ./extras/wallpapers;
-	scripts = ./extras/scripts;
+        scripts = ./extras/scripts;
       };
     in
     {
