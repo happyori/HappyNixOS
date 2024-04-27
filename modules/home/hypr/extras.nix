@@ -32,11 +32,12 @@ in
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-hyprland
+    pkgs.xdg-desktop-portal-gtk
   ];
   xdg.portal.config = {
     hyprland = {
       default = "hyprland;gtk";
-      "org.freedesktop.impl.portal.FileChooser" = "gnome";
+      "org.freedesktop.impl.portal.FileChooser" = "gtk";
     };
   };
 
