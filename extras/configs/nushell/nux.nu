@@ -80,11 +80,11 @@ def "nux edit" [
   if not $skip {
     git -p difftool
   }
-  let commitmsg = nixos-rebuild list-generations --json
+  let commitmsg = nixos-rebuild list-generations --json --flake $"($env.FLAKE)#(hostname)"
     | from json
     | where current
     | update generation {|g| $g.generation + 1 }
-    | format pattern 'NixOS generation -[{generation}]- {date}'
+    | format pattern 'NixOSv2 generation -[{generation}]- {date}'
     | first
   print $'Generated commit msg -> ($commitmsg)'
   let response = do $ask $commitmsg | complete | get stdout | lines | last 4 | str join | from json | get response | str downcase

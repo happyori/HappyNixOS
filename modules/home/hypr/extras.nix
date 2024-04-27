@@ -6,6 +6,8 @@ in
   home.packages = builtins.attrValues {
     inherit (pkgs)
       wl-clipboard
+      cliphist
+      wl-clip-persist
       libva
       swaynotificationcenter
       qt6ct

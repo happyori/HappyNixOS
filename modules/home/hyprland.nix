@@ -126,6 +126,7 @@ in
         (defaultKeybindMod "R" { args = [ menu ]; })
         (defaultKeybindMod "P" { dispatcher = "pseudo"; })
         (defaultKeybindMod "U" { dispatcher = "togglesplit"; })
+        (defaultKeybindMod "X" { args = [ "cliphist list |" "rofi -dmenu |" "cliphist decode |" "wl-copy" ]; })
         (defaultKeybindMod "F" { dispatcher = "fullscreen"; args = [ 1 ]; })
         {
           mods = [ mainMod "CTRL" ];
@@ -160,7 +161,7 @@ in
     execs = [
       "mkdir -p /tmp/ags; mkdir -p /tmp/happy"
       "swaync"
-      "1password --silent"
+      "1password --silent &>> /tmp/happy/1password.log"
       "blueman-applet"
       "swww-daemon"
       "pypr"
@@ -169,11 +170,11 @@ in
       { rule = "workspace name:web silent"; cmd = "vivaldi"; }
       { rule = "workspace name:music silent"; cmd = "spotify"; }
       { rule = "workspace name:discord silent"; cmd = "vesktop"; }
-      # TODO: Make this script managed and replace this with a pkg
       "nu ~/Scripts/hypr/launch_gnome_polkit.nu"
       # "~/Scripts/hypr/auto-connect.fish"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
+      "wl-clip-persist --clipboard regular"
       # TODO: actully symlink the wallpaper
       "swww img ${config.xdg.configHome}/swww/wallpaper"
       "dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE"
