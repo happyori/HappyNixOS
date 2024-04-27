@@ -87,7 +87,7 @@ in
         # TODO: Make these variables an option of pkgs to set (use lib.getExe)
         terminal = "kitty";
         fileManager = "nautilus";
-        menu = "rofi --show drun";
+        menu = "rofi -show drun";
 
         defaultKeybindMod = key: { dispatcher ? "exec", args ? null, flags ? null }: {
           mods = [ mainMod ];
