@@ -12,6 +12,7 @@
   ];
 
   custom = {
+    wallpaper = paths.wallpapers + /AlienPlanet.jpg;
     shells.nushell.enable = true;
     utils.zoxide.enable = true;
     utils.ssh.enable = true;
