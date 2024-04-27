@@ -34,6 +34,7 @@ in
       pkgs.vivaldi
       pkgs.nix-tree
       pkgs.obsidian
+      pkgs.blueman
     ];
   };
 }
