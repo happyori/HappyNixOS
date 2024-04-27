@@ -21,8 +21,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/efi";
   boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
-  boot.zfs.enabled = true;
-  boot.zfs.allowHibernation = true;
   boot.supportedFilesystems = [ "zfs" ];
 
   nix.settings = {
@@ -33,6 +31,7 @@
 
   networking.hostName = "happypc"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.hostId = "9afd7ec6";
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
