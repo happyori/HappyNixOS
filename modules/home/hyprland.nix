@@ -166,16 +166,15 @@ in
       "swww-daemon"
       "pypr"
       "ags &>> /tmp/ags/log"
-      "qpwgraph -max &>> /tmp/happy/qpwgraph.log"
+      "qpwgraph -max ${config.xdg.configHome}/qpwgraph/patchbay.qpwgraph &>> /tmp/happy/qpwgraph.log"
       { rule = "workspace name:web silent"; cmd = "vivaldi"; }
       { rule = "workspace name:music silent"; cmd = "spotify"; }
       { rule = "workspace name:discord silent"; cmd = "vesktop"; }
       "nu ~/Scripts/hypr/launch_gnome_polkit.nu"
-      # "~/Scripts/hypr/auto-connect.fish"
+      "~/Scripts/hypr/auto-connect"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
       "wl-clip-persist --clipboard regular"
-      # TODO: actully symlink the wallpaper
       "swww img ${config.xdg.configHome}/swww/wallpaper"
       "dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE"
       { once = false; cmd = "hyprshade auto"; }

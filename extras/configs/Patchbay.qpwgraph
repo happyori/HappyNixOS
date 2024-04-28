@@ -1,0 +1,14 @@
+<!DOCTYPE patchbay>
+<patchbay name="Patchbay" version="0.6.3">
+ <items>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="spotify" port="spotify:output_FL"/>
+   <input node="Echo Dot-277" port="Echo Dot-277:playback_FL"/>
+  </item>
+  <item node-type="pipewire" port-type="pipewire-audio">
+   <output node="spotify" port="spotify:output_FR"/>
+   <input node="Echo Dot-277" port="Echo Dot-277:playback_FR"/>
+  </item>
+ </items>
+</patchbay>
+
