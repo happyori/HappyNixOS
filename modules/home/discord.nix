@@ -23,6 +23,7 @@ in
           then
             pkgs.vesktop.override
               {
+                electron = pkgs.electron-bin;
                 vencord = unstable-pkgs.vencord;
                 withSystemVencord = cfg.withVencord;
               }
