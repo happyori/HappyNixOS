@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -24,12 +23,10 @@
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-unstable
     , ...
     } @ inputs:
     let
       system = "x86_64-linux";
-      unstable-pkgs = nixpkgs-unstable.legacyPackages.${system};
       paths = {
         home_modules = ./modules/home;
         sys_modules = ./modules/system;
@@ -43,7 +40,7 @@
       nixosConfigurations.happypc = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit inputs system unstable-pkgs paths;
+          inherit inputs system paths;
         };
         modules = [
           ./hosts/happypc/configuration.nix

@@ -1,7 +1,6 @@
 { lib
 , config
 , pkgs
-, unstable-pkgs
 , ...
 }:
 let
@@ -24,7 +23,6 @@ in
             pkgs.vesktop.override
               {
                 electron = pkgs.electron-bin;
-                vencord = unstable-pkgs.vencord;
                 withSystemVencord = cfg.withVencord;
               }
           else if cfg.withVencord
@@ -35,6 +33,6 @@ in
               }
           else pkgs.discord;
       in
-      lib.optional cfg.withVencord unstable-pkgs.vencord ++ [ package ];
+      lib.optional cfg.withVencord pkgs.vencord ++ [ package ];
   };
 }
