@@ -58,11 +58,13 @@
 
   environment.pathsToLink = [ "/share/icons" ];
 
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.enable = false;
   environment.gnome.excludePackages =
     [
       pkgs.gnome-photos
       pkgs.gnome-tour
+      pkgs.gnome-online-accounts
+      pkgs.evolution-data-server
       pkgs.gedit
     ]
     ++ (with pkgs.gnome; [
@@ -73,6 +75,7 @@
       geary
       evince
       gnome-characters
+      gnome-calendar
       totem
       tali
       iagno
