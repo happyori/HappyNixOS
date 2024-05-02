@@ -86,12 +86,6 @@
 
   services.printing.enable = true;
 
-  services.btrfs.autoScrub = {
-    enable = true;
-    interval = "weekly";
-    fileSystems = [ "/home" ];
-  };
-
   # Enable sound.
   hardware.pulseaudio.enable = false;
   # OR
@@ -122,6 +116,9 @@
     inputs.neovim-nightly-overlay.overlay
     inputs.nixd.overlays.default
     inputs.hyprland.overlays.default
+    (final: prev: {
+      networkmanager-openconnect = inputs.nixpkgs.legacyPackages.${system}.networkmanager-openconnect;
+    })
   ];
 
   home-manager.useGlobalPkgs = true;
