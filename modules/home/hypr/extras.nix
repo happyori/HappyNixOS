@@ -41,6 +41,7 @@ in
     };
   };
 
+  xdg.configFile."qpwgraph/patchbay.qpwgraph".source = paths.app_configs + "/Patchbay.qpwgraph";
   xdg.configFile."hypr/shaders".source = hypr-config /shaders;
   xdg.configFile."hypr/hyprshade.toml".source = hypr-config /hyprshade.toml;
   xdg.configFile."hypr/pyprland.toml".source = hypr-config /pyprland.toml;
