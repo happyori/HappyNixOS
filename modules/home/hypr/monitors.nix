@@ -45,7 +45,7 @@ in
             example = "auto";
             default = "auto";
           };
-          enable = mkEnableOption "Enable or disable the specified monitor" // { default = false; };
+          enable = mkEnableOption "Enable or disable the specified monitor" // { default = true; };
         };
       });
     };
