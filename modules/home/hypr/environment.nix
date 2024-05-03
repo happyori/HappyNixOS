@@ -11,6 +11,7 @@
       "LIBVA_DRIVER_NAME, nvidia"
       "WLR_NO_HARDWARE_CURSORS, 1"
       "WLR_DRM_NO_ATOMIC, 1"
+      "WLR_RENDERER_ALLOW_SOFTWARE, 1"
       "GBM_BACKEND, nvidia-drm"
 
       "SWWW_TRANSITION_FPS, 100"
