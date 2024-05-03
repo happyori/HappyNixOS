@@ -48,6 +48,10 @@ in
         y = 0;
         scale = "auto";
       }
+      {
+        name = "Unknown-1";
+        enable = false;
+      }
     ];
     rules = {
       workspaces = [

@@ -1,10 +1,11 @@
 { config, lib, ... }:
 let
   monitors = config.custom.hyprland.monitors;
-  inherit (lib) types mkOption;
+  inherit (lib) mkOption mkEnableOption;
+  inherit (lib.types) str int number listOf submodule;
 in
 {
-  options.custom.hyprland = with types; {
+  options.custom.hyprland = {
     monitors = mkOption {
       type = listOf (submodule {
         options = {
@@ -44,6 +45,7 @@ in
             example = "auto";
             default = "auto";
           };
+          enable = mkEnableOption "Enable or disable the specified monitor" // { default = false; };
         };
       });
     };
@@ -53,7 +55,9 @@ in
     let
       resolution = monitor: with monitor; "${toString width}x${toString height}@${toString refresh}";
       position = monitor: with monitor; "${toString x}x${toString y}";
-      generateHyprMonitors = monitor: "${monitor.name},${resolution monitor},${position monitor},${toString monitor.scale}";
+      disabledMonitor = monitor: "${monitor.name},disable";
+      hyprMonitorString = monitor: "${monitor.name},${resolution monitor},${position monitor},${toString monitor.scale}";
+      generateHyprMonitors = monitor: if monitor.enable then hyprMonitorString monitor else disabledMonitor monitor;
     in
     {
       wayland.windowManager.hyprland.settings = {
