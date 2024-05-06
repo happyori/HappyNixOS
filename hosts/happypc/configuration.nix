@@ -85,6 +85,11 @@
   custom._1password.enable = true;
 
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
 
   # Enable sound.
   hardware.pulseaudio.enable = false;
