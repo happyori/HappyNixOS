@@ -35,6 +35,7 @@ in
       pkgs.nix-tree
       (pkgs.obsidian.override { electron = pkgs.electron_28-bin; })
       pkgs.blueman
+      pkgs.mupdf
     ];
   };
 }
