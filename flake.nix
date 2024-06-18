@@ -18,6 +18,8 @@
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
     hyprland.url = "github:hyprwm/Hyprland";
     pyprland.url = "github:hyprland-community/pyprland";
+
+    ags.url = "github:Aylur/ags";
   };
 
   outputs =
