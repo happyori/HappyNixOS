@@ -24,7 +24,6 @@
     efiSupport = true;
     zfsSupport = true;
     device = "nodev";
-    useOSProber = true;
     extraEntries = ''
       menuentry "Windows" {
         insmod part_gpt
@@ -35,6 +34,7 @@
         chainloader /EFI/Microsoft/Boot/bootmgfw.efi
       }
     '';
+    extraEntriesBeforeNixOS = true;
   };
   # boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
   boot.supportedFilesystems = [ "zfs" ];
