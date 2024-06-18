@@ -16,10 +16,27 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/efi";
-  boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    zfsSupport = true;
+    device = "nodev";
+    useOSProber = true;
+    extraEntries = ''
+      menuentry "Windows" {
+        insmod part_gpt
+        insmod fat
+        insmod search_fs_uuid
+        insmod chain
+        search --fs-uuid --set=root F691-4D65
+        chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+      }
+    '';
+  };
+  # boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
   boot.supportedFilesystems = [ "zfs" ];
 
   nix.settings = {
@@ -41,6 +58,7 @@
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
+  time.hardwareClockInLocalTime = true;
   hardware.bluetooth.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";
 

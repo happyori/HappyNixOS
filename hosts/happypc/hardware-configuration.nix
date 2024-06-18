@@ -33,14 +33,14 @@
       fsType = "zfs";
     };
 
-  fileSystems."/efi" =
+  fileSystems."/boot/efi" =
     { device = "/dev/disk/by-uuid/F691-4D65";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/5525-3ADC";
+    { device = "/dev/disk/by-uuid/232D-C2FA";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
