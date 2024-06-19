@@ -29,30 +29,6 @@ in
   };
 
   custom.hyprland = {
-    monitors = [
-      {
-        name = "HDMI-A-1";
-        width = 2560;
-        height = 1440;
-        refresh = 143.97;
-        x = 0;
-        y = 0;
-        scale = "auto";
-      }
-      {
-        name = "DP-1";
-        width = 2560;
-        height = 1440;
-        refresh = 169.83;
-        x = -2560;
-        y = 0;
-        scale = "auto";
-      }
-      {
-        name = "Unknown-1";
-        enable = false;
-      }
-    ];
     rules = {
       workspaces = [
         {

@@ -1,7 +1,5 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{ config
+{
+  config
 , lib
 , pkgs
 , system
@@ -10,34 +8,25 @@
 , ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     (paths.sys_modules + /default.nix)
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.loader.grub = {
-    enable = true;
-    efiSupport = true;
-    zfsSupport = true;
-    device = "nodev";
-    extraEntries = ''
-      menuentry "Windows" {
-        insmod part_gpt
-        insmod fat
-        insmod search_fs_uuid
-        insmod chain
-        search --fs-uuid --set=root F691-4D65
-        chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-      }
-    '';
-    extraEntriesBeforeNixOS = true;
+  boot.loader = {
+    systemd-boot.enable = false;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
+    grub = {
+      enable = true;
+      efiSupport = true;
+      zfsSupport = true;
+      device = "nodev";
+    };
   };
-  # boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
-  boot.supportedFilesystems = [ "zfs" ];
+
+  boot.supportedFileSystems = [ "zfs" ];
 
   nix.settings = {
     substituters = [
@@ -52,11 +41,12 @@
     experimental-features = [ "nix-command" "flakes" ];
   };
 
-  networking.hostName = "happypc"; # Define your hostname.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  networking.hostId = "9afd7ec6";
+  networking = {
+    hostName = "happysurface";
+    networkmanager.enable = true;
+    hostId = "4e98920d"; # Change this on the machine
+  };
 
-  # Set your time zone.
   time.timeZone = "America/Los_Angeles";
   hardware.bluetooth.enable = true;
   i18n.defaultLocale = "en_US.UTF-8";
@@ -67,6 +57,7 @@
     enable = true;
     wayland.enable = true;
   };
+
   programs.dconf.enable = true;
   programs.hyprland.enable = true;
 
@@ -74,7 +65,8 @@
 
   environment.pathsToLink = [ "/share/icons" ];
 
-  services.xserver.desktopManager.gnome.enable = false;
+  services.xserver.desktopManager.gnome.enable = true;
+  
   environment.gnome.excludePackages =
     [
       pkgs.gnome-photos
@@ -155,17 +147,6 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-  };
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
   };
 
   nixpkgs.config.allowUnfree = true;

@@ -50,5 +50,16 @@
           inputs.nix-index-database.nixosModules.nix-index
         ];
       };
+      nixosConfigurations.happysurface = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs system paths;
+        };
+        modules = [
+          ./hosts/happysurface/configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.nix-index-database.nixosModules.nix-index
+        ];
+      };
     };
 }
