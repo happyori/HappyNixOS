@@ -26,7 +26,7 @@
     };
   };
 
-  boot.supportedFileSystems = [ "zfs" ];
+  boot.supportedFilesystems = [ "zfs" ];
 
   nix.settings = {
     substituters = [
@@ -40,6 +40,23 @@
     ];
     experimental-features = [ "nix-command" "flakes" ];
   };
+  
+  nix.buildMachines = [
+    {
+       system = "x86_64-linux";
+       sshUser = "happy";
+       speedFactor = 2;
+       supportedFeatures = [
+         "kvm"
+         "big-parallel"
+         "benchmark"
+         "nixos-test"
+       ];
+       protocol = "ssh-ng";
+       maxJobs = 4;
+       hostName = "happypc";
+     }
+  ];
 
   networking = {
     hostName = "happysurface";
