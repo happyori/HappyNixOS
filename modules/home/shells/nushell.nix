@@ -8,6 +8,7 @@
 let
   cfg = config.custom.shells.nushell;
   nuxFile = paths.app_configs + /nushell/nux.nu;
+  nxvimFile = paths.app_configs + /nushell/nixvim.nu;
   inherit (lib) mkIf;
   sourceCompletion = package: "source ${config.xdg.cacheHome}/nushell/nu_scripts/custom-completions/${package}/${package}-completions.nu";
   inc_plugin = pkgs.callPackage (paths.custom_pkgs + /nushell/plugins/inc.nix) { };
@@ -27,7 +28,7 @@ in
           let
             inherit (lib) listToAttrs strings getExe;
             inherit (builtins) map;
-            plugins = custom-options._1password.plugins;
+            inherit (custom-options._1password) plugins;
             pkg-exe-names = map (package: strings.unsafeDiscardStringContext (baseNameOf (getExe package))) plugins;
             aliases = listToAttrs (map
               (
@@ -47,6 +48,7 @@ in
       extraConfig = ''
         alias la = ls -a
         source ${nuxFile}
+        source ${nxvimFile}
         ${sourceCompletion "nix"}
         ${sourceCompletion "rg"}
         ${sourceCompletion "cargo"}
@@ -64,7 +66,7 @@ in
     programs.starship = {
       enable = true;
       settings = {
-        add_newline = false;
+        add_newline = true;
         format = lib.concatStrings [
           "[╭⤳](purple) $directory ≀ $hostname⋮ $username ≀ $nix_shell"
           "$fill"

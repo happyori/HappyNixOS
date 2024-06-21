@@ -74,7 +74,7 @@ def "nux edit" [
   cd ~/.config/nixos/
   if not $fast {
     print 'Starting nix editing'
-    neovide --no-fork ~/.config/nixos/flake.nix | complete
+    nxvim --file ~/.config/nixos/flake.nix "--no-fork"
     print 'Editing finished, starting the diff'
   }
   if not $skip {
