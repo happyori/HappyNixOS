@@ -35,7 +35,7 @@
       nvim = {
         enable = true;
         with-lazy-vim = true;
-        package = pkgs.neovim-nightly;
+        package = pkgs.neovim;
       };
       lang = {
         add-rust = true;

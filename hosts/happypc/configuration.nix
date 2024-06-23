@@ -135,7 +135,7 @@
   programs.fish.useBabelfish = true;
 
   nixpkgs.overlays = [
-    inputs.neovim-nightly-overlay.overlay
+    inputs.neovim-nightly-overlay.overlays.default
     inputs.nixd.overlays.default
     inputs.hyprland.overlays.default
     (final: prev: {
