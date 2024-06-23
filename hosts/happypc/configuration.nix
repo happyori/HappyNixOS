@@ -153,7 +153,6 @@
 
   hardware.opengl = {
     enable = true;
-    driSupport = true;
     driSupport32Bit = true;
   };
 
@@ -222,6 +221,7 @@
   services.openssh = {
     enable = true;
     ports = [ 401 ];
+    authorizedKeysInHomedir = true;
     settings = {
       UseDns = true;
       PasswordAuthentication = false;

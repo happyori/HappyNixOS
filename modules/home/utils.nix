@@ -33,7 +33,7 @@ in
       pkgs.bat
       pkgs.vivaldi
       pkgs.nix-tree
-      (pkgs.obsidian.override { electron = pkgs.electron_28-bin; })
+      pkgs.obsidian
       pkgs.blueman
       pkgs.qpdfview
       pkgs.via
