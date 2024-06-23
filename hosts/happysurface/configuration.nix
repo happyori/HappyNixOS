@@ -1,5 +1,4 @@
-{
-  config
+{ config
 , lib
 , pkgs
 , system
@@ -28,35 +27,36 @@
 
   boot.supportedFilesystems = [ "zfs" ];
 
-  nix.settings = {
-    substituters = [
-      "https://hyprland.cachix.org"
-      "https://nix-community.cachix.org"
-      "https://cache.nixos.org"
-    ];
-    trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-    experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings = {
+      substituters = [
+        "https://hyprland.cachix.org"
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org"
+      ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+    buildMachines = [{
+      system = "x86_64-linux";
+      speedFactor = 2;
+      supportedFeatures = [
+        "kvm"
+        "big-parallel"
+        "benchmark"
+        "nixos-test"
+      ];
+      protocol = "ssh-ng";
+      maxJobs = 4;
+      hostName = "builder";
+    }];
+    distributedBuilds = true;
+    extraOptions = "builders-use-substitutes = true";
   };
-  
-  nix.buildMachines = [
-    {
-       system = "x86_64-linux";
-       sshUser = "happy";
-       speedFactor = 2;
-       supportedFeatures = [
-         "kvm"
-         "big-parallel"
-         "benchmark"
-         "nixos-test"
-       ];
-       protocol = "ssh-ng";
-       maxJobs = 4;
-       hostName = "happypc";
-     }
-  ];
+
 
   networking = {
     hostName = "happysurface";
@@ -83,7 +83,7 @@
   environment.pathsToLink = [ "/share/icons" ];
 
   services.xserver.desktopManager.gnome.enable = true;
-  
+
   environment.gnome.excludePackages =
     [
       pkgs.gnome-photos
