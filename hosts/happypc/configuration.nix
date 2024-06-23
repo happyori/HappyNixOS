@@ -218,7 +218,19 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+
+  services.openssh = {
+    enable = true;
+    ports = [ 401 ];
+    settings = {
+      UseDns = true;
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      X11Forwarding = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "happy" ];
+    };
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

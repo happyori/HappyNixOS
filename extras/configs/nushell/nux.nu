@@ -1,3 +1,8 @@
+let _nixvim = { |file: path|
+  let expanded = $file | path expand
+  nix run github:happyori/HappyNixVim#nixvide $expanded -- --no-fork
+}
+
 let _amend_if_needed = {
   print "Checking if additional amends needed"
   let changes = git status --porcelain | lines | length
@@ -74,7 +79,7 @@ def "nux edit" [
   cd ~/.config/nixos/
   if not $fast {
     print 'Starting nix editing'
-    nxvim --file ~/.config/nixos/flake.nix "--no-fork"
+    do $_nixvim ~/.config/nixos/flake.nix
     print 'Editing finished, starting the diff'
   }
   if not $skip {

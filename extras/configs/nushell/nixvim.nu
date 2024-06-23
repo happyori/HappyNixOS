@@ -1,7 +1,7 @@
 const gitname = "github:happyori/HappyNixVim"
 
 # Run my nixvim configuration from github
-def nxvim [
+export def nxvim [
   --file: path # Optional if -f specified, otherwise uses this path to run nixvim
   --find (-f) # Flag to run fd + fzf combo to select file in current directory
   --vim (-v) # Run nixvim instead of default nixvide

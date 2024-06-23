@@ -116,7 +116,7 @@ in
           symbol = "󰼪";
           impure_msg = "󰼩 ";
           pure_msg = "󱩰 ";
-          format = "$symbol shell [$state\[$name\]]($style)";
+          format = "$symbol shell [$state\\[$name\\]]($style)";
         };
         localip = {
           disabled = false;

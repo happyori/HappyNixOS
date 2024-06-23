@@ -15,12 +15,12 @@ in
   };
   config = {
     programs.zoxide = {
-      enable = cfg.zoxide.enable;
+      inherit (cfg.zoxide) enable;
       enableNushellIntegration = config.custom.shells.nushell.enable;
     };
 
     programs.ssh = {
-      enable = cfg.ssh.enable;
+      inherit (cfg.ssh) enable;
       extraConfig = mkIf custom-options._1password.enable ''
         Host *
         	IdentityAgent ~/.1password/agent.sock
@@ -36,6 +36,7 @@ in
       (pkgs.obsidian.override { electron = pkgs.electron_28-bin; })
       pkgs.blueman
       pkgs.qpdfview
+      pkgs.via
     ];
   };
 }
