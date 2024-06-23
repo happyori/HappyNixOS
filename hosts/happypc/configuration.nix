@@ -224,8 +224,8 @@
     authorizedKeysInHomedir = true;
     settings = {
       UseDns = true;
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
+      PasswordAuthentication = true;
+      KbdInteractiveAuthentication = true;
       X11Forwarding = false;
       PermitRootLogin = "no";
       AllowUsers = [ "happy" ];
