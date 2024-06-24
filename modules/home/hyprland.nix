@@ -23,9 +23,9 @@ in
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XCURSOR_THEME = cursor-name;
-    XCURSOR_SIZE = (toString cursor-size);
+    XCURSOR_SIZE = toString cursor-size;
     HYPRCURSOR_THEME = cursor-name + "-hypr";
-    HYPRCURSOR_SIZE = (toString cursor-size);
+    HYPRCURSOR_SIZE = toString cursor-size;
   };
 
   custom.hyprland = {

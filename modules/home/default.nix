@@ -9,5 +9,6 @@
     ./desktop-theming.nix
     ./utils.nix
     ./dev.nix
+    ./nvidia.nix
   ];
 }

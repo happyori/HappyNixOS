@@ -14,6 +14,7 @@
   custom = {
     hyprland.monitors = [ ];
     wallpaper = paths.wallpapers + /AlienPlanet.jpg;
+    hardware.nvidia.enable = false;
     shells.nushell.enable = true;
     utils.zoxide.enable = true;
     utils.ssh.enable = true;

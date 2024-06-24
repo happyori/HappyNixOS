@@ -1,4 +1,7 @@
-{ ... }:
+{ config, lib, ... }:
+let
+  nvidia-cfg = config.custom.hardware.nvidia.enable;
+in
 {
   wayland.windowManager.hyprland.settings = {
     env = [
@@ -7,17 +10,16 @@
       "XDG_SESSION_TYPE, wayland"
       "ELECTRON_OZONE_PLATFORM_HINT, wayland"
 
-      #TODO: Make this an option
-      "LIBVA_DRIVER_NAME, nvidia"
-      "WLR_NO_HARDWARE_CURSORS, 1"
-      "WLR_DRM_NO_ATOMIC, 1"
-      "GBM_BACKEND, nvidia-drm"
-
       "SWWW_TRANSITION_FPS, 100"
       "SWWW_TRANSITION_DURATION, 4"
       "SWWW_TRANSITION_STEP, 80"
       "SWWW_TRANSITION, wipe"
       "SWWW_TRANSITION_ANGLE, 30"
+    ] ++ lib.optionals nvidia-cfg [
+      "LIBVA_DRIVER_NAME, nvidia"
+      "WLR_NO_HARDWARE_CURSORS, 1"
+      "WLR_DRM_NO_ATOMIC, 1"
+      "GBM_BACKEND, nvidia-drm"
     ];
   };
 }

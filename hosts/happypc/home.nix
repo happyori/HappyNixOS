@@ -16,6 +16,7 @@
     shells.nushell.enable = true;
     utils.zoxide.enable = true;
     utils.ssh.enable = true;
+    hardware.nvidia.enable = true;
     git = {
       with_lazygit = true;
       delta = {
