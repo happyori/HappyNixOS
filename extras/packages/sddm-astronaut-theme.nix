@@ -3,11 +3,7 @@
 ,
 }:
 let
-  imageLink = "https://w.wallhaven.cc/full/vg/wallhaven-vgq855.jpg";
-  image = pkgs.fetchurl {
-    url = imageLink;
-    sha256 = "1sg0gsrfp5l1p529n8q5gqkdch37zd0p6ngawxpfyhqaa2vhysa9";
-  };
+  image = ../wallpapers/sddm/background.png;
   output = "$out/share/sddm/themes/Astronaut";
   userCfg = (formats.ini { }).generate "theme.conf.user" {
     General = {
