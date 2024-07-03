@@ -69,7 +69,11 @@
     wayland.enable = true;
   };
   programs.dconf.enable = true;
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
+  };
 
   security.polkit.enable = true;
 
@@ -138,7 +142,6 @@
   nixpkgs.overlays = [
     inputs.neovim-nightly-overlay.overlays.default
     inputs.nixd.overlays.default
-    inputs.hyprland.overlays.default
     (final: prev: {
       networkmanager-openconnect = inputs.nixpkgs.legacyPackages.${system}.networkmanager-openconnect;
     })
@@ -165,7 +168,7 @@
     powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   nixpkgs.config.allowUnfree = true;

@@ -1,5 +1,7 @@
 const gitname = "github:happyori/HappyNixVim"
 
+let _expandArgs = { |args| $args | to text | str replace "\n" " " }
+
 # Run my nixvim configuration from github
 export def nxvim [
   --file: path # Optional if -f specified, otherwise uses this path to run nixvim
@@ -24,10 +26,10 @@ export def nxvim [
 
   print -n "Current run command: " $runCmd "\n"
   print "Arguments passed: " $args
-  print -n "Selected file: " $finalFile "\n"
+  print -n "\n" "Selected file: " $finalFile "\n"
 
   if $dry { return }
 
-  nix run $runCmd $finalFile -- ...$args
+  bash -c $"nix run ($runCmd) ($finalFile) -- (do $_expandArgs $args) >> /dev/null &" | ignore
 }
 
