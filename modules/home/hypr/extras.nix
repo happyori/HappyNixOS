@@ -26,7 +26,7 @@ in
       slurp
       libdbusmenu-gtk3;
     inherit pyprland;
-    nautilus = pkgs.gnome.nautilus;
+    inherit (pkgs.gnome) nautilus;
   };
 
   xdg.portal.enable = true;

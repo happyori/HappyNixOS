@@ -143,7 +143,7 @@
     inputs.neovim-nightly-overlay.overlays.default
     inputs.nixd.overlays.default
     (final: prev: {
-      networkmanager-openconnect = inputs.nixpkgs.legacyPackages.${system}.networkmanager-openconnect;
+      inherit (inputs.nixpkgs.legacyPackages.${system}) networkmanager-openconnect;
     })
   ];
 

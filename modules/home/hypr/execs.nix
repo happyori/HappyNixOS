@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  execs = config.custom.hyprland.execs;
+  inherit (config.custom.hyprland) execs;
   inherit (lib) types mkOption;
 in
 {

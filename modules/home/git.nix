@@ -53,7 +53,7 @@ in
           };
         };
       delta = {
-        enable = cfg.delta.enable;
+        inherit (cfg.delta) enable;
         options = {
           side-by-side = true;
           line-numbers = true;

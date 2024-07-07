@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf types mkOption;
-  plugins = config.custom._1password.plugins;
+  inherit (config.custom._1password) plugins;
 in
 {
   imports = [

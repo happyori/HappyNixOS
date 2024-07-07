@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  keybinds = config.custom.hyprland.keybinds;
+  inherit (config.custom.hyprland) keybinds;
   inherit (lib) types mkOption;
 in
 {

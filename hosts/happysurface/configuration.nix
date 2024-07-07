@@ -149,7 +149,7 @@
     inputs.nixd.overlays.default
     inputs.hyprland.overlays.default
     (final: prev: {
-      networkmanager-openconnect = inputs.nixpkgs.legacyPackages.${system}.networkmanager-openconnect;
+      inherit (inputs.nixpkgs.legacyPackages.${system}) networkmanager-openconnect;
     })
   ];
 

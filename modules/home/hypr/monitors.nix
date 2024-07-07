@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  monitors = config.custom.hyprland.monitors;
+  inherit (config.custom.hyprland) monitors;
   inherit (lib) mkOption mkEnableOption;
   inherit (lib.types) str int number listOf submodule;
 in
