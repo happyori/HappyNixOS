@@ -36,8 +36,8 @@
     '';
     extraEntriesBeforeNixOS = true;
   };
-  # boot.loader.systemd-boot.xbootldrMountPoint = "/boot";
   boot.supportedFilesystems = [ "zfs" ];
+  boot.kernelParams = [ "nomodeset" "nvidia_drm.fbdev=1" ];
 
   nix.settings = {
     substituters = [
