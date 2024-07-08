@@ -149,7 +149,7 @@ in
       "qpwgraph -max ${config.xdg.configHome}/qpwgraph/patchbay.qpwgraph &>> /tmp/happy/qpwgraph.log"
       { rule = "workspace name:web silent"; cmd = "vivaldi"; }
       { rule = "workspace name:music silent"; cmd = "spotify"; }
-      { rule = "workspace name:discord silent"; cmd = "vesktop"; }
+      { rule = "workspace name:discord silent"; cmd = "vesktop --ozone-platform-hint=x11"; }
       "nu ~/Scripts/hypr/launch_gnome_polkit.nu"
       "~/Scripts/hypr/auto-connect"
       "wl-paste --type text --watch cliphist store"
