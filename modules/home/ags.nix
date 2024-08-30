@@ -10,6 +10,7 @@
       pkgs.gtksourceview
       pkgs.webkitgtk
       pkgs.accountsservice
+      pkgs.bun
     ];
   };
 }
