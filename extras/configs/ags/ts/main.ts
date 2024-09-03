@@ -1,8 +1,4 @@
-const Bar = (monitor: number) =>
-  Widget.Window({
-    name: `bar-${monitor}`,
-    child: Widget.Label("Hello World"),
-  });
+import { Bar } from "./bar/Bar";
 
 App.config({
   windows: [Bar(0)],

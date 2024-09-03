@@ -14,7 +14,6 @@
     };
     nixd.url = "github:nix-community/nixd";
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     pyprland.url = "github:hyprland-community/pyprland";
