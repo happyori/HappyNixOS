@@ -8,9 +8,10 @@ class = "kitty_dropdown"
 size = "50% 65%"
 
 [scratchpads.clipse]
-command = "kitty --class clipse clipse"
+command = "kitty --class clipse sh -c 'clipse; pypr toggle clipse'"
 class = "clipse"
-size = "600px 30%"
-animation = "fromRight"
+size = "600px 40%"
+animation = "fromBottom"
 unfocus = "hide"
+position = "90% 90%"
 lazy = true

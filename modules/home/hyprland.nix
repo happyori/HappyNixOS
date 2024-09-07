@@ -111,7 +111,7 @@ in
           mods = [ "SUPER" ];
           key = "V";
           dispatcher = "exec";
-          args = [ "kitty" "--class clipse" "clipse" ];
+          args = [ "pypr" "toggle" "clipse" ];
         }
         {
           mods = [ mainMod "CTRL" ];
