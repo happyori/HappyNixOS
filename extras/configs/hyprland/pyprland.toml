@@ -6,3 +6,11 @@ animation = "fromTop"
 command = "kitty --class kitty_dropdown"
 class = "kitty_dropdown"
 size = "50% 65%"
+
+[scratchpads.clipse]
+command = "kitty --class clipse clipse"
+class = "clipse"
+size = "600px 30%"
+animation = "fromRight"
+unfocus = "hide"
+lazy = true

@@ -46,10 +46,6 @@ in
           rules = [ "suppressevent maximize" ];
         }
         {
-          matches = [ "class:(clipse)" ];
-          rules = [ "float" "size 500 600" ];
-        }
-        {
           matches = [ "class:IconLibrary$" ];
           rules = [ "float" "size 650 600" ];
         }
