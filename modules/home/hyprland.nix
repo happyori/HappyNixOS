@@ -152,9 +152,8 @@ in
       { rule = "workspace name:discord silent"; cmd = "vesktop --ozone-platform-hint=x11"; }
       "nu ~/Scripts/hypr/launch_gnome_polkit.nu"
       "~/Scripts/hypr/auto-connect"
-      "wl-paste --type text --watch cliphist store"
-      "wl-paste --type image --watch cliphist store"
       "wl-clip-persist --clipboard regular"
+      "clipse -listen"
       "swww img ${config.xdg.configHome}/swww/wallpaper"
       "dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE"
       { once = false; cmd = "hyprshade auto"; }
@@ -163,7 +162,6 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${system}.hyprland;
     systemd.enable = true;
     xwayland.enable = true;
   };

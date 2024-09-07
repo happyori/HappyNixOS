@@ -1,13 +1,12 @@
-{ pkgs, system, paths, inputs, ... }:
+{ pkgs, paths, ... }:
 let
   hypr-config = p: paths.app_configs + "/hyprland" + p;
-  pyprland = inputs.pyprland.packages.${system}.default;
 in
 {
   home.packages = builtins.attrValues {
     inherit (pkgs)
       wl-clipboard
-      cliphist
+      clipse
       wl-clip-persist
       libva
       swaynotificationcenter
@@ -24,8 +23,8 @@ in
       rofi-wayland
       grim
       slurp
+      pyprland
       libdbusmenu-gtk3;
-    inherit pyprland;
     inherit (pkgs.gnome) nautilus;
   };
 

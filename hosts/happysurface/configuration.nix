@@ -146,7 +146,6 @@
 
   nixpkgs.overlays = [
     inputs.nixd.overlays.default
-    inputs.hyprland.overlays.default
     (final: prev: {
       inherit (inputs.nixpkgs.legacyPackages.${system}) networkmanager-openconnect;
     })

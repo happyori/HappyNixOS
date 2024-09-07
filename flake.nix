@@ -15,8 +15,6 @@
     nixd.url = "github:nix-community/nixd";
 
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    pyprland.url = "github:hyprland-community/pyprland";
 
     ags.url = "github:Aylur/ags";
   };
