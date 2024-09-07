@@ -111,7 +111,7 @@ in
           mods = [ "SUPER" ];
           key = "V";
           dispatcher = "exec";
-          args = [ "nu ~/Scripts/hypr/toggle_clipse.nu" ];
+          args = [ "nu ~/Scripts/toggle_clipse.nu" ];
         }
         {
           mods = [ mainMod "CTRL" ];
@@ -155,7 +155,7 @@ in
       { rule = "workspace name:web silent"; cmd = "vivaldi"; }
       { rule = "workspace name:music silent"; cmd = "spotify"; }
       { rule = "workspace name:discord silent"; cmd = "vesktop --ozone-platform-hint=x11"; }
-      "nu ~/Scripts/hypr/launch_gnome_polkit.nu"
+      "nu ~/Scripts/launch_gnome_polkit.nu"
       "~/Scripts/hypr/auto-connect"
       "wl-clip-persist --clipboard primary"
       "clipse -listen"
