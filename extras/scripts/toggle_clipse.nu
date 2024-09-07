@@ -4,5 +4,3 @@ if ($pids | length) == 0 {
 } else {
   kill ($pids | get pid.0); sleep 0.2sec; pypr toggle clipse
 }
-
-kill $pid; sleep 0.2sec; pypr toggle clipse
