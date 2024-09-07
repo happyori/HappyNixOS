@@ -141,5 +141,6 @@ in
     ];
     home.file."${config.xdg.cacheHome}/nushell/nu_scripts".source = "${pkgs.nu_scripts}/share/nu_scripts";
     home.file."Scripts/launch_gnome_polkit.nu".source = "${paths.scripts}/launch_gnome_polkit.nu";
+    home.file."Scripts/toggle_clipse.nu".source = "${paths.scripts}/toggle_clipse.nu";
   };
 }
