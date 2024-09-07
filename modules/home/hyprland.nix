@@ -152,7 +152,7 @@ in
       { rule = "workspace name:discord silent"; cmd = "vesktop --ozone-platform-hint=x11"; }
       "nu ~/Scripts/hypr/launch_gnome_polkit.nu"
       "~/Scripts/hypr/auto-connect"
-      "wl-clip-persist --clipboard regular"
+      "wl-clip-persist --clipboard primary"
       "clipse -listen"
       "swww img ${config.xdg.configHome}/swww/wallpaper"
       "dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE"
