@@ -17,7 +17,6 @@ in
       "SWWW_TRANSITION_ANGLE, 30"
     ] ++ lib.optionals nvidia-cfg [
       "LIBVA_DRIVER_NAME, nvidia"
-      "WLR_NO_HARDWARE_CURSORS, 1"
       "WLR_DRM_NO_ATOMIC, 1"
       "GBM_BACKEND, nvidia-drm"
       "__GLX_VENDOR_LIBRARY_NAME, nvidia"

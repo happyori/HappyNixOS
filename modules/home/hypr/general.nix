@@ -11,6 +11,10 @@ _:
         sensitivity = 0;
       };
 
+      cursor = {
+        no_hardware_cursors = true;
+      };
+
       general = {
         gaps_in = 5;
         gaps_out = 20;
