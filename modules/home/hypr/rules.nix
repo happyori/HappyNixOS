@@ -1,9 +1,10 @@
 { config, lib, ... }:
 let
   inherit (lib) types mkOption;
+  inherit (types) listOf submodule ints str either int;
 in
 {
-  options.custom.hyprland.rules = with types; {
+  options.custom.hyprland.rules = {
     workspaces = mkOption
       {
         type = listOf (submodule {

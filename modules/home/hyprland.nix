@@ -46,6 +46,10 @@ in
           rules = [ "suppressevent maximize" ];
         }
         {
+          matches = [ "class:(clipse)" ];
+          rules = [ "float" "size 500 600" ];
+        }
+        {
           matches = [ "class:IconLibrary$" ];
           rules = [ "float" "size 650 600" ];
         }
@@ -106,8 +110,13 @@ in
         (defaultKeybindMod "R" { args = [ menu ]; })
         (defaultKeybindMod "P" { dispatcher = "pseudo"; })
         (defaultKeybindMod "U" { dispatcher = "togglesplit"; })
-        (defaultKeybindMod "X" { args = [ "cliphist list |" "rofi -dmenu |" "cliphist decode |" "wl-copy" ]; })
         (defaultKeybindMod "F" { dispatcher = "fullscreen"; args = [ 1 ]; })
+        {
+          mods = [ "SUPER" ];
+          key = "V";
+          dispatcher = "exec";
+          args = [ "kitty" "--class clipse" "clipse" ];
+        }
         {
           mods = [ mainMod "CTRL" ];
           key = "W";
