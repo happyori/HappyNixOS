@@ -111,7 +111,7 @@ in
           mods = [ "SUPER" ];
           key = "V";
           dispatcher = "exec";
-          args = [ "pypr" "toggle" "clipse" ];
+          args = [ "killall clipse;" "sleep 0.2;" "pypr toggle clipse" ];
         }
         {
           mods = [ mainMod "CTRL" ];
