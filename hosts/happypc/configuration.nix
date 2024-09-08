@@ -96,8 +96,12 @@
   };
   hardware.pulseaudio.enable = false;
 
-  custom.hardware.nvidia.enable = true;
-  custom._1password.enable = true;
+  custom = {
+    hardware.nvidia.enable = true;
+    games.steam.enable = true;
+    games.minecraft.enable = true;
+    _1password.enable = true;
+  };
   security.polkit.enable = true;
 
   environment = {

@@ -10,5 +10,6 @@
     ./utils.nix
     ./dev.nix
     ./nvidia.nix
+    ./games.nix
   ];
 }
