@@ -20,6 +20,9 @@
       java.enable = config.custom.games.minecraft.enable;
       gamemode.enable = config.custom.games.steam.enable;
     };
-    environment.systemPackages = lib.optional config.custom.games.steam.enable pkgs.mangohud;
+    environment.systemPackages = lib.optionals config.custom.games.steam.enable [
+      pkgs.mangohud
+      pkgs.protonup
+    ];
   };
 }
