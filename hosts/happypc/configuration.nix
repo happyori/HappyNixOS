@@ -122,6 +122,7 @@
       fd
       fzf
       gnomeExtensions.appindicator
+      babelfish
       cachix
       ripgrep
     ];
