@@ -9,8 +9,12 @@ let
 in
 {
   home.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "CascadiaCode" "JetBrainsMono" ]; })
+    (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "CascadiaCode" "JetBrainsMono" "FiraCode" ]; })
+    pkgs.inter
+    pkgs.dina-font
   ];
+
+  fonts.fontconfig.enable = true;
 
   gtk = {
     enable = true;
