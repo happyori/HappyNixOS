@@ -108,7 +108,7 @@
       hitori
       atomix
     ]);
-  services.udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
+  services.udev.packages = [ pkgs.gnome-settings-daemon ];
   custom._1password.enable = true;
 
   services.printing.enable = true;

@@ -23,9 +23,9 @@ in
       rofi-wayland
       grim
       slurp
+      nautilus
       pyprland
       libdbusmenu-gtk3;
-    inherit (pkgs.gnome) nautilus;
   };
 
   xdg.portal.enable = true;

@@ -152,7 +152,7 @@
   };
 
   services = {
-    udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
+    udev.packages = [ pkgs.gnome-settings-daemon ];
     xserver.enable = true;
     xserver.desktopManager.gnome.enable = false;
     printing.enable = true;
