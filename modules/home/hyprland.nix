@@ -53,6 +53,14 @@ in
           matches = [ "class:vesktop$" ];
           rules = [ "workspace name:discord silent" ];
         }
+        {
+          matches = [ "tag:games" "fullscreen:1" ];
+          rules = [ "immediate" ];
+        }
+        {
+          matches = [ "class:^(Minecraft)" ];
+          rules = [ "tag +games" "workspace emptym" ];
+        }
       ];
       layers = [
         {
