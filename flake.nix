@@ -33,9 +33,7 @@
         wallpapers = ./extras/wallpapers;
         scripts = ./extras/scripts;
       };
-    in
-    rec {
-      nixosConfigurations = {
+      modules = {
         happypc = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
@@ -43,6 +41,7 @@
           };
           modules = [
             ./hosts/happypc/configuration.nix
+            inputs.home-manager.nixosModules.default
             inputs.nix-index-database.nixosModules.nix-index
           ];
         };
@@ -53,32 +52,20 @@
           };
           modules = [
             ./hosts/happysurface/configuration.nix
+            inputs.home-manager.nixosModules.default
             inputs.nix-index-database.nixosModules.nix-index
           ];
         };
       };
-
+    in
+    {
+      nixosConfigurations = {
+        happypc = modules.happypc;
+        happysurface = modules.happysurface;
+      };
       homeConfigurations = {
-        happypc = {
-          happy = inputs.home-manager.lib.homeManagerConfiguration {
-            pkgs = import nixpkgs { inherit system; };
-            extraSpecialArgs = {
-              inherit inputs system paths;
-              nixosConfig = nixosConfigurations.happypc.config;
-            };
-            modules = [ ./hosts/happypc/home.nix ];
-          };
-        };
-        happysurface = {
-          happy = inputs.home-manager.lib.homeManagerConfiguration {
-            pkgs = import nixpkgs { inherit system; };
-            extraSpecialArgs = {
-              inherit inputs system paths;
-              nixosConfig = nixosConfigurations.happysurface.config;
-            };
-            modules = [ ./hosts/happysurface/home.nix ];
-          };
-        };
+        happypc = modules.happypc.config.home-manager.users.happy.home;
+        happysurface = modules.happysurface.config.home-manager.users.happy.home;
       };
     };
 }

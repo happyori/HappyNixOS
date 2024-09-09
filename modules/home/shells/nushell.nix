@@ -1,7 +1,7 @@
 { config
 , lib
 , pkgs
-, nixosConfig
+, custom-options
 , paths
 , ...
 }:
@@ -23,11 +23,11 @@ in
           l = "la -s";
           ll = "la -l";
         }
-        // lib.optionalAttrs nixosConfig._1password.enable (
+        // lib.optionalAttrs custom-options._1password.enable (
           let
             inherit (lib) listToAttrs strings getExe;
             inherit (builtins) map;
-            inherit (nixosConfig._1password) plugins;
+            inherit (custom-options._1password) plugins;
             pkg-exe-names = map (package: strings.unsafeDiscardStringContext (baseNameOf (getExe package))) plugins;
             aliases = listToAttrs (map
               (
