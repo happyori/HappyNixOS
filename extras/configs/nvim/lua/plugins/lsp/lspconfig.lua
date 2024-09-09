@@ -114,7 +114,7 @@ return {
                 expr = '(builtins.getFlake "/home/happy/.config/nixos").nixosConfigurations.happypc.options',
               },
               homeManager = {
-                expr = '(builtins.getFlake "/home/happy/.config/nixos").homeConfigurations.happypc.options',
+                expr = '(builtins.getFlake "/home/happy/.config/nixos").nixosConfigurations.happypc.options.home-manager.users.value.happy',
               },
             },
           },
