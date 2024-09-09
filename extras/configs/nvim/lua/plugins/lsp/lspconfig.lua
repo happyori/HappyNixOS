@@ -107,7 +107,7 @@ return {
               expr = 'import <nixpkgs> { }',
             },
             formatting = {
-              command = { 'nixfmt' },
+              command = { 'nixpkgs-fmt' },
             },
             options = {
               nixos = {

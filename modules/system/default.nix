@@ -5,5 +5,6 @@
     ./fonts.nix
     ./nvidia.nix
     ./steam.nix
+    ./vpn.nix
   ];
 }

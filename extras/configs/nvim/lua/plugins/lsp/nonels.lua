@@ -4,7 +4,7 @@ return {
   'nvimtools/none-ls.nvim',
   lazy = false,
   dependencies = {
-    'nvim-lua/plenary.nvim'
+    'nvim-lua/plenary.nvim',
   },
   opts = function()
     local null_ls = require 'null-ls'
@@ -13,7 +13,8 @@ return {
         null_ls.builtins.code_actions.statix,
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.stylua,
-      }
+        null_ls.builtins.formatting.nixpkgs_fmt,
+      },
     }
   end,
 }
