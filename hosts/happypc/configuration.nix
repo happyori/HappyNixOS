@@ -60,6 +60,9 @@
     hostName = "happypc"; # Define your hostname.
     networkmanager.enable = true; # Easiest to use and most distros use this by default.
     hostId = "9afd7ec6";
+    firewall = {
+      checkReversePath = "loose";
+    };
   };
 
   # Set your time zone.
@@ -125,6 +128,7 @@
       babelfish
       cachix
       ripgrep
+      networkmanagerapplet
     ];
     pathsToLink = [ "/share/icons" ];
     gnome.excludePackages =
