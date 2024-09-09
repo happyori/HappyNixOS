@@ -1,7 +1,7 @@
 { lib
 , config
 , pkgs
-, custom-options
+, nixosConfig
 , ...
 }:
 let
@@ -21,7 +21,7 @@ in
 
     programs.ssh = {
       inherit (cfg.ssh) enable;
-      extraConfig = mkIf custom-options._1password.enable ''
+      extraConfig = mkIf nixosConfig._1password.enable ''
         Host *
         	IdentityAgent ~/.1password/agent.sock
       '';

@@ -1,6 +1,6 @@
 let _nixvim = { |file: path|
   let expanded = $file | path expand
-  nix run github:happyori/HappyNixVim#nixvide $expanded -- --no-fork
+  neovide --no-vsync --no-fork $expanded
 }
 
 let _amend_if_needed = {

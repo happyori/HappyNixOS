@@ -1,6 +1,4 @@
-{ config
-, lib
-, pkgs
+{ pkgs
 , system
 , inputs
 , paths
@@ -150,14 +148,6 @@
       inherit (inputs.nixpkgs.legacyPackages.${system}) networkmanager-openconnect;
     })
   ];
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.happy = import ./home.nix;
-  home-manager.extraSpecialArgs = {
-    inherit inputs paths system;
-    custom-options = config.custom;
-  };
 
   hardware.opengl = {
     enable = true;

@@ -20,8 +20,7 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
+    { nixpkgs
     , ...
     } @ inputs:
     let
@@ -35,28 +34,51 @@
         scripts = ./extras/scripts;
       };
     in
-    {
-      nixosConfigurations.happypc = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs system paths;
+    rec {
+      nixosConfigurations = {
+        happypc = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs system paths;
+          };
+          modules = [
+            ./hosts/happypc/configuration.nix
+            inputs.nix-index-database.nixosModules.nix-index
+          ];
         };
-        modules = [
-          ./hosts/happypc/configuration.nix
-          inputs.home-manager.nixosModules.default
-          inputs.nix-index-database.nixosModules.nix-index
-        ];
+        happysurface = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs system paths;
+          };
+          modules = [
+            ./hosts/happysurface/configuration.nix
+            inputs.nix-index-database.nixosModules.nix-index
+          ];
+        };
       };
-      nixosConfigurations.happysurface = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs system paths;
+
+      homeConfigurations = {
+        happypc = {
+          happy = inputs.home-manager.lib.homeManagerConfiguration {
+            pkgs = import nixpkgs { inherit system; };
+            extraSpecialArgs = {
+              inherit inputs system paths;
+              nixosConfig = nixosConfigurations.happypc.config;
+            };
+            modules = [ ./hosts/happypc/home.nix ];
+          };
         };
-        modules = [
-          ./hosts/happysurface/configuration.nix
-          inputs.home-manager.nixosModules.default
-          inputs.nix-index-database.nixosModules.nix-index
-        ];
+        happysurface = {
+          happy = inputs.home-manager.lib.homeManagerConfiguration {
+            pkgs = import nixpkgs { inherit system; };
+            extraSpecialArgs = {
+              inherit inputs system paths;
+              nixosConfig = nixosConfigurations.happysurface.config;
+            };
+            modules = [ ./hosts/happysurface/home.nix ];
+          };
+        };
       };
     };
 }
