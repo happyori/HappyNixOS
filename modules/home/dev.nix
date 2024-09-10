@@ -38,10 +38,11 @@ in
     custom.dev.nvim.enable = mkDefault true;
     custom.dev.nvim.with-personal-setup = mkDefault true;
     xdg.configFile.nvim = {
-      enable = config.custom.dev.nvim.with-personal-setup;
+      enable = cfg.nvim.with-personal-setup;
       source = paths.app_configs + "/nvim";
     };
     xdg.configFile.neovide = {
+      enable = cfg.neovide.enable;
       source = paths.app_configs + "/neovide";
     };
     home.packages =
