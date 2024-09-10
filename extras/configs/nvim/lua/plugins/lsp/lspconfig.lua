@@ -151,7 +151,12 @@ return {
           if vim.list_contains(mason_exclude_setup, server_name) then return true end
           if server_name == 'tsserver' then server_name = 'ts_ls' end
           local server = servers[server_name] or {}
-          vim.notify(vim.inspect { server_name = server_name, server = server })
+          vim.notify(vim.inspect {
+            server_name = server_name,
+            server = server,
+            exclude = mason_exclude_setup,
+            contains = vim.list_contains(mason_exclude_setup, server_name),
+          })
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,
