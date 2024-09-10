@@ -107,8 +107,10 @@ return {
                 },
               }
             end,
-            pattern = 'Cargo.toml',
             description = 'Attaches crates as a source for cmp',
+            opts = {
+              pattern = { 'Cargo.toml' },
+            },
           },
         },
       },
