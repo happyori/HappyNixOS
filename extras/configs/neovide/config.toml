@@ -1,0 +1,12 @@
+fork = true
+frame = "full"
+idle = true
+maximized = false
+vsync = false
+
+[font]
+normal = ["CaskaydiaCove Nerd Font Mono"]
+size = 16.0
+
+[font.features]
+"CaskaydiaCove Nerd Font Mono" = ["+liga"]

@@ -41,6 +41,9 @@ in
       enable = config.custom.dev.nvim.with-personal-setup;
       source = paths.app_configs + "/nvim";
     };
+    xdg.configFile.neovide = {
+      source = paths.app_configs + "/neovide";
+    };
     home.packages =
       (lib.concatMap optionalPackage [
         cfg.nvim
@@ -51,6 +54,5 @@ in
       ++ optionals cfg.lang.add-nix [ pkgs.nixd pkgs.nixpkgs-fmt pkgs.statix ]
       ++ optionals cfg.nvim.enable [ pkgs.nodejs pkgs.sqlite ]
       ++ [ pkgs.gnumake ];
-
   };
 }
