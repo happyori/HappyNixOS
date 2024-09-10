@@ -46,11 +46,19 @@ return {
     event = { 'BufRead Cargo.toml' },
     config = true,
     opts = {
+      completion = {
+        cmp = { enabled = true },
+        crates = {
+          enabled = true,
+          max_results = 8,
+          min_chars = 3,
+        },
+      },
       lsp = {
         enabled = true,
         actions = true,
-        completion = true,
         hover = true,
+        completion = false,
         on_attach = function(_, bufnr)
           local bind = require('legendary').keymaps
           local toolbox = require 'legendary.toolbox'
@@ -79,6 +87,30 @@ return {
 
           bind(keys)
         end,
+      },
+    },
+  },
+  {
+    'mrjones2014/legendary.nvim',
+    opts = {
+      autocmds = {
+        {
+          name = 'Cargo Attach Source',
+          clear = true,
+          {
+            'BufRead',
+            function()
+              local cmp = require 'cmp'
+              cmp.setup.buffer {
+                sources = {
+                  { name = 'crates' },
+                },
+              }
+            end,
+            pattern = 'Cargo.toml',
+            description = 'Attaches crates as a source for cmp',
+          },
+        },
       },
     },
   },
