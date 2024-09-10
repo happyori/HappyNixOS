@@ -142,7 +142,7 @@ return {
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     local mason_exclude_setup = {
-      'rust-analyzer',
+      'rust_analyzer',
     }
     require('mason-lspconfig').setup {
       handlers = {
