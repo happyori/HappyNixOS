@@ -20,4 +20,5 @@ require('lazy').setup {
   },
   install = { colorscheme = { 'habamax' } },
   checker = { enabled = true },
+  lockfile = vim.fn.stdpath 'data' .. '/lazy/lazy-lock.json',
 }
