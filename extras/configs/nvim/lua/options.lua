@@ -32,6 +32,8 @@ op.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 op.inccommand = 'split'
 
+op.conceallevel = 1
+
 op.cursorline = true
 op.scrolloff = 16
 op.winblend = 30
