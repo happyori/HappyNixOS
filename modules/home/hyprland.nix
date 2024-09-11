@@ -116,6 +116,12 @@ in
         (defaultKeybindMod "U" { dispatcher = "togglesplit"; })
         (defaultKeybindMod "F" { dispatcher = "fullscreen"; args = [ 1 ]; })
         {
+          mods = [ mainMod "SHIFT" ];
+          key = "F";
+          dispatcher = "fullscreen";
+          args = [ 0 ];
+        }
+        {
           mods = [ "SUPER" ];
           key = "V";
           dispatcher = "exec";
