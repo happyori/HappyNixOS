@@ -50,7 +50,7 @@ in
         cfg.nvim
         cfg.neovide
       ])
-      ++ optionals cfg.lang.add-rust [ pkgs.rustc pkgs.cargo pkgs.rust-analyzer pkgs.vscode-extensions.vadimcn.vscode-lldb ]
+      ++ optionals cfg.lang.add-rust [ pkgs.rustc pkgs.rustfmt pkgs.cargo pkgs.rust-analyzer pkgs.vscode-extensions.vadimcn.vscode-lldb ]
       ++ optionals cfg.lang.add-go [ pkgs.go ]
       ++ optionals cfg.lang.add-nix [ pkgs.nixd pkgs.nixpkgs-fmt pkgs.statix ]
       ++ optionals cfg.nvim.enable [ pkgs.nodejs pkgs.sqlite pkgs.luarocks pkgs.prettierd pkgs.lua5_1 ]
