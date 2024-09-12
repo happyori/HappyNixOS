@@ -29,8 +29,8 @@ return {
                 itemgroup = '[R]ust',
                 keymaps = {
                   { '<leader>lRe', '<cmd>RustLsp expandMacro<cr>', description = '[E]xpand Macro' },
-                  { '<leader>lRa', '<cmd>RustLsp codeAction', description = 'Code [A]ction (Rust)' },
-                  { '<leader>lRx', '<cmd>RustLsp explainError', description = 'E[x]plain Error' },
+                  { '<leader>lRa', '<cmd>RustLsp codeAction<cr>', description = 'Code [A]ction (Rust)' },
+                  { '<leader>lRx', '<cmd>RustLsp explainError<cr>', description = 'E[x]plain Error' },
                 },
               },
             }
