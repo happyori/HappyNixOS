@@ -39,6 +39,7 @@ op.scrolloff = 16
 op.winblend = 30
 op.pumblend = 30
 op.completeopt = 'menu,menuone,noselect'
+op.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 if vim.g.neovide then
   vim.g.neovide_floating_blur_amount_x = 2.0
