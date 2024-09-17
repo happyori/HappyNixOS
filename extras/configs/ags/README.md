@@ -12,4 +12,4 @@ if you do not want typechecking only suggestions
 ```
 
 types are symlinked to:
-/nix/store/0wizyq5vnr0l5nyrvjnya732hxnk2cvw-ags-1.8.2/share/com.github.Aylur.ags/types
+/nix/store/3974x25z0qdmdcgm54xz4jm6qrxr41aw-ags-1.8.2/share/com.github.Aylur.ags/types
