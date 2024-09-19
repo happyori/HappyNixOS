@@ -2,12 +2,16 @@
 , lib
 , config
 , paths
+, inputs
+, system
 , ...
 }:
 let
   inherit (lib) mkEnableOption mkDefault mkOption types optional optionals;
   optionalPackage = opt: optional (opt != null && opt.enable && opt.package != null) opt.package;
   cfg = config.custom.dev;
+  zig = inputs.zig-overlay.packages.${system}.master;
+  zls = inputs.zls.packages.${system}.zls;
 in
 {
   options.custom.dev = {
@@ -54,7 +58,7 @@ in
       ++ optionals cfg.lang.add-rust [ pkgs.rustc pkgs.rustfmt pkgs.cargo pkgs.rust-analyzer pkgs.vscode-extensions.vadimcn.vscode-lldb ]
       ++ optionals cfg.lang.add-go [ pkgs.go ]
       ++ optionals cfg.lang.add-nix [ pkgs.nixd pkgs.nixpkgs-fmt pkgs.statix ]
-      ++ optionals cfg.lang.add-zig [ pkgs.zig pkgs.zls ]
+      ++ optionals cfg.lang.add-zig [ zls zig ]
       ++ optionals cfg.nvim.enable [ pkgs.nodejs pkgs.sqlite pkgs.luarocks pkgs.prettierd pkgs.lua5_1 ]
       ++ [ pkgs.gnumake ];
   };

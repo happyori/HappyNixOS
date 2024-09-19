@@ -120,10 +120,12 @@ return {
           },
         },
       },
+      zls = {},
     }
 
     local mason_install_exclude = {
       'nixd',
+      'zls',
     }
 
     require('mason').setup()
