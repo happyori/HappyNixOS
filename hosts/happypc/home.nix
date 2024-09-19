@@ -42,6 +42,7 @@
         add-rust = true;
         add-nix = true;
         add-go = true;
+        add-zig = true;
       };
     };
     hyprland.monitors = [
