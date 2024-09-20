@@ -26,7 +26,15 @@ return {
     },
   },
   'Tastyep/structlog.nvim',
+  {
+    'shortcuts/no-neck-pain.nvim',
+    keys = {
+      ['<leader>uc'] = { '<cmd>NoNeckPain<cr>', desc = '[C]enter View' },
+    },
+    cmd = 'NoNeckPain',
+  },
   'NvChad/nvim-colorizer.lua',
+  'RRethy/vim-illuminate',
   {
     'lukas-reineke/indent-blankline.nvim',
     event = 'BufEnter',

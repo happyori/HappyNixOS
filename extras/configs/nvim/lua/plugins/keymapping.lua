@@ -81,6 +81,7 @@ return {
         { '<leader>b', group = '[B]uffer' },
         { '<leader>lC', group = '[C]argo' },
         { '<leader>lR', group = '[R]ust' },
+        { '<leader>u', group = '[U]I' },
       },
     },
   },
