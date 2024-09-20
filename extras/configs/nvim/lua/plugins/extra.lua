@@ -28,13 +28,10 @@ return {
   'Tastyep/structlog.nvim',
   {
     'shortcuts/no-neck-pain.nvim',
-    keys = {
-      ['<leader>uc'] = { '<cmd>NoNeckPain<cr>', desc = '[C]enter View' },
-    },
     cmd = 'NoNeckPain',
   },
-  'NvChad/nvim-colorizer.lua',
-  'RRethy/vim-illuminate',
+  { 'NvChad/nvim-colorizer.lua', lazy = false },
+  { 'RRethy/vim-illuminate', event = 'BufEnter' },
   {
     'lukas-reineke/indent-blankline.nvim',
     event = 'BufEnter',

@@ -26,6 +26,7 @@ return {
         { '<Esc><Esc>', '<C-\\><C-n>', description = 'Exit terminal mode', mode = 't' },
         { '<leader>`', '<cmd>LegendaryScratchToggle<cr>', description = '[`] Toggle open scratch pad' },
         { '<C-s>', '<cmd>w<cr><Esc>', description = '[W]rite to file', mode = { 'n', 'i' } },
+        { '<leader>uc', '<cmd>NoNeckPain<cr>', description = '[C]enter UI' },
         {
           itemgroup = 'Window Movement',
           description = 'Keys for movement',
