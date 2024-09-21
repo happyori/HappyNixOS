@@ -13,7 +13,7 @@ return {
         virt_text = true,
         virt_text_pos = 'eol',
       },
-      current_line_blame_formatter = '<< <author>, <summary> >>',
+      current_line_blame_formatter = '== <author>, <summary> ==',
       signs = {
         add = {
           text = icons.ui.BoldLineLeft,
