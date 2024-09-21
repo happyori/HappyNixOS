@@ -120,7 +120,14 @@ return {
           },
         },
       },
-      zls = {},
+      zls = {
+        settings = {
+          zls = {
+            inlay_hints_hide_redundant_param_names = true,
+            highlight_global_var_declarations = true,
+          },
+        },
+      },
     }
 
     local mason_install_exclude = {
