@@ -3,6 +3,15 @@
 ---@alias LegendItemGroup { itemgroup: string, icon?: string, description?: string, keymaps: LegendKey[] }
 ---@alias LegendKeys (LegendItemGroup|LegendKey)[]
 
+local function change_line_on_empty(mode)
+  mode = mode or 'i'
+  if vim.fn.getline '.' == '' then
+    return '_cc'
+  else
+    return mode
+  end
+end
+
 ---@module 'lazy'
 ---@type LazySpec
 return {
@@ -26,6 +35,8 @@ return {
         { '<Esc><Esc>', '<C-\\><C-n>', description = 'Exit terminal mode', mode = 't' },
         { '<leader>`', '<cmd>LegendaryScratchToggle<cr>', description = '[`] Toggle open scratch pad' },
         { '<C-s>', '<cmd>w<cr><Esc>', description = '[W]rite to file', mode = { 'n', 'i' } },
+        { 'i', change_line_on_empty 'i', description = 'Insert (autoindent on empty)', opts = { noremap = true } },
+        { 'a', change_line_on_empty 'a', description = 'Append (autoappend on empty)', opts = { noremap = true } },
         { '<leader>uc', '<cmd>NoNeckPain<cr>', description = '[C]enter UI' },
         {
           itemgroup = 'Window Movement',
