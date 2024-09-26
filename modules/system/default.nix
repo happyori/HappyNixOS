@@ -1,6 +1,7 @@
 { ... }: {
   imports = [
     ./one-pass.nix
+    ./dev.nix
     ./greet.nix
     ./fonts.nix
     ./nvidia.nix

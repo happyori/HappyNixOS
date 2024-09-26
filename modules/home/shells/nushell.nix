@@ -22,6 +22,7 @@ in
           nr = "nux rebuild";
           l = "la -s";
           ll = "la -l";
+          tasks = "devenv tasks run";
         }
         // lib.optionalAttrs custom-options._1password.enable (
           let
