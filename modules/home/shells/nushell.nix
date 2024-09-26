@@ -9,6 +9,7 @@ let
   cfg = config.custom.shells.nushell;
   nuxFile = paths.app_configs + /nushell/nux.nu;
   nxvimFile = paths.app_configs + /nushell/nixvim.nu;
+  aliasesFile = paths.app_configs + /nushell/advanced_aliases.nu;
   inherit (lib) mkIf;
   sourceCompletion = package: "source ${config.xdg.cacheHome}/nushell/nu_scripts/custom-completions/${package}/${package}-completions.nu";
 in
@@ -20,8 +21,6 @@ in
       shellAliases =
         {
           nr = "nux rebuild";
-          l = "'la -s | sort-by type'";
-          ll = "'la -l | sort-by type'";
           tasks = "devenv tasks run";
         }
         // lib.optionalAttrs custom-options._1password.enable (
@@ -49,6 +48,7 @@ in
         alias la = ls -a
         source ${nuxFile}
         source ${nxvimFile}
+        source ${aliasesFile}
         ${sourceCompletion "nix"}
         ${sourceCompletion "rg"}
         ${sourceCompletion "cargo"}
