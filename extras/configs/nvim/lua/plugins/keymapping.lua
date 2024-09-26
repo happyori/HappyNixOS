@@ -5,10 +5,12 @@
 
 local function change_line_on_empty(mode)
   mode = mode or 'i'
-  if vim.fn.getline '.' == '' then
-    return '_cc'
-  else
-    return mode
+  return function()
+    if vim.fn.getline '.' == '' then
+      return '_cc'
+    else
+      return mode
+    end
   end
 end
 
