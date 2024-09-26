@@ -20,8 +20,8 @@ in
       shellAliases =
         {
           nr = "nux rebuild";
-          l = "la -s";
-          ll = "la -l";
+          l = "la -s | sort-by type";
+          ll = "la -l | sort-by type";
           tasks = "devenv tasks run";
         }
         // lib.optionalAttrs custom-options._1password.enable (
