@@ -1,15 +1,15 @@
-def 'l' [ ...args ] {
-    ls -as ...$args | sort-by type name size
+def 'l' [ target: path = '.' ] {
+    ls -as $target | sort-by type name size
 }
 
-def 'll' [ ...args ] {
-    ls -al ...$args | sort-by type name size
+def 'll' [ target: path = '.' ] {
+    ls -al $target | sort-by type name size
 }
 
-def 'lf' [ ...args ] {
-    ls -af ...$args | sort-by type name size
+def 'lf' [ target: path = '.' ] {
+    ls -af $target | sort-by type name size
 }
 
-def 'lld' [ ...args ] {
-    ls -asd ...$args | sort-by type name size
+def 'lld' [ target: path = '.' ] {
+    ls -asd $target | sort-by type name size
 }
