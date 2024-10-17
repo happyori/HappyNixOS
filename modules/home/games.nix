@@ -6,5 +6,6 @@
     pkgs.prismlauncher
     pkgs.lutris
     pkgs.vintagestory
+    pkgs.wine
   ];
 }
