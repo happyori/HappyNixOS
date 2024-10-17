@@ -128,7 +128,15 @@ return {
           },
         },
       },
-      omnisharp = {},
+      omnisharp = {
+        cmd = { 'OmniSharp' },
+        settings = {
+          FormattingOptions = {
+            EnableEditorConfigSupport = true,
+            OrganizeImports = true,
+          },
+        },
+      },
     }
 
     local mason_install_exclude = {
