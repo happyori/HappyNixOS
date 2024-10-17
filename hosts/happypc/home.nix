@@ -43,6 +43,7 @@
         add-nix = true;
         add-go = true;
         add-zig = true;
+        add-csharp = true;
       };
     };
     hyprland.monitors = [

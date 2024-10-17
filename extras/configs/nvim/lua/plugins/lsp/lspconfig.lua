@@ -128,6 +128,7 @@ return {
           },
         },
       },
+      ['csharp-language-server'] = {},
     }
 
     local mason_install_exclude = {
