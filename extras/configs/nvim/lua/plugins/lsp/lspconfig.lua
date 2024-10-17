@@ -128,12 +128,13 @@ return {
           },
         },
       },
-      ['csharp-language-server'] = {},
+      omnisharp = {},
     }
 
     local mason_install_exclude = {
       'nixd',
       'zls',
+      'omnisharp',
     }
 
     require('mason').setup()

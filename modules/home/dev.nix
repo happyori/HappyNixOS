@@ -60,7 +60,7 @@ in
       ++ optionals cfg.lang.add-go [ pkgs.go ]
       ++ optionals cfg.lang.add-nix [ pkgs.nixd pkgs.nixpkgs-fmt pkgs.statix ]
       ++ optionals cfg.lang.add-zig [ zls zig ]
-      ++ optionals cfg.lang.add-csharp [ pkgs.dotnet-sdk_7 ]
+      ++ optionals cfg.lang.add-csharp [ pkgs.dotnet-sdk_7 pkgs.omnisharp-roslyn ]
       ++ optionals cfg.nvim.enable [ pkgs.nodejs pkgs.sqlite pkgs.luarocks pkgs.prettierd pkgs.lua5_1 ]
       ++ [ pkgs.gnumake pkgs.devenv ];
   };
