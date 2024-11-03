@@ -164,7 +164,7 @@ in
       "blueman-applet"
       "swww-daemon"
       "pypr"
-      "ags &>> /tmp/ags/log"
+      # "ags &>> /tmp/ags/log" removed untill setup is complete (pending forever)
       "qpwgraph -max ${config.xdg.configHome}/qpwgraph/patchbay.qpwgraph &>> /tmp/happy/qpwgraph.log"
       { rule = "workspace name:web silent"; cmd = "vivaldi"; }
       { rule = "workspace name:music silent"; cmd = "spotify"; }
