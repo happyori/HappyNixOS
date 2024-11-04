@@ -9,6 +9,8 @@
     pkgs.webkitgtk
     pkgs.gtksourceview
     pkgs.accountsservice
+    pkgs.dart-sass
+    pkgs.fd
   ];
 
 

@@ -1,2 +1,17 @@
-.transparent {
+@use "sass:color";
+
+$pallete_dark: #212121;
+$pallete_shade: #323232;
+$pallete_dark_accent: #0d7377;
+$pallete_accent: #14ffec;
+$pallete_text: white;
+
+* {
+  color: $pallete_text;
 }
+
+.transparent {
+  background: color.change($pallete_dark, $alpha: 0.4);
+}
+
+.bar {}

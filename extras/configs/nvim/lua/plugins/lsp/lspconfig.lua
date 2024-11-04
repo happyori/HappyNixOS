@@ -137,7 +137,14 @@ return {
           },
         },
       },
-      cssls = {},
+      cssls = {
+        filetypes = { 'css', 'less' },
+        settings = {
+          scss = {
+            validate = false,
+          },
+        },
+      },
       somesass_ls = {},
     }
 
