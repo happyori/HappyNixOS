@@ -36,7 +36,7 @@
 
   scripts = {
     run.exec = ''ags -c ./config.js'';
-    debug.exec = ''ags -c ./config.js -i'';
+    drun.exec = ''ags -c ./config.js -i'';
     dev.exec = ''neovide ./config.js'';
   };
 

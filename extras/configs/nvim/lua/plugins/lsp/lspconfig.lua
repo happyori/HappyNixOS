@@ -137,6 +137,8 @@ return {
           },
         },
       },
+      cssls = {},
+      somesass_ls = {},
     }
 
     local mason_install_exclude = {
