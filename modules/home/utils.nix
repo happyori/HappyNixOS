@@ -2,14 +2,11 @@
 , config
 , pkgs
 , custom-options
-, inputs
-, system
 , ...
 }:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.custom.utils;
-  ashell = inputs.ashell.defaultPackage.${system};
 in
 {
   options.custom.utils = {
@@ -40,7 +37,6 @@ in
       pkgs.blueman
       pkgs.qpdfview
       pkgs.via
-      ashell
     ];
   };
 }

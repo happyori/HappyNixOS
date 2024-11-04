@@ -25,7 +25,6 @@
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
 
     ags.url = "github:Aylur/ags";
-    ashell.url = "github:MalpenZibo/ashell";
   };
 
   outputs =
