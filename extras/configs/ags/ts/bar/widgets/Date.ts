@@ -3,7 +3,7 @@ const time = Variable("00:00 AM", {
 });
 
 const date = Variable("", {
-  poll: [500, ["nu", "-c", "date now | format date %v"]],
+  poll: [500, ["nu", "-c", "date now | format date '%d %h(%m) %Y'"]],
 });
 
 const Time = () =>
@@ -23,5 +23,6 @@ export const DateTime = () =>
     class_name: "date-time",
     vertical: false,
     hpack: "center",
+    spacing: 4,
     children: [Date(), Time()],
   });

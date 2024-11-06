@@ -111,7 +111,6 @@
   services.udev.packages = [ pkgs.gnome-settings-daemon ];
   custom._1password.enable = true;
 
-  services.printing.enable = true;
   services.avahi = {
     enable = true;
     nssmdns4 = true;

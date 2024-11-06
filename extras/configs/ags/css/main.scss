@@ -8,10 +8,17 @@ $pallete_text: white;
 
 * {
   color: $pallete_text;
+  font-family: "Inter Regular";
 }
 
 .transparent {
   background: color.change($pallete_dark, $alpha: 0.4);
 }
 
-.bar {}
+.bar-content {
+  padding: {
+    top: 5px;
+    bottom: 5px;
+    left: 4px;
+  }
+}

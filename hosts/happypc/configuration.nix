@@ -160,7 +160,6 @@
     udev.packages = [ pkgs.gnome-settings-daemon ];
     xserver.enable = true;
     xserver.desktopManager.gnome.enable = false;
-    printing.enable = true;
     avahi = {
       enable = true;
       nssmdns4 = true;
