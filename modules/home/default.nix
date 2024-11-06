@@ -14,6 +14,9 @@
   ];
 
   config = {
-    xdg.enable = true;
+    xdg = {
+      enable = true;
+      userDirs.createDirectories = true;
+    };
   };
 }
