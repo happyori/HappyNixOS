@@ -12,4 +12,8 @@
     ./nvidia.nix
     ./games.nix
   ];
+
+  config = {
+    xdg.enable = true;
+  };
 }
