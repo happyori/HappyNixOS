@@ -2,11 +2,13 @@
 , config
 , pkgs
 , custom-options
+, paths
 , ...
 }:
 let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.custom.utils;
+  zen = import (paths.custom_pkgs + /zen.nix) { inherit pkgs; };
 in
 {
   options.custom.utils = {
@@ -37,6 +39,7 @@ in
       pkgs.blueman
       pkgs.qpdfview
       pkgs.via
+      zen
     ];
   };
 }
