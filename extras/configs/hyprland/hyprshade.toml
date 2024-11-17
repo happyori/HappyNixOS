@@ -5,4 +5,9 @@ default = true
 [[shades]]
 name = "blue-light-filter-normal"
 start_time = 19:00:00
+end_time = 22:00:00
+
+[[shades]]
+name = "blue-light-filter-low"
+start_time = 22:00:00
 end_time = 06:00:00
