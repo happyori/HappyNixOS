@@ -12,7 +12,7 @@ _:
       };
 
       cursor = {
-        no_hardware_cursors = true;
+        no_hardware_cursors = 2;
       };
 
       general = {
@@ -36,11 +36,13 @@ _:
           special = true;
         };
 
-        drop_shadow = "yes";
-        shadow_range = 20;
-        shadow_render_power = 3;
-        shadow_offset = "0, 6";
-        "col.shadow" = "rgba(1a1a1a5a)";
+        shadow = {
+          enabled = true;
+          range = 20;
+          render_power = 3;
+          offset = "0, 6";
+          color = "rgba(1a1a1a5a)";
+        };
       };
 
       animations = {
