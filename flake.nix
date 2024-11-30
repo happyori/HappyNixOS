@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,18 +11,9 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixd.url = "github:nix-community/nixd";
-    zls = {
-      url = "github:zigtools/zls";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    zig-overlay = {
-      url = "github:mitchellh/zig-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
-
     ags.url = "github:Aylur/ags";
   };
 

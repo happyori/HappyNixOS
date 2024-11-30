@@ -137,6 +137,8 @@ return {
           },
         },
       },
+      clangd = {},
+      cpptools = {},
       cssls = {
         filetypes = { 'css', 'less' },
         settings = {
