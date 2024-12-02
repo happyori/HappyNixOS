@@ -12,7 +12,7 @@
   config = {
     programs.kitty = lib.mkIf config.custom.terms.kitty.enable {
       enable = true;
-      font.package = pkgs.nerdfonts.override { fonts = [ "CascadiaCode" ]; };
+      font.package = pkgs.nerd-fonts.caskaydia-cove;
       font.name = "CaskaydiaCove Nerd Font";
       font.size = 14;
       keybindings = {

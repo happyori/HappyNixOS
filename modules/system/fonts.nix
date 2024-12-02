@@ -2,7 +2,10 @@
 {
   fonts = {
     packages = [
-      (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "CascadiaCode" "JetBrainsMono" "FiraCode" ]; })
+      pkgs.nerd-fonts.fantasque-sans-mono
+      pkgs.nerd-fonts.caskaydia-cove
+      pkgs.nerd-fonts.jetbrains-mono
+      pkgs.nerd-fonts.fira-code
       pkgs.inter
       pkgs.dina-font
     ];

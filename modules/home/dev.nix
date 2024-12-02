@@ -1,7 +1,6 @@
 { pkgs
 , lib
 , config
-, paths
 , ...
 }:
 let
@@ -55,7 +54,7 @@ in
       ++ optionals cfg.lang.add-rust [ pkgs.rustc pkgs.rustfmt pkgs.cargo pkgs.rust-analyzer pkgs.vscode-extensions.vadimcn.vscode-lldb ]
       ++ optionals cfg.lang.add-go [ pkgs.go ]
       ++ optionals cfg.lang.add-nix [ pkgs.nixd pkgs.nixpkgs-fmt pkgs.statix ]
-      ++ optionals cfg.lang.add-csharp [ pkgs.dotnet-sdk_7 pkgs.omnisharp-roslyn ]
+      ++ optionals cfg.lang.add-csharp [ pkgs.dotnet-sdk pkgs.omnisharp-roslyn ]
       ++ optionals cfg.nvim.enable [ pkgs.nodejs pkgs.sqlite pkgs.luarocks pkgs.prettierd pkgs.lua5_1 ]
       ++ [ pkgs.gnumake pkgs.devenv ];
   };

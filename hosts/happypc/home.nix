@@ -42,7 +42,7 @@
         add-rust = true;
         add-nix = true;
         add-go = true;
-        add-csharp = true;
+        add-csharp = false;
       };
     };
     hyprland.monitors = [
