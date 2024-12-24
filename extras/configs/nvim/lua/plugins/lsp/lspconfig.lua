@@ -148,12 +148,14 @@ return {
         },
       },
       somesass_ls = {},
+      haskell_language_server = {},
     }
 
     local mason_install_exclude = {
       'nixd',
       'zls',
       'omnisharp',
+      'haskell_language_server',
     }
 
     require('mason').setup()
