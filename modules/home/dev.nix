@@ -58,7 +58,7 @@ in
       ++ optionals cfg.lang.add-nix [ pkgs.nixd pkgs.nixpkgs-fmt pkgs.statix ]
       ++ optionals cfg.lang.add-haskell [ pkgs.haskell-language-server (pkgs.haskellPackages.ghcWithPackages (pkgs: [ pkgs.cabal-install pkgs.stack ])) ]
       ++ optionals cfg.lang.add-csharp [ pkgs.dotnet-sdk pkgs.omnisharp-roslyn ]
-      ++ optionals cfg.lang.add-gleam [ pkgs.gleam pkgs.erlang ]
+      ++ optionals cfg.lang.add-gleam [ pkgs.gleam pkgs.erlang_26 ]
       ++ optionals cfg.nvim.enable [ pkgs.nodejs pkgs.sqlite pkgs.luarocks pkgs.prettierd pkgs.lua5_1 ]
       ++ [ pkgs.gnumake pkgs.devenv ];
   };
