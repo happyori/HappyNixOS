@@ -69,6 +69,7 @@
   time.timeZone = "America/Los_Angeles";
   time.hardwareClockInLocalTime = true;
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   i18n.defaultLocale = "en_US.UTF-8";
 
   greeter.greetd.enable = false;
@@ -160,6 +161,7 @@
     udev.packages = [ pkgs.gnome-settings-daemon ];
     xserver.enable = true;
     xserver.desktopManager.gnome.enable = false;
+    blueman.enable = true;
     avahi = {
       enable = true;
       nssmdns4 = true;
