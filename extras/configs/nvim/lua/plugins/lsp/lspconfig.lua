@@ -149,6 +149,7 @@ return {
       },
       somesass_ls = {},
       hls = {},
+      gleam = {},
     }
 
     local mason_install_exclude = {
@@ -156,6 +157,7 @@ return {
       'zls',
       'omnisharp',
       'hls',
+      'gleam',
     }
 
     require('mason').setup()

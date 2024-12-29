@@ -39,7 +39,8 @@
         package = pkgs.neovim;
       };
       lang = {
-        add-haskell = true;
+        add-haskell = false;
+        add-gleam = true;
         add-rust = true;
         add-nix = true;
         add-go = true;
