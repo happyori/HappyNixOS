@@ -26,6 +26,7 @@ in
       extraPackages = [
         pkgs.qt6.qt5compat
       ];
+      autoNumlock = true;
     };
 
     environment.systemPackages = with pkgs; [

@@ -70,20 +70,20 @@ return {
               },
             },
           }
-
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-            vim.list_extend(keys[1].keymaps, {
-              {
-                '<leader>lh',
-                function()
-                  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-                end,
-                description = 'Toggle Inlay [H]int',
-              },
-            })
-          end
-          legend.keymaps(keys)
         end
+
+        if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+          vim.list_extend(keys[1].keymaps, {
+            {
+              '<leader>lh',
+              function()
+                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+              end,
+              description = 'Toggle Inlay [H]int',
+            },
+          })
+        end
+        if client then legend.keymaps(keys) end
       end,
     })
 
