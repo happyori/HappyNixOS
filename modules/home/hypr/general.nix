@@ -5,6 +5,7 @@ _:
       input = {
         kb_layout = "us";
         follow_mouse = 1;
+        numlock_by_default = true;
         touchpad = {
           natural_scroll = "no";
         };
@@ -76,6 +77,16 @@ _:
 
       debug = {
         disable_logs = false;
+      };
+
+      "plugin:dynamic-cursors" = {
+        enabled = true;
+        mode = "tilt";
+        threshold = 2;
+
+        tilt = {
+          limit = 7000;
+        };
       };
     };
   };
