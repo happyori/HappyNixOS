@@ -78,16 +78,6 @@ _:
       debug = {
         disable_logs = false;
       };
-
-      "plugin:dynamic-cursors" = {
-        enabled = true;
-        mode = "tilt";
-        threshold = 2;
-
-        tilt = {
-          limit = 7000;
-        };
-      };
     };
   };
 }

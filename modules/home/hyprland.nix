@@ -183,9 +183,6 @@ in
     enable = true;
     systemd.enable = true;
     xwayland.enable = true;
-    plugins = [
-      pkgs.hyprlandPlugins.hypr-dynamic-cursors
-    ];
   };
 
   home.pointerCursor =
