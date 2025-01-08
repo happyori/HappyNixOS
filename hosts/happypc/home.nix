@@ -72,6 +72,10 @@
       }
     ];
   };
+  services.udiskie = {
+    enable = true;
+    automount = true;
+  };
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
   # Let Home Manager install and manage itself.
