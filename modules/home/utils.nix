@@ -32,6 +32,7 @@ in
     services.blueman-applet.enable = true;
     home.packages = [
       pkgs.btop
+      pkgs.audacity
       pkgs.bat
       pkgs.vivaldi
       pkgs.nix-tree
