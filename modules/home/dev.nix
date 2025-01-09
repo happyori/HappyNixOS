@@ -60,6 +60,6 @@ in
       ++ optionals cfg.lang.add-csharp [ pkgs.dotnet-sdk pkgs.omnisharp-roslyn ]
       ++ optionals cfg.lang.add-gleam [ pkgs.gleam pkgs.erlang_26 ]
       ++ optionals cfg.nvim.enable [ pkgs.nodejs pkgs.sqlite pkgs.luarocks pkgs.prettierd pkgs.lua5_1 ]
-      ++ [ pkgs.gnumake pkgs.devenv ];
+      ++ [ pkgs.glow pkgs.gnumake pkgs.devenv ];
   };
 }

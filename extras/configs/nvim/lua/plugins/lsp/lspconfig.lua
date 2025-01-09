@@ -150,6 +150,7 @@ return {
       somesass_ls = {},
       hls = {},
       gleam = {},
+      pyright = {},
     }
 
     local mason_install_exclude = {
