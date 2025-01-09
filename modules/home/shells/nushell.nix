@@ -41,7 +41,7 @@ in
           aliases
         );
       environmentVariables = {
-        EDITOR = "'nvim'";
+        EDITOR = "nvim";
         SSH_AUTH_SOCK = "($env.HOME | path join '1password' 'agent.sock')";
       };
       extraConfig = ''
