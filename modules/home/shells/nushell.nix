@@ -63,7 +63,7 @@ in
       enableNushellIntegration = true;
     };
 
-    programs.starship = {
+    programs.starship = mkIf (!config.custom.shells.murex.enable) {
       enable = true;
       settings = {
         add_newline = true;

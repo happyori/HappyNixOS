@@ -1,5 +1,6 @@
 { pkgs
 , paths
+, lib
 , ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -14,6 +15,17 @@
   custom = {
     wallpaper = paths.wallpapers + /AlienPlanet.jpg;
     shells.nushell.enable = true;
+    shells.murex =
+      let
+        murex_path = paths.custom_pkgs + /murex;
+        module_pkgs = lib.attrNames (lib.filterAttrs (n: v: v == "regular") (builtins.readDir murex_path));
+        module_paths = map (p: "${murex_path}/${p}") module_pkgs;
+        modules = map (pkg: import pkg { inherit pkgs; }) module_paths;
+      in
+      {
+        enable = true;
+        inherit modules;
+      };
     utils.zoxide.enable = true;
     utils.ssh.enable = true;
     hardware.nvidia.enable = true;
@@ -23,7 +35,8 @@
         enable = false;
         with-diff-so-fancy = true;
       };
-      kitty-diff.enable = true;
+      kitty-diff.enable = false;
+      difftastic.enable = true;
     };
     terms.kitty.enable = true;
     discord = {

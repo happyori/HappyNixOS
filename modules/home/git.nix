@@ -21,6 +21,7 @@ in
     kitty-diff = {
       enable = mkEnableOption "Use kitten diff from kitty";
     };
+    difftastic.enable = mkEnableOption "Use difftastic as defaut diff tool";
   };
 
   config = {
@@ -52,6 +53,9 @@ in
             cmd = "kitten diff $LOCAL $REMOTE";
           };
         };
+      difftastic = {
+        inherit (cfg.difftastic) enable;
+      };
       delta = {
         inherit (cfg.delta) enable;
         options = {

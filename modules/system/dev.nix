@@ -8,7 +8,6 @@
 
   virtualisation = {
     containers.enable = true;
-    containers.cdi.dynamic.nvidia.enable = true;
     podman = {
       enable = true;
       dockerCompat = true;
@@ -18,7 +17,6 @@
 
   environment.systemPackages = [
     pkgs.dive
-    pkgs.podman-tui
     pkgs.podman-compose
   ];
 

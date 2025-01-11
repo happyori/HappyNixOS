@@ -18,5 +18,6 @@
       enable = true;
       userDirs.createDirectories = true;
     };
+    home.preferXdgDirectories = true;
   };
 }
