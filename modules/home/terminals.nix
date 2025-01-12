@@ -26,7 +26,7 @@
         enable_audio_bell = false;
         disable_ligatures = "never";
         cursor_shape = "beam";
-        shell = "${pkgs.nushell}/bin/nu";
+        # shell = "${pkgs.nushell}/bin/nu";
         editor = "${pkgs.neovide}/bin/neovide";
         background_opacity = "0.75";
         shell_integration = "enabled";

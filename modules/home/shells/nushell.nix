@@ -63,79 +63,80 @@ in
       enableNushellIntegration = true;
     };
 
-    programs.starship = mkIf (!config.custom.shells.murex.enable) {
-      enable = true;
-      settings = {
-        add_newline = true;
-        format = lib.concatStrings [
-          "[╭⤳](purple) $directory ≀ $hostname⋮ $username ≀ $nix_shell"
-          "$fill"
-          "$localip ≀ $time" # Right side of the prompt
-          "$line_break"
-          "[├](purple) $cmd_duration ≀ $all"
-          "$line_break"
-          "[╰╴](purple)$sudo $character"
-        ];
-        time = {
-          disabled = false;
-          format = "[$time]($style)";
-          use_12hr = true;
-          style = "italic bright-purple";
-        };
-        fill = {
-          symbol = " ";
-        };
-        cmd_duration = {
-          format = "[$duration]($style)";
-          style = "italic purple";
-          show_notifications = true;
-          min_time_to_notify = 45000;
-          min_time = 0;
-        };
-        directory = {
-          home_symbol = "󰟒";
-          truncation_length = 5;
-          truncation_symbol = "⋯ /";
-          read_only = "";
-          substitutions = {
-            "nixos" = " nixos";
-            "hypr" = " hyprland";
-            ".config" = " config";
-          };
-        };
-        character = {
-          success_symbol = "[⊚](bold italic bright-green)";
-          error_symbol = "[󰨐](bold italic bright-red)";
-        };
-        hostname = {
-          ssh_symbol = "󰣀";
-          ssh_only = false;
-          format = "[$ssh_symbol$hostname]($style)";
-        };
-        nix_shell = {
-          symbol = "󰼪";
-          impure_msg = "󰼩 ";
-          pure_msg = "󱩰 ";
-          format = "$symbol shell [$state\\[$name\\]]($style)";
-        };
-        localip = {
-          disabled = false;
-          ssh_only = false;
-        };
-        sudo = {
-          disabled = false;
-          symbol = "⬢";
-          style = "bold green";
-          format = "[$symbol]($style)";
-        };
-        username = {
-          format = "[$user]($style)";
-          show_always = true;
-          style_user = "bold bright-purple";
-        };
-      };
-      enableNushellIntegration = true;
-    };
+    custom.shells.enableStarshipIntegration = true;
+    # programs.starship = mkIf (!config.custom.shells.murex.enable) {
+    #   enable = true;
+    #   settings = {
+    #     add_newline = true;
+    #     format = lib.concatStrings [
+    #       "[╭⤳](purple) $directory ≀ $hostname⋮ $username ≀ $nix_shell"
+    #       "$fill"
+    #       "$localip ≀ $time" # Right side of the prompt
+    #       "$line_break"
+    #       "[├](purple) $cmd_duration ≀ $all"
+    #       "$line_break"
+    #       "[╰╴](purple)$sudo $character"
+    #     ];
+    #     time = {
+    #       disabled = false;
+    #       format = "[$time]($style)";
+    #       use_12hr = true;
+    #       style = "italic bright-purple";
+    #     };
+    #     fill = {
+    #       symbol = " ";
+    #     };
+    #     cmd_duration = {
+    #       format = "[$duration]($style)";
+    #       style = "italic purple";
+    #       show_notifications = true;
+    #       min_time_to_notify = 45000;
+    #       min_time = 0;
+    #     };
+    #     directory = {
+    #       home_symbol = "󰟒";
+    #       truncation_length = 5;
+    #       truncation_symbol = "⋯ /";
+    #       read_only = "";
+    #       substitutions = {
+    #         "nixos" = " nixos";
+    #         "hypr" = " hyprland";
+    #         ".config" = " config";
+    #       };
+    #     };
+    #     character = {
+    #       success_symbol = "[⊚](bold italic bright-green)";
+    #       error_symbol = "[󰨐](bold italic bright-red)";
+    #     };
+    #     hostname = {
+    #       ssh_symbol = "󰣀";
+    #       ssh_only = false;
+    #       format = "[$ssh_symbol$hostname]($style)";
+    #     };
+    #     nix_shell = {
+    #       symbol = "󰼪";
+    #       impure_msg = "󰼩 ";
+    #       pure_msg = "󱩰 ";
+    #       format = "$symbol shell [$state\\[$name\\]]($style)";
+    #     };
+    #     localip = {
+    #       disabled = false;
+    #       ssh_only = false;
+    #     };
+    #     sudo = {
+    #       disabled = false;
+    #       symbol = "⬢";
+    #       style = "bold green";
+    #       format = "[$symbol]($style)";
+    #     };
+    #     username = {
+    #       format = "[$user]($style)";
+    #       show_always = true;
+    #       style_user = "bold bright-purple";
+    #     };
+    #   };
+    #   enableNushellIntegration = true;
+    # };
 
     home.packages = [
       pkgs.nu_scripts

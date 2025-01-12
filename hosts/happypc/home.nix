@@ -23,9 +23,10 @@
         modules = map (pkg: import pkg { inherit pkgs; }) module_paths;
       in
       {
-        enable = true;
+        enable = false;
         inherit modules;
       };
+    shells.fish.enable = true;
     utils.zoxide.enable = true;
     utils.ssh.enable = true;
     hardware.nvidia.enable = true;

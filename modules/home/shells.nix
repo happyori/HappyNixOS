@@ -12,5 +12,7 @@ in
   imports = [
     ./shells/nushell.nix
     ./shells/murex.nix
+    ./shells/fish.nix
+    ./shells/starship.nix
   ];
 }
