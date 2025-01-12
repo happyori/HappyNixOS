@@ -17,6 +17,7 @@
           lz = "lazygit";
           l = "ls -lah --no-time --no-permissions --no-time --no-user";
           ll = "ls -lah --absolute=on";
+          lla = "ls -lah";
           lld = "duf";
           gs = "git status";
         };
