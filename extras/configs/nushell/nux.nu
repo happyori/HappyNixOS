@@ -83,7 +83,7 @@ def "nux edit" [
     print 'Editing finished, starting the diff'
   }
   if not $skip {
-    git -p difftool
+    git -p diff
   }
   let commitmsg = nixos-rebuild list-generations --json --flake $"($env.FLAKE)#(hostname)"
     | from json

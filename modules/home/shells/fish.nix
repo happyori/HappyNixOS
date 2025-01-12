@@ -15,13 +15,13 @@
         preferAbbrs = true;
         shellAbbrs = {
           lz = "lazygit";
-          l = "ls -la";
-          ll = "ls -la --absolute=on";
+          l = "ls -lah --no-time --no-permissions --no-time --no-user";
+          ll = "ls -lah --absolute=on";
           lld = "duf";
           gs = "git status";
         };
         shellAliases = {
-          ls = "eza --git --smart-group --group-directories-first";
+          ls = "eza --icons always --color always --git --smart-group --group-directories-first";
         };
       };
       programs.direnv.enableFishIntegration = true;
