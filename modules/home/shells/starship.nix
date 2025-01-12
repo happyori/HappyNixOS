@@ -115,7 +115,7 @@ in
           disabled = false;
           symbol = "⋈┈";
           style = "bold italic bright-purple";
-          format = "[$symbol]($style)";
+          format = "[ $symbol]($style)";
         };
         username = {
           format = "[ ⭘ $user]($style)";
