@@ -14,6 +14,10 @@
     nixd.url = "github:nix-community/nixd";
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
     ags.url = "github:Aylur/ags";
+    nux = {
+      url = "git+ssh://git@github.com:happyori/nux.git?shallow=1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
