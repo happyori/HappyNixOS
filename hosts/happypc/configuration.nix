@@ -130,6 +130,7 @@
       cachix
       ripgrep
       networkmanagerapplet
+      inputs.nux.packages.${system}.default
     ];
     pathsToLink = [ "/share/icons" ];
     gnome.excludePackages =
