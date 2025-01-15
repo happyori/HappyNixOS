@@ -71,6 +71,7 @@ in
         pkgs.devenv
         pkgs.duf
         pkgs.curlie
+        pkgs.jq
       ];
   };
 }
