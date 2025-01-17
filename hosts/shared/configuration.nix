@@ -103,31 +103,28 @@
       cachix
       ripgrep
       networkmanagerapplet
-      cheese
       inputs.nux.packages.${system}.default
     ];
     pathsToLink = [ "/share/icons" ];
-    gnome.excludePackages =
-      [
-        pkgs.gnome-photos
-        pkgs.gnome-tour
-        pkgs.gnome-online-accounts
-        pkgs.evolution-data-server
-        pkgs.gedit
-      ]
-      ++ (with pkgs.gnome; [
-        gnome-music
-        gnome-terminal
-        epiphany
-        geary
-        evince
-        gnome-characters
-        gnome-calendar
-        totem
-        tali
-        iagno
-        hitori
-        atomix
-      ]);
+    gnome.excludePackages = with pkgs; [
+      gnome-photos
+      gnome-tour
+      gnome-online-accounts
+      gedit
+      evolution-data-server
+      cheese
+      gnome-music
+      gnome-terminal
+      epiphany
+      geary
+      evince
+      gnome-characters
+      gnome-calendar
+      totem
+      tali
+      iagno
+      hitori
+      atomix
+    ];
   };
 }
