@@ -64,7 +64,7 @@
   services = {
     udev.packages = [ pkgs.gnome-settings-daemon ];
     xserver.enable = true;
-    xserver.desktopManager.gnome.enable = false;
+    xserver.desktopManager.gnome.enable = lib.mkDefault false;
     blueman.enable = true;
     openssh.enable = lib.mkDefault true;
     avahi = {
