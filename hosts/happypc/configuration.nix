@@ -2,7 +2,6 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 { config
-, lib
 , pkgs
 , system
 , inputs
@@ -12,6 +11,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../shared/configuration.nix
     (paths.sys_modules + /default.nix)
   ];
 
@@ -42,20 +42,6 @@
     supportedFilesystems = [ "zfs" ];
   };
 
-  nix.settings = {
-    substituters = [
-      "https://hyprland.cachix.org"
-      "https://nix-community.cachix.org"
-      "https://cache.nixos.org"
-    ];
-    trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-    trusted-users = [ "happy" ];
-    experimental-features = [ "nix-command" "flakes" ];
-  };
-
   networking = {
     hostName = "happypc"; # Define your hostname.
     networkmanager.enable = true; # Easiest to use and most distros use this by default.
@@ -66,127 +52,25 @@
   };
 
   # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
   time.hardwareClockInLocalTime = true;
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  greeter.greetd.enable = false;
-  greeter.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-  programs = {
-    dconf.enable = true;
-    hyprland = {
-      enable = true;
-    };
-    fish.enable = true;
-    fish.useBabelfish = true;
-    nix-ld.enable = true;
-    nh = {
-      enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = "/home/happy/.config/nixos/";
-    };
-    npm.enable = true;
-    nix-index = {
-      enableZshIntegration = false;
-      enableBashIntegration = false;
-      enableFishIntegration = false;
-    };
-  };
-  hardware.pulseaudio.enable = false;
 
   custom = {
     hardware.nvidia.enable = true;
     games.steam.enable = true;
     games.minecraft.enable = true;
-    _1password.enable = true;
-  };
-  security.polkit.enable = true;
-
-  environment = {
-    systemPackages = with pkgs; [
-      vim
-      wget
-      curl
-      bash
-      git
-      elegant-sddm
-      gcc
-      killall
-      polkit_gnome
-      gtk3
-      gtk4
-      unzip
-      fswatch
-      fd
-      fzf
-      gnomeExtensions.appindicator
-      babelfish
-      cachix
-      ripgrep
-      networkmanagerapplet
-      inputs.nux.packages.${system}.default
-    ];
-    pathsToLink = [ "/share/icons" ];
-    gnome.excludePackages =
-      [
-        pkgs.gnome-photos
-        pkgs.gnome-tour
-        pkgs.gnome-online-accounts
-        pkgs.evolution-data-server
-        pkgs.gedit
-      ]
-      ++ (with pkgs.gnome; [
-        cheese
-        gnome-music
-        gnome-terminal
-        epiphany
-        geary
-        evince
-        gnome-characters
-        gnome-calendar
-        totem
-        tali
-        iagno
-        hitori
-        atomix
-      ]);
   };
 
-  services = {
-    udev.packages = [ pkgs.gnome-settings-daemon ];
-    xserver.enable = true;
-    xserver.desktopManager.gnome.enable = false;
-    blueman.enable = true;
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-      wireplumber.enable = true;
-    };
-    openssh = {
-      enable = true;
-      ports = [ 401 ];
-      authorizedKeysInHomedir = true;
-      settings = {
-        UseDns = true;
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
-        X11Forwarding = false;
-        PermitRootLogin = "no";
-        AllowUsers = [ "happy" ];
-      };
+  services.openssh = {
+    enable = true;
+    ports = [ 401 ];
+    authorizedKeysInHomedir = true;
+    settings = {
+      UseDns = true;
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      X11Forwarding = false;
+      PermitRootLogin = "no";
+      AllowUsers = [ "happy" ];
     };
   };
 
@@ -198,14 +82,6 @@
     ];
     shell = pkgs.fish;
   };
-
-  nixpkgs.overlays = [
-    inputs.nixd.overlays.default
-    (final: prev: {
-      inherit (inputs.nixpkgs.legacyPackages.${system}) networkmanager-openconnect;
-    })
-  ];
-  nixpkgs.config.allowUnfree = true;
 
   home-manager = {
     useGlobalPkgs = true;

@@ -12,12 +12,12 @@
   ];
 
   custom = {
-    hyprland.monitors = [ ];
     wallpaper = paths.wallpapers + /AlienPlanet.jpg;
-    hardware.nvidia.enable = false;
     shells.nushell.enable = true;
+    shells.fish.enable = true;
     utils.zoxide.enable = true;
     utils.ssh.enable = true;
+    hardware.nvidia.enable = false;
     git = {
       with_lazygit = true;
       delta = {
@@ -45,6 +45,11 @@
         add-go = true;
       };
     };
+    hyprland.monitors = [ ];
+  };
+  services.udiskie = {
+    enable = true;
+    automount = true;
   };
 
   home.stateVersion = "23.11"; # Please read the comment before changing.

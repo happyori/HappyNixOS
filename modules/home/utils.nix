@@ -40,6 +40,7 @@ in
       pkgs.blueman
       pkgs.qpdfview
       pkgs.via
+      pkgs.vlc
       zen
     ];
   };
