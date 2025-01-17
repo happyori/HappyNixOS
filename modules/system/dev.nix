@@ -1,4 +1,7 @@
-{ pkgs, ... }:
+{ pkgs
+, config
+, ...
+}:
 {
   programs.direnv = {
     enable = true;
@@ -20,5 +23,5 @@
     pkgs.podman-compose
   ];
 
-  hardware.nvidia-container-toolkit.enable = true;
+  hardware.nvidia-container-toolkit.enable = config.custom.hardware.nvidia.enable;
 }
