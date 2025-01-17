@@ -103,6 +103,7 @@
       cachix
       ripgrep
       networkmanagerapplet
+      cheese
       inputs.nux.packages.${system}.default
     ];
     pathsToLink = [ "/share/icons" ];
@@ -115,7 +116,6 @@
         pkgs.gedit
       ]
       ++ (with pkgs.gnome; [
-        cheese
         gnome-music
         gnome-terminal
         epiphany
