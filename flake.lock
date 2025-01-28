@@ -532,10 +532,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1736932006,
-        "narHash": "sha256-QWlcjVn62tfyfi6tLomFhk09tivuZIL2fDQ1vnb+u3Q=",
+        "lastModified": 1738022972,
+        "narHash": "sha256-vHpqNCNZpTiDnBTCB37fYPmSK4OncSTyDFHZAafc+D8=",
         "ref": "refs/heads/main",
-        "rev": "6f7c8e73c8715f326e5d2de991ee30b0ea4b487b",
+        "rev": "5c800fff83498000c00a71401af18173b13208cf",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/happyori/nux.git"
