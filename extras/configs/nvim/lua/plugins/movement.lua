@@ -54,8 +54,13 @@ return {
           description = 'Empowered w, e, b motions',
           keymaps = {
             { 's', flash 'jump', description = '[S]earch', mode = { 'n', 'x', 'o' } },
-            { 'S', flash 'treesitter', description = 'Treesitter [S]earch', mode = { 'n', 'x', 'o' } },
-            { '<C-s>', flash 'toggle', description = 'Toggle Flash Search', mode = { 'c' } },
+            {
+              'S',
+              flash 'treesitter',
+              description = 'Treesitter [S]earch',
+              mode = { 'n', 'x', 'o' },
+            },
+            { '<C-f>', flash 'toggle', description = 'Toggle Flash Search', mode = { 'c' } },
           },
         },
       }

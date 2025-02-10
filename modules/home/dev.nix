@@ -72,6 +72,9 @@ in
         pkgs.duf
         pkgs.curlie
         pkgs.jq
+        pkgs.yazi
+        pkgs.imagemagick
+        pkgs.ffmpeg
       ];
   };
 }

@@ -3,6 +3,7 @@ return {
   {
     'rasulomaroff/cursor.nvim',
     event = 'VeryLazy',
+    enabled = true,
     opts = {
       cursors = {
         {
@@ -31,7 +32,11 @@ return {
     cmd = 'NoNeckPain',
   },
   { 'NvChad/nvim-colorizer.lua', lazy = false },
-  { 'RRethy/vim-illuminate', event = 'BufEnter' },
+  {
+    'sontungexpt/stcursorword',
+    event = 'VeryLazy',
+    opts = {},
+  },
   {
     'lukas-reineke/indent-blankline.nvim',
     event = 'BufEnter',

@@ -43,6 +43,7 @@ return {
   {
     'windwp/nvim-ts-autotag',
     lazy = false,
+    opts = {},
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
@@ -51,6 +52,7 @@ return {
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
     event = 'VeryLazy',
+    opts = {},
   },
   {
     'RRethy/nvim-treesitter-endwise',

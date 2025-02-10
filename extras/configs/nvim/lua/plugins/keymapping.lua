@@ -1,4 +1,4 @@
----@alias KeyOpts vim.api.keyset.cmd_opts
+---@alias KeyOpts vim.api.keyset.keymap
 ---@alias LegendKey { [0]: string, [1]: string|fun(), description?: string, mode?: string|string[], opts?: KeyOpts }
 ---@alias LegendItemGroup { itemgroup: string, icon?: string, description?: string, keymaps: LegendKey[] }
 ---@alias LegendKeys (LegendItemGroup|LegendKey)[]
@@ -24,7 +24,6 @@ return {
         { '<leader>q', '<cmd>q<cr>', description = '[Q]uit window' },
         { '<leader>Dq', vim.diagnostic.setloclist, description = 'Open [D]iagnostic [Q]uickfix list' },
         { '<Esc><Esc>', '<C-\\><C-n>', description = 'Exit terminal mode', mode = 't' },
-        { '<leader>`', '<cmd>LegendaryScratchToggle<cr>', description = '[`] Toggle open scratch pad' },
         { '<C-s>', '<cmd>w<cr><Esc>', description = '[W]rite to file', mode = { 'n', 'i' } },
         { '<leader>uc', '<cmd>NoNeckPain<cr>', description = '[C]enter UI' },
         {
@@ -43,6 +42,8 @@ return {
             { '<S-h>', '<cmd>BufferLineCyclePrev<cr>', description = 'Move focus to the previous buffer' },
             { '<S-l>', '<cmd>BufferLineCycleNext<cr>', description = 'Move focus to the next buffer' },
             { '<leader>W', '<cmd>bdelete<cr>', description = 'Close Buffer' },
+            { '<leader>bv', '<cmd>vsplit<cr>', description = '[V]ertical split' },
+            { '<leader>bh', '<cmd>split<cr>', description = '[H]orizontal split' },
             { '<leader>bo', '<cmd>BufferLineCloseOthers<cr>', description = 'Close [O]ther buffers' },
             { '<leader>bp', '<cmd>BufferLineTogglePin<cr>', description = 'Toggle Buffer [P]in' },
             { '<leader>bP', '<cmd>BufferLinePick<cr>', description = 'Start [P]icking' },
