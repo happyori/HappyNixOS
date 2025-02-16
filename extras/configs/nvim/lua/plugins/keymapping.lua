@@ -8,7 +8,7 @@
 return {
   {
     'mrjones2014/legendary.nvim',
-    version = 'v2.13.11',
+    version = '*',
     priority = 10000,
     lazy = false,
     dependencies = {
@@ -51,16 +51,57 @@ return {
           },
         },
       },
+      sort = {
+        frecency = false,
+      },
       autocmds = {
         {
-          name = 'happy-highlight-yank',
+          name = 'happy_highlight_on_yank',
           clear = true,
           {
             'TextYankPost',
             function()
-              vim.highlight.on_yank()
+              vim.highlight.on_yank { higroup = 'Visual' }
             end,
             description = 'Highlight when yanking text',
+          },
+        },
+        {
+          name = 'Neorg Attach Source',
+          clear = true,
+          {
+            'BufRead',
+            function()
+              local cmp = require 'cmp'
+              cmp.setup.buffer {
+                sources = {
+                  { name = '[Neorg]' },
+                  { name = 'buffer', group_index = 1 },
+                },
+              }
+            end,
+            opts = {
+              pattern = { '%.norg$' },
+            },
+          },
+        },
+        {
+          name = 'Cargo Attach Source',
+          clear = true,
+          {
+            'BufRead',
+            function()
+              local cmp = require 'cmp'
+              cmp.setup.buffer {
+                sources = {
+                  { name = 'crates' },
+                },
+              }
+            end,
+            description = 'Attaches crates as a source for cmp',
+            opts = {
+              pattern = { 'Cargo.toml' },
+            },
           },
         },
       },

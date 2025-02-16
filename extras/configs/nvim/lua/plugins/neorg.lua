@@ -22,30 +22,4 @@ return {
       },
     },
   },
-  {
-    'mrjones2014/legendary.nvim',
-    opts = {
-      autocmds = {
-        {
-          name = 'Neorg Attach Source',
-          clear = true,
-          {
-            'BufRead',
-            function()
-              local cmp = require 'cmp'
-              cmp.setup.buffer {
-                sources = {
-                  { name = '[Neorg]' },
-                  { name = 'buffer', group_index = 1 },
-                },
-              }
-            end,
-            opts = {
-              pattern = { '%.norg$' },
-            },
-          },
-        },
-      },
-    },
-  },
 }

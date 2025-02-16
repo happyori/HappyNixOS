@@ -99,30 +99,4 @@ return {
       },
     },
   },
-  {
-    'mrjones2014/legendary.nvim',
-    opts = {
-      autocmds = {
-        {
-          name = 'Cargo Attach Source',
-          clear = true,
-          {
-            'BufRead',
-            function()
-              local cmp = require 'cmp'
-              cmp.setup.buffer {
-                sources = {
-                  { name = 'crates' },
-                },
-              }
-            end,
-            description = 'Attaches crates as a source for cmp',
-            opts = {
-              pattern = { 'Cargo.toml' },
-            },
-          },
-        },
-      },
-    },
-  },
 }

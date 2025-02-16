@@ -37,6 +37,12 @@ return {
               { '<leader>lr', vim.lsp.buf.rename, description = '[R]ename' },
               { '<leader>la', vim.lsp.buf.code_action, description = 'Code [A]ction' },
               { 'gD', vim.lsp.buf.declaration, description = '[G]oto [D]eclaration' },
+              {
+                'gt',
+                vim.lsp.buf.type_definition,
+                description = '[G]oto [T]ype Definition',
+                opts = { noremap = true },
+              },
             },
           },
         }
@@ -134,6 +140,10 @@ return {
           FormattingOptions = {
             EnableEditorConfigSupport = true,
             OrganizeImports = true,
+          },
+          RoslynExtensionsOptions = {
+            EnableAnalyzersSupport = true,
+            EnableImportCompletion = true,
           },
         },
       },
