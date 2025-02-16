@@ -12,8 +12,8 @@ return {
     local legend = require 'legendary'
     local which = require 'which-key'
     which.add {
-      '<leader>w',
-      desc = '[W]hip',
+      '<leader>p',
+      desc = 'Whip Scratch[P]ad',
     }
     whip.setup(opts)
 
@@ -23,11 +23,11 @@ return {
         itemgroup = '[W]hip scratch pad',
         description = 'Scratch pad management',
         keymaps = {
-          { '<leader>wo', whip.open, description = '[O]pen last scratch pad' },
-          { '<leader>wc', whip.make, description = '[C]reate scratch pad' },
-          { '<leader>wd', whip.drop, description = '[D]rop scratch pad' },
-          { '<leader>wf', whip.find_file, description = '[F]ind scratch pad' },
-          { '<leader>wg', whip.find_grep, description = '[G]rep all scratch pads' },
+          { '<leader>po', whip.open, description = '[O]pen last scratch pad' },
+          { '<leader>pc', whip.make, description = '[C]reate scratch pad' },
+          { '<leader>pd', whip.drop, description = '[D]rop scratch pad' },
+          { '<leader>pf', whip.find_file, description = '[F]ind scratch pad' },
+          { '<leader>pg', whip.find_grep, description = '[G]rep all scratch pads' },
         },
       },
     }

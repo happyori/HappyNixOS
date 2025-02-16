@@ -37,6 +37,15 @@ return {
 
             bind(keys)
           end,
+          -- settings = {
+          --   ['rust-analyzer'] = {
+          --     completion = {
+          --       callable = {
+          --         snippets = 'none',
+          --       },
+          --     },
+          --   },
+          -- },
         },
       }
     end,
