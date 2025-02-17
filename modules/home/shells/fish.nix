@@ -19,6 +19,7 @@
           lla = "ls -lah";
           lld = "duf";
           gs = "git status";
+          dr = "direnv reload";
         };
         shellAliases = {
           l = "ls -lah --no-permissions --no-time --no-user";
