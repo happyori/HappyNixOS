@@ -25,6 +25,9 @@
           l = "ls -lah --no-permissions --no-time --no-user";
           ls = "eza --icons always --color always --git --smart-group --group-directories-first";
         };
+        functions = {
+          edit-vim = "neovide ~/.config/nvim/init.lua";
+        };
       };
       programs.direnv.enableFishIntegration = true;
       programs.eza.enableFishIntegration = false;
