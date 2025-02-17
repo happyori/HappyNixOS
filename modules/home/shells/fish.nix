@@ -26,7 +26,12 @@
           ls = "eza --icons always --color always --git --smart-group --group-directories-first";
         };
         functions = {
-          edit-vim = "neovide ~/.config/nvim/init.lua";
+          edit-vim = ''
+            set -f orig_pwd $PWD
+            cd ~/.config/nvim/
+            neovide init.lua --fork
+            cd $orig_pwd
+          '';
         };
       };
       programs.direnv.enableFishIntegration = true;
