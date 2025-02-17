@@ -43,6 +43,7 @@ return {
     cmd = 'Neogit',
     config = true,
     opts = {
+      disable_signs = true,
       graph_style = 'kitty',
       commit_editor = {
         kind = 'floating',

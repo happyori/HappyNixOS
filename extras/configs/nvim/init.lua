@@ -5,4 +5,4 @@ require 'options'
 require 'manager'
 
 vim.o.background = 'dark'
-vim.cmd [[ colorscheme neofusion ]]
+vim.cmd [[ colorscheme modus ]]

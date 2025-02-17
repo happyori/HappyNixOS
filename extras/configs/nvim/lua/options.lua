@@ -31,6 +31,18 @@ op.list = true
 op.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 op.inccommand = 'split'
+op.fillchars = {
+  foldopen = '',
+  foldclose = '',
+  fold = ' ',
+  foldsep = ' ',
+  diff = '╱',
+  eob = ' ',
+}
+op.foldlevel = 99
+op.grepprg = 'rg --vimgrep'
+op.grepformat = '%f:%l:%c:%m'
+op.virtualedit = 'block'
 
 op.conceallevel = 2
 
