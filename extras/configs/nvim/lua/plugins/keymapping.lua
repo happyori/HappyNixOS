@@ -50,6 +50,15 @@ return {
             { '<leader>w', '<cmd>w<cr>', description = '[W]rite to file' },
           },
         },
+        {
+          itemgroup = 'Git commands',
+          keymaps = {
+            { '<leader>gh', '<cmd>Gitsigns preview_hunk_inline<cr>', description = '|Preview [H]unk' },
+            { '<leader>gn', '<cmd>Neogit kind=vsplit<cr>', description = '|Open [N]eogit' },
+            { '<leader>gc', '<cmd>Neogit commit kind=floating<cr>', description = '|Open [C]ommits' },
+            { '<leader>gb', '<cmd>Neogit branch kind=vsplit<cr>', description = '|Open [B]raches' },
+          },
+        },
       },
       sort = {
         frecency = false,
@@ -125,6 +134,7 @@ return {
         { '<leader>lC', group = '[C]argo' },
         { '<leader>lR', group = '[R]ust' },
         { '<leader>u', group = '[U]I' },
+        { '<leader>g', group = '[G]it' },
       },
     },
   },

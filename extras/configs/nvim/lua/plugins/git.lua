@@ -34,6 +34,22 @@ return {
     },
   },
   {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    cmd = 'Neogit',
+    config = true,
+    opts = {
+      graph_style = 'kitty',
+      commit_editor = {
+        kind = 'floating',
+      },
+    },
+  },
+  {
     'akosho/toggleterm.nvim',
     init = function(_)
       local Terminal = require('toggleterm.terminal').Terminal

@@ -31,7 +31,7 @@
         background_opacity = "0.75";
         shell_integration = "enabled";
       };
-      themeFile = "Duotone_Dark";
+      themeFile = "Modus_Vivendy";
     };
   };
 }
