@@ -3,22 +3,38 @@
 return {
   {
     'folke/trouble.nvim',
+    event = 'VeryLazy',
     cmd = 'Trouble',
-    config = true,
+    ---@module 'trouble.nvim'
+    ---@type trouble.Config
+    ---@diagnostic disable-next-line: missing-fields
+    opts = {
+      auto_close = true,
+      auto_open = false,
+      focus = false,
+      pinned = true,
+      ---@type trouble.Window.opts
+      win = {
+        position = 'right',
+        size = 0.4,
+      },
+    },
     keys = function(_, keys)
       local bind = require('legendary').keymaps
-      local toolbox = require 'legendary.toolbox'
 
       ---@type LegendKeys
       local legend = {
         {
-          itemgroup = '[T]rouble',
-          description = 'Trouble (Quickfix alt) keybinds',
+          itemgroup = 'Diagnostics',
           keymaps = {
-            { '<leader>td', '<cmd>Trouble diagnostics toggle<cr>', description = 'Global [D]iagnostics' },
-            { '<leader>tD', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', description = 'Local [D]iagnostics' },
-            { '<leader>tl', '<cmd>Trouble loclist toggle<cr>', description = '[L]ocation List' },
-            { '<leader>tq', '<cmd>Trouble qflist toggle<cr>', description = '[Q]uickfix List' },
+            { '<leader>dD', '<cmd>Trouble diagnostics toggle<cr>', description = '|Global [D]iagnostics' },
+            {
+              '<leader>dd',
+              '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+              description = '|Local [D]iagnostics',
+            },
+            { '<leader>dl', '<cmd>Trouble loclist toggle<cr>', description = '[L]ocation List' },
+            { '<leader>dq', '<cmd>Trouble qflist toggle<cr>', description = '[Q]uickfix List' },
           },
         },
       }

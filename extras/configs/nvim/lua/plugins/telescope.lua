@@ -16,9 +16,19 @@ return {
       },
       'nvim-telescope/telescope-ui-select.nvim',
       'nvim-tree/nvim-web-devicons',
+      'folke/trouble.nvim',
     },
     config = function(_, opts)
       local telescope = require 'telescope'
+      local trouble = require 'trouble.sources.telescope'
+      opts = vim.tbl_deep_extend('force', opts, {
+        defaults = {
+          mappings = {
+            i = { ['<C-t>'] = trouble.open, ['<C-S-t>'] = trouble.add },
+            n = { ['<C-t>'] = trouble.open, ['<C-S-t>'] = trouble.add },
+          },
+        },
+      })
       telescope.setup(opts)
 
       pcall(telescope.load_extension, 'fzf')

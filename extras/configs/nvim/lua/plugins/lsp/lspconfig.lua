@@ -6,7 +6,7 @@ return {
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     { 'j-hui/fidget.nvim', opts = {} },
-    'hrsh7th/cmp-nvim-lsp',
+    -- 'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -94,18 +94,30 @@ return {
     })
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    -- capabilities = vim.tbl_deep_extend('force', capabilities, v)
+    capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true,
     }
+
+    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+      border = 'rounded',
+      title = 'Quick Documentation',
+    })
+    -- vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    --   virtual_text = false,
+    --   signs = true,
+    --   update_in_insert = false,
+    --   underline = true,
+    -- })
 
     local servers = {
       lua_ls = {
         settings = {
           Lua = {
             completion = {
-              callSnippet = 'Replace',
+              callSnippet = 'Both',
             },
           },
         },

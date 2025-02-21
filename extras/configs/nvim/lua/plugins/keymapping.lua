@@ -22,7 +22,6 @@ return {
       keymaps = {
         { '<Esc>', '<cmd>nohlsearch<cr>' },
         { '<leader>q', '<cmd>q<cr>', description = '[Q]uit window' },
-        { '<leader>Dq', vim.diagnostic.setloclist, description = 'Open [D]iagnostic [Q]uickfix list' },
         { '<Esc><Esc>', '<C-\\><C-n>', description = 'Exit terminal mode', mode = 't' },
         { '<C-s>', '<cmd>w<cr><Esc>', description = '[W]rite to file', mode = { 'n', 'i' } },
         { '<leader>uc', '<cmd>NoNeckPain<cr>', description = '[C]enter UI' },
@@ -59,6 +58,13 @@ return {
             { '<leader>gb', '<cmd>Neogit branch kind=vsplit<cr>', description = '|Open [B]raches' },
           },
         },
+        {
+          itemgroup = 'Lazy commands',
+          keymaps = {
+            { '<leader>Lu', '<cmd>Lazy sync<cr>', description = '[L]azy [U]pdate' },
+            { '<leader>Lh', '<cmd>Lazy home<cr>', description = '[L]azy [H]ome' },
+          },
+        },
       },
       sort = {
         frecency = false,
@@ -75,45 +81,8 @@ return {
             description = 'Highlight when yanking text',
           },
         },
-        {
-          name = 'Neorg Attach Source',
-          clear = true,
-          {
-            'BufRead',
-            function()
-              local cmp = require 'cmp'
-              cmp.setup.buffer {
-                sources = {
-                  { name = '[Neorg]' },
-                  { name = 'buffer', group_index = 1 },
-                },
-              }
-            end,
-            opts = {
-              pattern = { '%.norg$' },
-            },
-          },
-        },
-        {
-          name = 'Cargo Attach Source',
-          clear = true,
-          {
-            'BufRead',
-            function()
-              local cmp = require 'cmp'
-              cmp.setup.buffer {
-                sources = {
-                  { name = 'crates' },
-                },
-              }
-            end,
-            description = 'Attaches crates as a source for cmp',
-            opts = {
-              pattern = { 'Cargo.toml' },
-            },
-          },
-        },
       },
+      commands = {},
     },
   },
   {
@@ -127,14 +96,15 @@ return {
       spec = {
         { '<leader>s', group = '[S]earch' },
         { '<leader>l', group = '[L]SP' },
-        { '<leader>t', group = '[T]rouble' },
-        { '<leader>D', group = 'Quickfix [D]iagnostics' },
+        { '<leader>d', group = '[D]ignostics' },
         { '<leader>T', group = '[T]erminals' },
         { '<leader>b', group = '[B]uffer' },
         { '<leader>lC', group = '[C]argo' },
         { '<leader>lR', group = '[R]ust' },
         { '<leader>u', group = '[U]I' },
         { '<leader>g', group = '[G]it' },
+        { '<leader>L', group = '[L]azy' },
+        { '<leader>n', group = '[N]eorg' },
       },
     },
   },
