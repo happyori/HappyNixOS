@@ -53,9 +53,6 @@ in
       enable = cfg.neovide.enable;
       source = mkOutOfStoreSymlink (config.xdg.configHome + "/nixos/extras/configs/neovide");
     };
-    home.sessionPath = [
-      "$HOME/.dotnet/tools/"
-    ];
 
     home.packages =
       (lib.concatMap optionalPackage [
