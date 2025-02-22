@@ -94,7 +94,6 @@ return {
     })
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- capabilities = vim.tbl_deep_extend('force', capabilities, v)
     capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,
@@ -105,12 +104,6 @@ return {
       border = 'rounded',
       title = 'Quick Documentation',
     })
-    -- vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    --   virtual_text = false,
-    --   signs = true,
-    --   update_in_insert = false,
-    --   underline = true,
-    -- })
 
     local servers = {
       lua_ls = {
