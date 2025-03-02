@@ -10,6 +10,7 @@ let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in
 {
+  imports = [ ./zellij.nix ];
   options.custom.dev = {
     neovide.enable = mkEnableOption "Enable neovide settings";
     neovide.package = mkOption {
