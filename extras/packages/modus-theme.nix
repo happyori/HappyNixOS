@@ -13,7 +13,7 @@ pkgs.stdenv.mkDerivation {
   };
 
   installPhase = ''
-    mkdir -p $out/themes/extras
-    cp -R ./extras/ $out/themes/extras
+    mkdir -p $out/themes/
+    cp -R ./extras/ $out/themes/
   '';
 }
