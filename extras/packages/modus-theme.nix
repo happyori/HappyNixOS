@@ -9,7 +9,7 @@ pkgs.stdenv.mkDerivation {
     owner = "miikanissi";
     repo = "modus-themes.nvim";
     rev = "1f9ba82c732a49cdafc80f904286dd70f02c4310";
-    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    hash = "sha256-H5E5dRFjUnt+paEJ5IJupSqBzcI4i0zufS8mggtvn9Y=";
   };
 
   installPhase = ''
