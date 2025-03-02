@@ -13,7 +13,7 @@ in
   };
 
   xdg.configFile."zellij/config.kdl" = {
-    source = mkOutOfStoreSymlink (paths.app_configs + "zellij/config.kdl");
+    source = mkOutOfStoreSymlink (paths.app_configs + "/zellij/config.kdl");
   };
 
   xdg.configFile."zellij/themes/modus_vivendi.kdl" = {
