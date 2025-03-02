@@ -1,7 +1,8 @@
 { pkgs, paths, ... }:
 let
-  modus = import paths.custom_pkgs.modus-theme { inherit pkgs; };
-  theme = "${modus.out}/themes/extras/zellij/modus_vivendi.kdl";
+  path = paths.custom_pkgs + "/modus_vivendi.nix";
+  modus_der = import path { inherit pkgs; };
+  theme = "${modus_der}/themes/extras/zellij/modus_vivendi.kdl";
 in
 {
   programs.zellij = {
