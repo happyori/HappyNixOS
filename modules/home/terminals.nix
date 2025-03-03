@@ -20,6 +20,10 @@
         "ctrl+v" = "paste_from_clipboard";
         "ctrl+u" = "scroll_page_up";
         "ctrl+d" = "scroll_page_down";
+        "ctrl+shift+h" = "";
+        "ctrl+shift+j" = "";
+        "ctrl+shift+k" = "";
+        "ctrl+shift+l" = "";
       };
       settings = {
         scrollback_lines = 10000;
