@@ -8,7 +8,7 @@ in
 {
   programs.zellij = {
     enable = true;
-    enableFishIntegration = false;
+    enableFishIntegration = true;
     settings = { };
   };
 
