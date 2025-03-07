@@ -46,14 +46,6 @@ in
       enable = true;
     };
 
-    xdg.configFile."direnv/direnv.toml" = {
-      text = ''
-        [global]
-        warn_timeout = "2m"
-        hide_env_diff = true
-      '';
-    };
-
     xdg.configFile.nvim = {
       enable = cfg.nvim.with-personal-setup;
       source = mkOutOfStoreSymlink (config.xdg.configHome + "/nixos/extras/configs/nvim");
