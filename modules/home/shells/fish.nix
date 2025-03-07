@@ -32,6 +32,9 @@
             neovide init.lua --fork
             cd $orig_pwd
           '';
+          nuke-vim = ''
+            ps -C nvim -o pid | tail -1 | xargs kill -s KILL
+          '';
         };
       };
       programs.direnv.enableFishIntegration = true;
