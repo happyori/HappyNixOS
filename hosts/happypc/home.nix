@@ -81,6 +81,15 @@
         scale = "auto";
       }
       {
+        name = "DP-2";
+        width = 3440;
+        height = 1440;
+        refresh = 164.90;
+        x = -3440;
+        y = 0;
+        scale = "auto";
+      }
+      {
         name = "Unknown-1";
         enable = false;
       }
