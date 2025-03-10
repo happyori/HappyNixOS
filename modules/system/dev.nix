@@ -1,6 +1,7 @@
-{ pkgs
-, config
-, ...
+{
+  pkgs,
+  config,
+  ...
 }:
 {
   programs.direnv = {
@@ -21,7 +22,9 @@
     podman = {
       enable = true;
       dockerCompat = true;
-      defaultNetwork.settings = { dns_enabled = true; };
+      defaultNetwork.settings = {
+        dns_enabled = true;
+      };
     };
   };
 

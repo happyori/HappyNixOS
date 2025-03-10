@@ -1,10 +1,12 @@
-{ config
-, pkgs
-, system
-, inputs
-, paths
-, ...
-}: {
+{
+  config,
+  pkgs,
+  system,
+  inputs,
+  paths,
+  ...
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ../shared/configuration.nix
@@ -28,19 +30,21 @@
   boot.supportedFilesystems = [ "zfs" ];
 
   nix = {
-    buildMachines = [{
-      system = "x86_64-linux";
-      speedFactor = 2;
-      supportedFeatures = [
-        "kvm"
-        "big-parallel"
-        "benchmark"
-        "nixos-test"
-      ];
-      protocol = "ssh-ng";
-      maxJobs = 4;
-      hostName = "builder";
-    }];
+    buildMachines = [
+      {
+        system = "x86_64-linux";
+        speedFactor = 2;
+        supportedFeatures = [
+          "kvm"
+          "big-parallel"
+          "benchmark"
+          "nixos-test"
+        ];
+        protocol = "ssh-ng";
+        maxJobs = 4;
+        hostName = "builder";
+      }
+    ];
     distributedBuilds = true;
     extraOptions = "builders-use-substitutes = true";
   };
@@ -55,7 +59,10 @@
   services.xserver.desktopManager.gnome.enable = true;
   users.users.happy = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];

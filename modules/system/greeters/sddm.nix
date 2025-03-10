@@ -1,8 +1,9 @@
-{ lib
-, config
-, pkgs
-, paths
-, ...
+{
+  lib,
+  config,
+  pkgs,
+  paths,
+  ...
 }:
 let
   cfg = config.greeter;

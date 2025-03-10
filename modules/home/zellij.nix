@@ -1,4 +1,9 @@
-{ pkgs, paths, config, ... }:
+{
+  pkgs,
+  paths,
+  config,
+  ...
+}:
 let
   path = paths.custom_pkgs + "/modus-theme.nix";
   modus_der = import path { inherit pkgs; };

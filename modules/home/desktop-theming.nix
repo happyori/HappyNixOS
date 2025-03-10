@@ -1,6 +1,7 @@
-{ pkgs
-, config
-, ...
+{
+  pkgs,
+  config,
+  ...
 }:
 let
   theme = pkgs.orchis-theme.override {
@@ -34,5 +35,6 @@ in
   dconf = {
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
-  home.file.".local/share/themes/Orchis-Purple-Dark".source = config.lib.file.mkOutOfStoreSymlink "${theme}/share/themes/Orchis-Purple-Dark";
+  home.file.".local/share/themes/Orchis-Purple-Dark".source =
+    config.lib.file.mkOutOfStoreSymlink "${theme}/share/themes/Orchis-Purple-Dark";
 }

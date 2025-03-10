@@ -1,8 +1,10 @@
-{ lib
-, config
-, pkgs
-, ...
-}: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.custom = {
     terms = {
       kitty.enable = lib.mkEnableOption "enables kitty as main terminal";

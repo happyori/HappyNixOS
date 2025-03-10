@@ -1,7 +1,8 @@
-{ lib
-, config
-, pkgs
-, ...
+{
+  lib,
+  config,
+  pkgs,
+  ...
 }:
 let
   inherit (lib) mkEnableOption mkIf;
@@ -18,20 +19,17 @@ in
     home.packages =
       let
         package =
-          if cfg.withVesktop
-          then
-            pkgs.vesktop.override
-              {
-                electron = pkgs.electron-bin;
-                withSystemVencord = cfg.withVencord;
-              }
-          else if cfg.withVencord
-          then
-            pkgs.discord.override
-              {
-                withVencord = true;
-              }
-          else pkgs.discord;
+          if cfg.withVesktop then
+            pkgs.vesktop.override {
+              electron = pkgs.electron-bin;
+              withSystemVencord = cfg.withVencord;
+            }
+          else if cfg.withVencord then
+            pkgs.discord.override {
+              withVencord = true;
+            }
+          else
+            pkgs.discord;
       in
       lib.optional cfg.withVencord pkgs.vencord ++ [ package ];
   };

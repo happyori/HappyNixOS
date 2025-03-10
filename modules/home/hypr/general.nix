@@ -1,5 +1,4 @@
-_:
-{
+_: {
   config = {
     wayland.windowManager.hyprland.settings = {
       input = {

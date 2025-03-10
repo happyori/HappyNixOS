@@ -1,13 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{ config
-, pkgs
-, system
-, inputs
-, paths
-, ...
-}: {
+{
+  config,
+  pkgs,
+  system,
+  inputs,
+  paths,
+  ...
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -76,7 +78,10 @@
 
   users.users.happy = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];

@@ -1,6 +1,6 @@
-{ pkgs
-, formats ? pkgs.formats
-,
+{
+  pkgs,
+  formats ? pkgs.formats,
 }:
 let
   image = ../wallpapers/sddm/background.png;

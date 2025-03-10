@@ -4,4 +4,3 @@
     pkgs.wgnord
   ];
 }
-

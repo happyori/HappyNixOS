@@ -1,6 +1,6 @@
-{ pkgs
-, fetchzip ? pkgs.fetchzip
-,
+{
+  pkgs,
+  fetchzip ? pkgs.fetchzip,
 }:
 pkgs.stdenv.mkDerivation rec {
   pname = "bibata-hyprcursors";

@@ -1,11 +1,17 @@
-{ pkgs
-, lib
-, config
-, inputs
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf types mkOption;
+  inherit (lib)
+    mkEnableOption
+    mkIf
+    types
+    mkOption
+    ;
   inherit (config.custom._1password) plugins;
 in
 {

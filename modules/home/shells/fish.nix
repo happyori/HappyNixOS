@@ -1,14 +1,21 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }:
 {
   options.custom.shells.fish =
-    let inherit (lib) mkEnableOption; in {
+    let
+      inherit (lib) mkEnableOption;
+    in
+    {
       enable = mkEnableOption "Enable fish integration";
     };
   config =
-    let cfg = config.custom.shells.fish; in lib.mkIf cfg.enable {
+    let
+      cfg = config.custom.shells.fish;
+    in
+    lib.mkIf cfg.enable {
       programs.fish = {
         enable = true;
         generateCompletions = true;

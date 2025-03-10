@@ -1,9 +1,10 @@
-{ config
-, lib
-, pkgs
-, custom-options
-, paths
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  custom-options,
+  paths,
+  ...
 }:
 let
   cfg = config.custom.shells.nushell;
@@ -11,7 +12,9 @@ let
   nxvimFile = paths.app_configs + /nushell/nixvim.nu;
   aliasesFile = paths.app_configs + /nushell/advanced_aliases.nu;
   inherit (lib) mkIf;
-  sourceCompletion = package: "source ${config.xdg.cacheHome}/nushell/nu_scripts/custom-completions/${package}/${package}-completions.nu";
+  sourceCompletion =
+    package:
+    "source ${config.xdg.cacheHome}/nushell/nu_scripts/custom-completions/${package}/${package}-completions.nu";
 in
 {
   config = mkIf cfg.enable {
@@ -28,15 +31,15 @@ in
             inherit (lib) listToAttrs strings getExe;
             inherit (builtins) map;
             inherit (custom-options._1password) plugins;
-            pkg-exe-names = map (package: strings.unsafeDiscardStringContext (baseNameOf (getExe package))) plugins;
-            aliases = listToAttrs (map
-              (
-                package: {
-                  name = package;
-                  value = "op plugin run -- ${package}";
-                }
-              )
-              pkg-exe-names);
+            pkg-exe-names = map (
+              package: strings.unsafeDiscardStringContext (baseNameOf (getExe package))
+            ) plugins;
+            aliases = listToAttrs (
+              map (package: {
+                name = package;
+                value = "op plugin run -- ${package}";
+              }) pkg-exe-names
+            );
           in
           aliases
         );
@@ -141,7 +144,8 @@ in
     home.packages = [
       pkgs.nu_scripts
     ];
-    home.file."${config.xdg.cacheHome}/nushell/nu_scripts".source = "${pkgs.nu_scripts}/share/nu_scripts";
+    home.file."${config.xdg.cacheHome}/nushell/nu_scripts".source =
+      "${pkgs.nu_scripts}/share/nu_scripts";
     home.file."Scripts/launch_gnome_polkit.nu".source = "${paths.scripts}/launch_gnome_polkit.nu";
     home.file."Scripts/toggle_clipse.nu".source = "${paths.scripts}/toggle_clipse.nu";
   };

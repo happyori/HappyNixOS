@@ -1,7 +1,8 @@
-{ pkgs
-, config
-, lib
-, ...
+{
+  pkgs,
+  config,
+  lib,
+  ...
 }:
 let
   cfg = config.custom.shells.murex;
@@ -12,7 +13,9 @@ in
 {
   options.custom.shells.murex = {
     enable = mkEnableOption "Enable murex setup";
-    enableStarship = mkEnableOption "Enables the starship config" // { default = true; };
+    enableStarship = mkEnableOption "Enables the starship config" // {
+      default = true;
+    };
     modules = lib.mkOption {
       type = lib.types.listOf lib.types.package;
       description = "Murex Modules to load";
@@ -33,12 +36,15 @@ in
         toMurexPackage = pkg: "murex-package import ${pkg}/package.json <null>";
         murex-pkgs = map toMurexPackage cfg.modules;
       in
-      concatNewLines (murex-pkgs ++ [
-        "alias eza=eza --git --smart-group --group-directories-first"
-        "alias l=eza -la"
-        "alias ll=eza -la --absolute=on"
-        "alias lld=duf"
-      ]);
+      concatNewLines (
+        murex-pkgs
+        ++ [
+          "alias eza=eza --git --smart-group --group-directories-first"
+          "alias l=eza -la"
+          "alias ll=eza -la --absolute=on"
+          "alias lld=duf"
+        ]
+      );
     custom.shells.enableStarshipIntegration = true;
   };
 }

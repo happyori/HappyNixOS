@@ -1,9 +1,10 @@
-{ lib
-, config
-, pkgs
-, custom-options
-, paths
-, ...
+{
+  lib,
+  config,
+  pkgs,
+  custom-options,
+  paths,
+  ...
 }:
 let
   inherit (lib) mkEnableOption mkIf;

@@ -1,11 +1,13 @@
-{ config
-, lib
-, pkgs
-, system
-, inputs
-, paths
-, ...
-}: {
+{
+  config,
+  lib,
+  pkgs,
+  system,
+  inputs,
+  paths,
+  ...
+}:
+{
   nix.settings = {
     substituters = [
       "https://hyprland.cachix.org"
@@ -17,7 +19,11 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
     trusted-users = [ "happy" ];
-    experimental-features = [ "pipe-operators" "nix-command" "flakes" ];
+    experimental-features = [
+      "pipe-operators"
+      "nix-command"
+      "flakes"
+    ];
   };
 
   time.timeZone = "America/Los_Angeles";

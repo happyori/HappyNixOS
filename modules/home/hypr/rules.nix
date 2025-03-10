@@ -1,25 +1,35 @@
 { config, lib, ... }:
 let
   inherit (lib) types mkOption;
-  inherit (types) listOf submodule ints str either int;
+  inherit (types)
+    listOf
+    submodule
+    ints
+    str
+    either
+    int
+    ;
 in
 {
   options.custom.hyprland.rules = {
-    workspaces = mkOption
-      {
-        type = listOf (submodule {
-          options = {
-            rules = mkOption {
-              type = listOf str;
-              example = [ "gasin:4" "gapsout:4" "monitor:DP-1" ];
-            };
-            workspace = mkOption {
-              type = either str int;
-              example = "name:web";
-            };
+    workspaces = mkOption {
+      type = listOf (submodule {
+        options = {
+          rules = mkOption {
+            type = listOf str;
+            example = [
+              "gasin:4"
+              "gapsout:4"
+              "monitor:DP-1"
+            ];
           };
-        });
-      };
+          workspace = mkOption {
+            type = either str int;
+            example = "name:web";
+          };
+        };
+      });
+    };
     windows = mkOption {
       type = listOf (submodule {
         options = {
@@ -30,11 +40,18 @@ in
           };
           matches = mkOption {
             type = listOf str;
-            example = [ "^(kitty)$" "title:^(Firefox)(.*)$" ];
+            example = [
+              "^(kitty)$"
+              "title:^(Firefox)(.*)$"
+            ];
           };
           rules = mkOption {
             type = listOf str;
-            example = [ "workspace name:discord silent" "float" "size 650 600" ];
+            example = [
+              "workspace name:discord silent"
+              "float"
+              "size 650 600"
+            ];
           };
         };
       });
@@ -44,7 +61,10 @@ in
         options = {
           rules = mkOption {
             type = listOf str;
-            example = [ "blur" "ignorezero" ];
+            example = [
+              "blur"
+              "ignorezero"
+            ];
           };
           match = mkOption {
             type = str;
@@ -59,10 +79,10 @@ in
       cfg = config.custom.hyprland.rules;
       inherit (builtins) flatten filter;
 
-      generateWindowRulesV1 = window: flatten (
-        map (rule: map (match: "${rule},${match}") window.matches) window.rules
-      );
-      generateWindowRulesV2 = window: map (rule: "${rule},${lib.concatStringsSep "," window.matches}") window.rules;
+      generateWindowRulesV1 =
+        window: flatten (map (rule: map (match: "${rule},${match}") window.matches) window.rules);
+      generateWindowRulesV2 =
+        window: map (rule: "${rule},${lib.concatStringsSep "," window.matches}") window.rules;
       generateWorkspaceRules = ws: "${ws.workspace},${lib.concatStringsSep "," ws.rules}";
       generateLayerRules = l: map (rule: "${rule}, ${l.match}") l.rules;
 

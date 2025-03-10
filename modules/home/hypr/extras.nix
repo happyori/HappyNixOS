@@ -25,7 +25,8 @@ in
       slurp
       nautilus
       pyprland
-      libdbusmenu-gtk3;
+      libdbusmenu-gtk3
+      ;
   };
 
   xdg.portal.enable = true;

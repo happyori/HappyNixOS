@@ -1,6 +1,7 @@
-{ lib
-, config
-, ...
+{
+  lib,
+  config,
+  ...
 }:
 let
   inherit (lib) mkEnableOption mkOption;
@@ -28,7 +29,10 @@ in
     programs.lazygit.enable = cfg.with_lazygit;
     programs.git = {
       enable = true;
-      ignores = [ "*.root" "*.swap" ];
+      ignores = [
+        "*.root"
+        "*.swap"
+      ];
       userEmail = "orkhan.tahirov@gmail.com";
       userName = "happyori";
       extraConfig =

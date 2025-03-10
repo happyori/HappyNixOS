@@ -1,4 +1,10 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 
 {
   # https://devenv.sh/basics/
@@ -12,7 +18,6 @@
     pkgs.dart-sass
     pkgs.fd
   ];
-
 
   # https://devenv.sh/languages/
   languages = {

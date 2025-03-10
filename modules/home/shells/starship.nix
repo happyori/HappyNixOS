@@ -22,7 +22,10 @@ in
           style = "italic bright-blue";
           truncation_symbol = "⋯ ";
           truncation_length = 11;
-          ignore_branches = [ "main" "master" ];
+          ignore_branches = [
+            "main"
+            "master"
+          ];
           only_attached = true;
         };
         git_metrics = {

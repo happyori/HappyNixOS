@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   options.custom.games = {
     steam.enable = lib.mkEnableOption "Enable to install steam";
