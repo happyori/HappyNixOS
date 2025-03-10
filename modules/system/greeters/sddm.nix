@@ -27,10 +27,8 @@ in
         pkgs.qt6.qt5compat
       ];
       autoNumlock = true;
-      setupScript = ''
-        xrandr --output HDMI-A-1 --off --output DP-2 --primary
-      '';
     };
+    services.xserver.displayManager.setupCommands = "xrandr --output HDMI-A-1 --off --output DP-2 --primary";
 
     environment.systemPackages = with pkgs; [
       qt6.qt5compat
