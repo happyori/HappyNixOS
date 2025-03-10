@@ -175,6 +175,7 @@ in
       "clipse -listen"
       "swww img ${config.xdg.configHome}/swww/wallpaper"
       "dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE"
+      "sleep 2; hyprshade auto"
       { once = false; cmd = "hyprshade auto"; }
     ];
   };
