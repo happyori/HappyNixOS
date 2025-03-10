@@ -29,7 +29,7 @@
   greeter.greetd.enable = false;
   greeter.sddm = {
     enable = true;
-    wayland.enable = true;
+    wayland.enable = false;
   };
   programs = {
     dconf.enable = true;
