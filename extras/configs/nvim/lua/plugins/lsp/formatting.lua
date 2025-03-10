@@ -10,7 +10,7 @@ return {
         rust = { 'rustfmt', lsp_format = 'fallback' },
         javascript = { 'prettierd', stop_after_first = true },
         typescript = { 'prettierd', stop_after_first = true },
-        nix = { 'nixpkgs-fmt' },
+        nix = { 'nixfmt' },
       },
       format_on_save = {
         timeout_ms = 500,

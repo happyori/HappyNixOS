@@ -1,16 +1,61 @@
 { lib, config, ... }:
 {
-  options.custom.wallpaper = lib.mkOption {
-    type = lib.types.path;
-    description = "Relative path to the wallpaper";
-  };
+  options =
+    let
+      inherit (lib) mkOption;
+      inherit (lib.types)
+        either
+        path
+        submodule
+        str
+        nullOr
+        functionTo
+        package
+        ;
+    in
+    {
+      custom.wallpaper = mkOption {
+        type =
+          either path
+          <| submodule {
+            options = {
+              monitor = mkOption {
+                type = str;
+                example = "DP-1";
+              };
+              path = mkOption {
+                type = nullOr path;
+                example = "../wallpaper.png";
+                default = null;
+              };
+              wallhaven = mkOption {
+                type =
+                  nullOr
+                  <| submodule {
+                    options = {
+                      id = mkOption {
+                        type = str;
+                        example = "123c15";
+                      };
+                      hash = mkOption {
+                        type = str;
+                      };
+                    };
+                  };
+                example = {
+                  id = "123c15";
+                  hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+                };
+                default = null;
+              };
+            };
+          };
+      };
+      lib.mkWallhavenDerivation = mkOption {
+        type = functionTo package;
+      };
+    };
 
-  # options = let inherit (lib) mkOption mkEnableOption types; in {
-  #   custom.wallpaper = mkOption {
-  #     type = either path <| submodule { };
-  #   };
-  # };
-  #
   config = {
     xdg.configFile."swww/wallpaper".source = config.custom.wallpaper;
   };
