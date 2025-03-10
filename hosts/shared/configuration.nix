@@ -28,16 +28,8 @@
 
   greeter.greetd.enable = false;
   greeter.sddm = {
-    enable = false;
-    wayland.enable = true;
-  };
-  services.displayManager.ly = {
     enable = true;
-    settings = {
-      bigclock = "en";
-      animation = "matrix";
-      numlock = true;
-    };
+    wayland.enable = true;
   };
   programs = {
     dconf.enable = true;
