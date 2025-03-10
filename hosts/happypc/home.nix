@@ -70,6 +70,7 @@
         x = 0;
         y = 0;
         scale = "auto";
+        enabled = false;
       }
       {
         name = "DP-1";
