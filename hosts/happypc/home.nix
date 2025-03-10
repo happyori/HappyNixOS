@@ -86,7 +86,7 @@
         width = 3440;
         height = 1440;
         refresh = 164.90;
-        x = -3440;
+        x = 0;
         y = 0;
         scale = "auto";
       }
