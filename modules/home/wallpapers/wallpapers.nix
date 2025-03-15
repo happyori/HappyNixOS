@@ -63,14 +63,15 @@
       text =
         let
           fromWallhaven = wallhaven: import ./mkWallhavenDerivation.nix { inherit wallhaven pkgs; };
-          fromDerivation = output: der: "swww img ${der} -o ${output}\n";
+          fromDerivation = output: der: "swww img ${der} -o ${output}";
           fromWallpaper =
             wallpaper:
             if wallpaper.path == null then
               fromDerivation wallpaper.monitor <| fromWallhaven wallpaper.wallhaven
             else
-              "swww img ${wallpaper.path} -o ${wallpaper.monitor}\n";
-          intoScript = map fromWallpaper config.custom.wallpapers;
+              "swww img ${wallpaper.path} -o ${wallpaper.monitor}";
+          fromWallpapers = map fromWallpaper config.custom.wallpapers;
+          intoScript = lib.concatStringsSep "\n" fromWallpapers;
         in
         ''
           #!${pkgs.nushell}/bin/nu
