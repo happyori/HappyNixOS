@@ -9,7 +9,7 @@ pkgs.stdenvNoCC.mkDerivation {
       pkgs.imagemagick
     ];
     wallhavenId = wallhaven.id;
-    resize = wallhaven.size;
+    inherit (wallhaven) resize;
     script = ./wallhaven.nu;
     dontUnpack = true;
   };
