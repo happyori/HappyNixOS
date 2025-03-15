@@ -25,6 +25,7 @@
         wallhaven = {
           id = "3lpe76";
           resize = "3440x1440";
+          hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
         };
       }
     ];

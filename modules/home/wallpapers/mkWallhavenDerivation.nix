@@ -12,6 +12,9 @@ pkgs.stdenvNoCC.mkDerivation {
     inherit (wallhaven) resize;
     script = ./wallhaven.nu;
     dontUnpack = true;
+    outputHashAlgo = "sha256";
+    outputHashMode = "recursive";
+    outputHash = wallhaven.hash;
   };
   installPhase = ''cp $src/${wallhaven.id}.png $out'';
 }

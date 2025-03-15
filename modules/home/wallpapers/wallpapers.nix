@@ -45,11 +45,16 @@
                         example = "3440x1440";
                         description = "Auto Crops to the size";
                       };
+                      hash = mkOption {
+                        type = str;
+                        example = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+                      };
                     };
                   };
                 example = {
                   id = "123c15";
                   resize = "3440x1440";
+                  hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
                 };
                 default = null;
               };
