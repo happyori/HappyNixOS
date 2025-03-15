@@ -3,7 +3,7 @@
   imports = [
     ./git.nix
     ./shells.nix
-    ./wallpapers.nix
+    ./wallpapers/wallpapers.nix
     ./hyprland.nix
     ./terminals.nix
     ./discord.nix

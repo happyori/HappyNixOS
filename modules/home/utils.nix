@@ -40,6 +40,7 @@ in
       pkgs.obsidian
       pkgs.blueman
       pkgs.qpdfview
+      pkgs.loupe
       pkgs.via
       pkgs.vlc
       zen

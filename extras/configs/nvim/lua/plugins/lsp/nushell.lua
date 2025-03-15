@@ -6,6 +6,7 @@ return {
   build = function(_)
     vim.cmd [[ TSInstall nu ]]
   end,
+  enabled = false,
   config = true,
   opts = {
     use_lsp_features = true,

@@ -14,7 +14,13 @@
   ];
 
   custom = {
-    wallpaper = paths.wallpapers + /AlienPlanet.jpg;
+    wallpapers = [
+      {
+        # FIX: This is likely incorrect and will need a fix or a system to set all monitors
+        monitor = "DP-1";
+        path = paths.wallpapers + /AlienPlanet.jpg;
+      }
+    ];
     shells.nushell.enable = true;
     shells.fish.enable = true;
     utils.zoxide.enable = true;

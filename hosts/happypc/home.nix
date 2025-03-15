@@ -15,7 +15,19 @@
   ];
 
   custom = {
-    wallpaper = paths.wallpapers + /AlienPlanet.jpg;
+    wallpapers = [
+      {
+        monitor = "DP-2";
+        path = paths.wallpapers + /AlienPlanet.jpg;
+      }
+      {
+        monitor = "DP-1";
+        wallhaven = {
+          id = "3lpe76";
+          resize = "3440x1440";
+        };
+      }
+    ];
     shells.nushell.enable = true;
     shells.murex =
       let

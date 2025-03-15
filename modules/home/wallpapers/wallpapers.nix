@@ -1,22 +1,25 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   options =
     let
       inherit (lib) mkOption;
       inherit (lib.types)
-        either
         path
         submodule
         str
         nullOr
-        functionTo
-        package
+        listOf
         ;
     in
     {
-      custom.wallpaper = mkOption {
+      custom.wallpapers = mkOption {
         type =
-          either path
+          listOf
           <| submodule {
             options = {
               monitor = mkOption {
@@ -37,26 +40,44 @@
                         type = str;
                         example = "123c15";
                       };
-                      hash = mkOption {
+                      resize = mkOption {
                         type = str;
+                        example = "3440x1440";
+                        description = "Auto Crops to the size";
                       };
                     };
                   };
                 example = {
                   id = "123c15";
-                  hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+                  resize = "3440x1440";
                 };
                 default = null;
               };
             };
           };
       };
-      # lib.mkWallhavenDerivation = mkOption {
-      #   type = functionTo package;
-      # };
     };
 
   config = {
-    xdg.configFile."swww/wallpaper".source = config.custom.wallpaper;
+    xdg.configFile."swww/activation" = {
+      text =
+        let
+          fromWallhaven = wallhaven: import ./mkWallhavenDerivation.nix { inherit wallhaven pkgs; };
+          fromDerivation = output: der: "swww img ${der} -o ${output}\n";
+          fromWallpaper =
+            wallpaper:
+            if wallpaper.path == null then
+              fromDerivation wallpaper.monitor <| fromWallhaven wallpaper.wallhaven
+            else
+              "swww img ${wallpaper.path} -o ${wallpaper.monitor}\n";
+          intoScript = map fromWallpaper config.custom.wallpapers;
+        in
+        ''
+          #!${pkgs.nushell}/bin/nu
+
+          ${intoScript}
+        '';
+      executable = true;
+    };
   };
 }

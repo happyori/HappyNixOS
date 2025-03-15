@@ -327,7 +327,7 @@ in
       "~/Scripts/hypr/auto-connect"
       "wl-clip-persist --clipboard primary"
       "clipse -listen"
-      "swww img ${config.xdg.configHome}/swww/wallpaper"
+      "~/.config/swww/activation"
       "dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE"
       "sleep 2; hyprshade auto"
       {
