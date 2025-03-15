@@ -51,9 +51,9 @@
             };
           };
       };
-      lib.mkWallhavenDerivation = mkOption {
-        type = functionTo package;
-      };
+      # lib.mkWallhavenDerivation = mkOption {
+      #   type = functionTo package;
+      # };
     };
 
   config = {
