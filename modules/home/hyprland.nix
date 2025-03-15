@@ -37,7 +37,7 @@ in
           rules = [
             "gapsin:4"
             "gapsout:4"
-            "monitor:DP-1"
+            "monitor:DP-2"
             "default:true"
             "borderside:1"
             "shadow:false"
