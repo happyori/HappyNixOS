@@ -6,7 +6,7 @@ vsync = false
 
 [font]
 normal = ["CaskaydiaCove Nerd Font Mono"]
-size = 16.0
+size = 14.0
 
 [font.features]
-"CaskaydiaCove Nerd Font Mono" = ["+liga"]
+"CaskaydiaCove Nerd Font Mono" = ["+liga", "+ss01"]

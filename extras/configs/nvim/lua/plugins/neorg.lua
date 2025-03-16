@@ -14,6 +14,7 @@ return {
           keymaps = {
             { '<leader>nc', '<cmd>Neorg workspace core<cr>', description = '|Open [C]ore Workspace' },
             { '<leader>nj', '<cmd>Neorg journal<cr>', description = '|Create [J]ournal Entry' },
+            { '<leader>ni', '<cmd>Neorg index<cr>', description = '|Open [I]ndex Entry' },
           },
         },
       }
