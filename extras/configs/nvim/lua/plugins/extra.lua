@@ -26,7 +26,7 @@ return {
       },
     },
   },
-  'Tastyep/structlog.nvim',
+  { 'Tastyep/structlog.nvim', config = true },
   {
     'shortcuts/no-neck-pain.nvim',
     cmd = 'NoNeckPain',

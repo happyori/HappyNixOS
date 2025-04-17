@@ -26,7 +26,19 @@ in
   };
 
   config = {
-    programs.lazygit.enable = cfg.with_lazygit;
+    programs.lazygit = {
+      enable = cfg.with_lazygit;
+      config = {
+        gui = {
+          nerdFontVersion = "3";
+        };
+        os = {
+          edit = "nvim {{filename}}";
+          editAtLine = "nvim -c '{{line}}G' {{filename}}";
+        };
+      };
+    };
+
     programs.git = {
       enable = true;
       ignores = [
