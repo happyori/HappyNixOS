@@ -28,7 +28,7 @@ in
   config = {
     programs.lazygit = {
       enable = cfg.with_lazygit;
-      config = {
+      settings = {
         gui = {
           nerdFontVersion = "3";
         };
