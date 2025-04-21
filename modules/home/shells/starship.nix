@@ -16,7 +16,7 @@ in
 
     xdg.configFile."starship.toml" = {
       source = mkOutOfStoreSymlink (
-        config.xdg.configHome + "nixos/extras/configs/starship/starship.toml"
+        config.xdg.configHome + "/nixos/extras/configs/starship/starship.toml"
       );
     };
   };
