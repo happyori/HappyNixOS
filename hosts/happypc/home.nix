@@ -44,7 +44,7 @@
     shells.fish.enable = true;
     utils.zoxide.enable = true;
     utils.ssh.enable = true;
-    hardware.nvidia.enable = true;
+    hardware.nvidia.enable = false;
     git = {
       with_lazygit = true;
       delta = {

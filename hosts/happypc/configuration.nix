@@ -54,10 +54,11 @@
   };
 
   # Set your time zone.
-  time.hardwareClockInLocalTime = true;
+  time.hardwareClockInLocalTime = false;
 
   custom = {
-    hardware.nvidia.enable = true;
+    hardware.nvidia.enable = false;
+    hardware.amdgpu.enable = true;
     games.steam.enable = true;
     games.minecraft.enable = true;
   };

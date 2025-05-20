@@ -9,5 +9,6 @@
     ./nvidia.nix
     ./steam.nix
     ./vpn.nix
+    ./amdgpu.nix
   ];
 }
