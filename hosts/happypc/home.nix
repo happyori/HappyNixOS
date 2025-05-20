@@ -17,11 +17,11 @@
   custom = {
     wallpapers = [
       {
-        monitor = "DP-2";
+        monitor = "DP-1";
         path = paths.wallpapers + /AlienPlanet.jpg;
       }
       {
-        monitor = "DP-1";
+        monitor = "DP-2";
         wallhaven = {
           id = "3lpe76";
           resize = "3440x1440";

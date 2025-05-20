@@ -37,7 +37,8 @@ in
           rules = [
             "gapsin:4"
             "gapsout:4"
-            "monitor:DP-2"
+            # TODO: Make the Display identified by monitor rather then by connector
+            "monitor:DP-1"
             "default:true"
             "borderside:1"
             "shadow:false"
