@@ -88,7 +88,7 @@
         enable = false;
       }
       {
-        name = "DP-2";
+        name = "DP-1";
         width = 2560;
         height = 1440;
         refresh = 169.83;
@@ -97,7 +97,7 @@
         scale = "auto";
       }
       {
-        name = "DP-1";
+        name = "DP-2";
         width = 3440;
         height = 1440;
         refresh = 164.90;
