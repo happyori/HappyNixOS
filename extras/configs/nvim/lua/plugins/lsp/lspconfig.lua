@@ -168,8 +168,7 @@ return {
         },
       },
       somesass_ls = {},
-      hls = {},
-      gleam = {},
+      qmlls = {},
       pyright = {},
     }
 

@@ -16,6 +16,7 @@
       hide_env_diff = true
     '';
   };
+  qt.enable = true;
 
   virtualisation = {
     containers.enable = true;
