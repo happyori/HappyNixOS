@@ -39,7 +39,7 @@
           }
         '';
         extraEntriesBeforeNixOS = true;
-        theme = ../shared/grub-themes/virtuaverse/;
+        theme = ../shared/grub-themes/virtuaverse;
       };
     };
     supportedFilesystems = [ "zfs" ];
