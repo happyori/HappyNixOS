@@ -28,7 +28,7 @@ in
   };
 
   config = mkIf config.custom._1password.enable {
-    programs._1password-cli.enable = true;
+    programs._1password.enable = true;
     programs._1password-gui = {
       enable = true;
       polkitPolicyOwners = [ "happy" ];
@@ -38,6 +38,7 @@ in
         text = ''
           vivaldi-bin
           zen-bin
+          floorp-bin
         '';
         mode = "0755";
       };
