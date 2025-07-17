@@ -113,6 +113,7 @@ in
         pkgs.yazi
         pkgs.imagemagick
         pkgs.ffmpeg
+        pkgs.kdePackages.qtdeclarative
       ];
   };
 }

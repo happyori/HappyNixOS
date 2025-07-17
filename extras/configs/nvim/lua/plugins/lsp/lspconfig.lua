@@ -178,6 +178,7 @@ return {
       'omnisharp',
       'hls',
       'gleam',
+      'qmlls',
     }
 
     require('mason').setup()
