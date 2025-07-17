@@ -111,6 +111,9 @@
       networkmanagerapplet
       inputs.nux.packages.${system}.default
     ];
+    sessionVariables = {
+      NH_FLAKE = "/home/happy/.config/nixos/";
+    };
     pathsToLink = [ "/share/icons" ];
     gnome.excludePackages = with pkgs; [
       gnome-photos
