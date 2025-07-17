@@ -59,7 +59,6 @@
     };
   };
   custom._1password.enable = true;
-  hardware.pulseaudio.enable = false;
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     inputs.nixd.overlays.default
@@ -78,6 +77,7 @@
       nssmdns4 = true;
       openFirewall = true;
     };
+    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;

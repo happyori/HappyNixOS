@@ -15,12 +15,13 @@
       "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
     ];
     hardware = {
-      opengl.extraPackages = [
-        pkgs.rocmPackages.clr.icd 
-        pkgs.amdvlk
-      ];
-      opengl.driSupport32Bit = true;
-      graphics.enable32Bit = true;
+      graphics = {
+        enable32Bit = true;
+        extraPackages = [
+          pkgs.rocmPackages.clr.icd
+          pkgs.amdvlk
+        ];
+      };
     };
 
     environment.systemPackages = [ pkgs.clinfo ];
