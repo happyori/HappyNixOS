@@ -168,7 +168,9 @@ return {
         },
       },
       somesass_ls = {},
-      qmlls = {},
+      qmlls = {
+        cmd = { 'qmlls', '-E' },
+      },
       pyright = {},
     }
 
