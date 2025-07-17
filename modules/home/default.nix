@@ -12,6 +12,7 @@
     ./dev.nix
     ./nvidia.nix
     ./games.nix
+    ./quickshell.nix
   ];
 
   config = {
