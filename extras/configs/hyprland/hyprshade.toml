@@ -1,6 +1,6 @@
 [[shades]]
 name = "vibrance"
-default = true
+default = false
 
 [[shades]]
 name = "blue-light-filter-normal"
