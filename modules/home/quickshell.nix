@@ -2,7 +2,6 @@
   inputs,
   system,
   config,
-  paths,
   ...
 }:
 let
@@ -28,8 +27,10 @@ in
     in
     wallpapers
     |> map (wp: {
-      "${getWpName wp}".source = if isWallhaven wp then fromWallhaven wp.wallhaven else wp.path;
-    });
+      name = "${getWpName wp}".source;
+      value = if isWallhaven wp then fromWallhaven wp.wallhaven else wp.path;
+    })
+    |> builtins.listToAttrs;
 
   # xdg.configFile."caelestia/shell.json" = {
   #   source = paths.app_configs + "caelestia/shell.json";
