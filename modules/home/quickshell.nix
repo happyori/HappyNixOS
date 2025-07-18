@@ -28,7 +28,7 @@ in
     in
     wallpapers
     |> map (wp: {
-      "${getWpName wp}".source = if isWallhaven wp then fromWallhaven wp else wp.path;
+      "${getWpName wp}".source = if isWallhaven wp then fromWallhaven wp.wallhaven else wp.path;
     });
 
   # xdg.configFile."caelestia/shell.json" = {

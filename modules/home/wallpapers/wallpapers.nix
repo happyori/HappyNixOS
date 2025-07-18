@@ -73,7 +73,7 @@
     xdg.configFile."swww/activation" = {
       text =
         let
-          fromWallhaven = config.custom.wallpapers.fromWallhaven;
+          fromWallhaven = config.custom.fromWallhaven;
           fromDerivation = output: der: "swww img ${der} -o ${output}";
           fromWallpaper =
             wallpaper:
