@@ -19,9 +19,11 @@
       {
         monitor = "DP-1";
         path = paths.wallpapers + /AlienPlanet.jpg;
+        wallpaper_name = "AlienPlanet.jpg";
       }
       {
         monitor = "DP-2";
+        wallpaper_name = "DarkWin.png";
         wallhaven = {
           id = "3lpe76";
           resize = "3440x1440";

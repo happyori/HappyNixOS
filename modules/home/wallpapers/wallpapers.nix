@@ -17,6 +17,7 @@
         ;
     in
     {
+      custom.fromWallhaven = mkOption { };
       custom.wallpapers = mkOption {
         type =
           listOf
@@ -25,6 +26,10 @@
               monitor = mkOption {
                 type = str;
                 example = "DP-1";
+              };
+              wallpaper_name = mkOption {
+                type = str;
+                default = "";
               };
               path = mkOption {
                 type = nullOr path;
@@ -64,10 +69,11 @@
     };
 
   config = {
+    custom.fromWallhaven = wallhaven: import ./mkWallhavenDerivation.nix { inherit wallhaven pkgs; };
     xdg.configFile."swww/activation" = {
       text =
         let
-          fromWallhaven = wallhaven: import ./mkWallhavenDerivation.nix { inherit wallhaven pkgs; };
+          fromWallhaven = config.custom.wallpapers.fromWallhaven;
           fromDerivation = output: der: "swww img ${der} -o ${output}";
           fromWallpaper =
             wallpaper:
