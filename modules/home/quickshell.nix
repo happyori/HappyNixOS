@@ -27,8 +27,10 @@ in
     in
     wallpapers
     |> map (wp: {
-      name = "${getWpName wp}".source;
-      value = if isWallhaven wp then fromWallhaven wp.wallhaven else wp.path;
+      name = getWpName wp;
+      value = {
+        source = if isWallhaven wp then fromWallhaven wp.wallhaven else wp.path;
+      };
     })
     |> builtins.listToAttrs;
 
