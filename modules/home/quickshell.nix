@@ -22,7 +22,7 @@ in
   home.file =
     let
       wallpapers = config.custom.wallpapers;
-      isWallhaven = wp: wp.wallhaven == null;
+      isWallhaven = wp: wp.wallhaven != null;
       getWpName = wp: wp.wallpaper_name;
       fromWallhaven = config.custom.fromWallhaven;
     in
