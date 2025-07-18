@@ -27,7 +27,7 @@ in
     in
     wallpapers
     |> map (wp: {
-      name = config.xdg.userDirs.pictures + "/" + getWpName wp;
+      name = config.xdg.userDirs.pictures + "/Wallpapers/" + getWpName wp;
       value = {
         source = if isWallhaven wp then fromWallhaven wp.wallhaven else wp.path;
       };
