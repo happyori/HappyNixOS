@@ -2,17 +2,21 @@
   inputs,
   system,
   config,
+  pkgs,
   ...
 }:
 let
   quickshell = inputs.quickshell.packages."${system}".default;
   caelestia = inputs.caelestia.packages."${system}".default;
+  caelestia-cli = inputs.caelestia-cli.packages."${system}".default;
   profile = config.home.profileDirectory;
 in
 {
   home.packages = [
     quickshell
     caelestia
+    caelestia-cli
+    pkgs.material-symbols
   ];
   home.sessionVariables = {
     "QML2_IMPORT_PATH" = "${profile}/lib/qt-6/qml";
